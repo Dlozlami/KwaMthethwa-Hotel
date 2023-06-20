@@ -1,3 +1,7 @@
+UX Hotel Guide
+============================
+
+
 When designing a hotel app, it's important to prioritize the user experience (UX) to ensure that your app is intuitive, user-friendly, and meets the needs of your target audience. Here are some UX advice to consider for good hotel app design:
 
 Streamlined Onboarding: Make the onboarding process as simple and frictionless as possible. Minimize the number of steps required to set up an account and provide clear instructions along the way. Consider incorporating social login options or pre-filling information when possible to expedite the process.
