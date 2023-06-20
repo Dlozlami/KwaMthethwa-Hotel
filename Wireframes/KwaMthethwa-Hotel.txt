@@ -1,8 +1,50 @@
-Chief EE Mthethwa
+KwaMthethwa
 Hotel
 ========================================
 Customer
 ----------------------------------------
+1. No decision paralysis, keep it simple
+2. People want to see the places & know the vibe
+3. Specs about rooms are very important[Show more / Show less]
+4. Layout: Desktop 3 col, Tab 2 col, Mobile 1 col
+	
+----------------------------------------
+Navbar
+===============
+	Two types of desktop nav
+		 1. Without booking button, because we are at the top of the page and the booking tray is at the bottom of the screen
+		 2.With a booking button, when someone scrolls down the page meaning they want to see the culture/vibe not book just yet
+
+Home
+===============
+	-Carousel of info/Marketing/pictures of hotel to get people excited
+		-This is common among accomodation websites, usually dislaying images of the location
+	-Below that are cards for services and links to landing pages
+	
+
+Bookings
+===============
+ No calendar = hard to select dates on non desktop computer
+ 	-solution: input tags(date pickers) {Arrival Date, Departure Date}
+ 	-I want this part to be quick and painless to make a sale
+ 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Navbar=
 	-Home
 	-Bookings
