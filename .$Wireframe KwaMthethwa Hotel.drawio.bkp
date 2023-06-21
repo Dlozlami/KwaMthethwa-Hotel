@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-06-21T04:46:50.379Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="kQM_gRdDsvqZPrNYHGtS" version="21.2.8" type="device" pages="7">
+<mxfile host="Electron" modified="2023-06-20T18:18:43.978Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="954njrK0eNhMF_wSKGZx" version="21.2.8" type="device" pages="7">
   <diagram name="Home" id="dT_CbNF9Qs2AG6rhamTB">
     <mxGraphModel dx="2160" dy="1290" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -1112,7 +1112,7 @@
           <mxGeometry x="130" y="1505" width="630" height="380" as="geometry" />
         </mxCell>
         <mxCell id="oojw1neDeBSF_FCmrc3I-22" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="oojw1neDeBSF_FCmrc3I-21" vertex="1">
-          <mxGeometry width="620" height="250" as="geometry" />
+          <mxGeometry width="610" height="250" as="geometry" />
         </mxCell>
         <mxCell id="oojw1neDeBSF_FCmrc3I-26" value="&lt;h1&gt;Heading&lt;/h1&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;br&gt;&lt;/p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="oojw1neDeBSF_FCmrc3I-21" vertex="1">
           <mxGeometry y="255" width="390" height="120" as="geometry" />
