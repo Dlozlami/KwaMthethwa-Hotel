@@ -1,0 +1,7 @@
+Setup Navigation
+	NavBar =1
+	Home =1
+	LogoBTN=0
+	userBTN=0
+	Footer = 0
+	Responsiveness =0
