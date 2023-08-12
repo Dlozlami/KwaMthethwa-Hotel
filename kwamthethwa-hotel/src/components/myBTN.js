@@ -1,17 +1,38 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function myBTN({ name = "myBtn", bgColor }) {
+export default function MyBTN({
+  name = "myBtn",
+  bgColor = "white",
+  color = "black",
+  address = "/",
+  borderWidth = "0",
+  borderColor = "black",
+  fontSize = "16",
+  fontWeight = "100",
+  margin = "2vw",
+  onClickFunction,
+}) {
   return (
     <div
       style={{
-        cursor: pointer,
+        cursor: "pointer",
         borderRadius: "20%",
         padding: "10%",
-        backgroundColor: "white",
-        color: "black",
+        backgroundColor: { bgColor },
+        color: { color },
+        borderWidth: { borderWidth },
+        borderColor: { borderColor },
+        fontSize: { fontSize },
+        fontWeight: { fontWeight },
+        margin: { margin },
+        textDecoration: "none",
       }}
+      onClick={onClickFunction}
     >
-      {name}
+      <Link to={address} style={{ textDecoration: "none" }}>
+        {name}
+      </Link>
     </div>
   );
 }

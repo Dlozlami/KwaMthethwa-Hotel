@@ -4,7 +4,7 @@ export default function LogoBTN() {
   return (
     <div
       style={{
-        cursor: pointer,
+        cursor: "pointer",
         width: "30%",
       }}
     >
