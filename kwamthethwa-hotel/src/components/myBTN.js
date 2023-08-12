@@ -18,7 +18,8 @@ export default function MyBTN({
       style={{
         cursor: "pointer",
         borderRadius: "20%",
-        padding: "10%",
+        padding: "10px",
+        alignItems: "center",
         backgroundColor: { bgColor },
         color: { color },
         borderWidth: { borderWidth },
@@ -27,6 +28,7 @@ export default function MyBTN({
         fontWeight: { fontWeight },
         margin: { margin },
         textDecoration: "none",
+        border: "1px red solid",
       }}
       onClick={onClickFunction}
     >
