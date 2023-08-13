@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { FaBackwardStep, FaForwardStep } from "react-icons/fa";
+import { GrPrevious, GrNext } from "react-icons/gr";
 import { BsCircleFill } from "react-icons/bs";
-import "../../public/assets/css/carousel.css"; // You can define your CSS styles in this file
+import "./carousel.css"; // You can define your CSS styles in this file
 
 export default function Carousel({ listOfImgURL }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -17,19 +17,19 @@ export default function Carousel({ listOfImgURL }) {
   };
 
   return (
-    <div className="carousel-container">
-      <div
-        className="carousel"
-        style={{
-          backgroundImage: `url(${listOfImgURL[currentIndex]})`,
-        }}
-      >
+    <div
+      className="carousel-container"
+      style={{
+        backgroundImage: `url(${listOfImgURL[currentIndex]})`,
+      }}
+    >
+      <div className="carousel">
         <div className="carousel-overlay">
           <button className="carousel-button" onClick={handlePrevious}>
-            <FaBackwardStep />
+            <GrPrevious style={{ color: "white" }} />
           </button>
           <button className="carousel-button" onClick={handleNext}>
-            <FaForwardStep />
+            <GrNext />
           </button>
         </div>
       </div>

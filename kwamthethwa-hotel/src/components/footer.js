@@ -17,7 +17,7 @@ const Footer = () => {
         </div>
         <div>
           <FaFacebook style={{ marginRight: "1vw" }} />
-          <FaTwitter />
+          <FaTwitter style={{ marginRight: "1vw" }} />
           <FaInstagram />
         </div>
       </div>
