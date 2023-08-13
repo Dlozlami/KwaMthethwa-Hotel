@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../features/counterSlice";
+import deviceReducer from "../features/deviceSlice";
 
 export const store = configureStore({
-  reducer: { count: counterReducer },
+  reducer: { device: deviceReducer },
 });

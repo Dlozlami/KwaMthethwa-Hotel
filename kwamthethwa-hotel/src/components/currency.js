@@ -3,7 +3,14 @@ import { BsCashCoin } from "react-icons/bs";
 
 export default function Currency() {
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        marginRight: "2vw",
+        marginLeft: "2vw",
+      }}
+    >
       <label htmlFor="currency">
         <BsCashCoin size={20} />
       </label>

@@ -10,7 +10,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<NavBar />}>
         <Route index element={<Home />} />
-        {/* <Route path="blogs" element={<Blogs />} />
+        {/* <Route path="blogs" element={<Blogs />} />0
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NoPage />} /> */}
       </Route>
