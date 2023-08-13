@@ -3,13 +3,14 @@ import { FaArrowUp, FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div style={{ display: "flex", flexDirection: "column", padding: "10px" }}>
+    <div>
       {/* Child 1 */}
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
-          padding: "10px",
+          padding: "20px",
+          backgroundColor: "#F2F2F2",
         }}
       >
         <div>
@@ -27,13 +28,14 @@ const Footer = () => {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          padding: "10px",
+          padding: "20px",
+          backgroundColor: "#dddddd",
         }}
       >
         <div>
           <div>
             {/* Logo and Bio */}
-            <img src="logo.png" alt="Logo" />
+            <img src="../assets/icons/logoBTN.png" alt="Logo" />
             <p>Brief bio here</p>
           </div>
         </div>
@@ -68,15 +70,20 @@ const Footer = () => {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          padding: "10px",
+          padding: "20px",
           borderTop: "1px solid gray",
+          backgroundColor: "#dddddd",
         }}
       >
         <div>
           <p>Copyright © 2023 KwaMthethwa Hotel. All rights reserved</p>
         </div>
         <div>
-          <img src="small-logo.png" alt="Small Logo" />
+          <img
+            src="../assets/icons/logoBTN.png"
+            alt="Small Logo"
+            style={{ width: "3vw" }}
+          />
         </div>
       </div>
     </div>

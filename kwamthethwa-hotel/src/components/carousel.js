@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { GrPrevious, GrNext } from "react-icons/gr";
 import { BsCircleFill } from "react-icons/bs";
+import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 import "./carousel.css"; // You can define your CSS styles in this file
 
 export default function Carousel({ listOfImgURL }) {
@@ -26,10 +26,10 @@ export default function Carousel({ listOfImgURL }) {
       <div className="carousel">
         <div className="carousel-overlay">
           <button className="carousel-button" onClick={handlePrevious}>
-            <GrPrevious style={{ color: "white" }} />
+            <AiOutlineLeft />
           </button>
           <button className="carousel-button" onClick={handleNext}>
-            <GrNext />
+            <AiOutlineRight />
           </button>
         </div>
       </div>

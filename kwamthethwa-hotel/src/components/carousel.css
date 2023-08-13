@@ -1,7 +1,7 @@
 .carousel-container {
   padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  /* margin-top: 10px;
+  margin-bottom: 10px; */
 }
 
 .carousel {
@@ -10,7 +10,7 @@
   height: 300px; /* Set your desired height */
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 .carousel-overlay {
@@ -28,7 +28,7 @@
   background: none;
   border: none;
   color: white;
-  font-size: 24px;
+  font-size: 50px;
   cursor: pointer;
 }
 
