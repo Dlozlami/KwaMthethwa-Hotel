@@ -32,11 +32,11 @@ export default function NavBar() {
           </div>
 
           <div>
-            <NavBTN name="EXPERIENCES" borderWidth="1" address="/rooms" />
+            <NavBTN name="EXPERIENCES" borderWidth="1" address="/experiences" />
           </div>
 
           <div>
-            <NavBTN name="CONTACT US" borderWidth="1" address="/rooms" />
+            <NavBTN name="CONTACT US" borderWidth="1" address="/contact" />
           </div>
           <div>
             <Currency />

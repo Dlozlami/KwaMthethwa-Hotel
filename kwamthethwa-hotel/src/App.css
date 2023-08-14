@@ -4,16 +4,20 @@
   padding: 0;
 }
 
-body{
-  border: 1px red solid;
-}
+#mainView{
 
+    overflow: auto;
+    background-image: url("../public/assets/images/bodyBG.jpg");
+    background-size: contain;
+
+}
 @font-face {
   font-family: LogoFont;
-  src: url("../assets/fonts/kaufmann/KAUFMANB.ttf");
+  src: url("../public/assets/fonts/kaufmann/KAUFMANB.ttf");
 }
 
 @font-face {
   font-family: bodyFont;
-  src: url("../assets/fonts/Lato/Lato-Regular.ttf");
+  src: url("../public/assets/fonts/Lato/Lato-Regular.ttf");
 }
+

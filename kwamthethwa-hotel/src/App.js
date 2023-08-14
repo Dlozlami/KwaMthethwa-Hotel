@@ -2,9 +2,11 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/navBar/navBar";
 import Home from "./pages/home";
 import Rooms from "./pages/rooms";
-// import Blogs from "./pages/Blogs";
-// import Contact from "./pages/Contact";
-// import NoPage from "./pages/NoPage";
+import Experiences from "./pages/experiences";
+import Contact from "./pages/contact";
+import Dining from "./pages/dining";
+import NoPage from "./pages/noPage";
+import "./App.css";
 
 export default function App() {
   return (
@@ -12,9 +14,10 @@ export default function App() {
       <Route path="/" element={<NavBar />}>
         <Route index element={<Home />} />
         <Route path="rooms" element={<Rooms />} />
-        {/*0
-            <Route path="contact" element={<Contact />} />
-            <Route path="*" element={<NoPage />} /> */}
+        <Route path="dining" element={<Dining />} />
+        <Route path="experiences" element={<Experiences />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
   );

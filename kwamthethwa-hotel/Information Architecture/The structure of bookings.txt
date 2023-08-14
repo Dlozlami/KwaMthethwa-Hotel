@@ -1,0 +1,14 @@
+The structure of bookings
+==============================
+
+booking:{
+	title:""
+	startDate:getTime
+	endDate:getTime
+	guest:2
+	rate:236000
+	type:Accomodation | Experience
+	discount_programme:""
+	discount_rate:0.12
+	image
+}

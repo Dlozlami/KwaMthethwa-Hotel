@@ -1,10 +1,11 @@
 import React from "react";
 import Footer from "../components/footer/footer";
 
-export default function Rooms() {
+export default function NoPage() {
   return (
     <div id="mainView">
-      Rooms
+      <h3>404</h3>
+      <p>Page not found.</p>
       <Footer />
     </div>
   );

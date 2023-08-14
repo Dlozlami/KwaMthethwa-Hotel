@@ -1,10 +1,10 @@
 import React from "react";
 import Footer from "../components/footer/footer";
 
-export default function Rooms() {
+export default function Experiences() {
   return (
     <div id="mainView">
-      Rooms
+      <h3>Experiences</h3>
       <Footer />
     </div>
   );
