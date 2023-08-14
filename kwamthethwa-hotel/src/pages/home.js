@@ -6,7 +6,7 @@ import { landing } from "../data/landingPictures";
 export default function home() {
   return (
     <div style={{ height: "90vh", overflow: "auto" }}>
-      <Carousel listOfImgURL={landing} />
+      <Carousel listOfImgURL={landing} height={"90vh"} />
       <Footer />
     </div>
   );
