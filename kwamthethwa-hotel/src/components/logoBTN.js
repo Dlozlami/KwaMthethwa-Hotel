@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function LogoBTN() {
+export default function LogoBTN({ size }) {
   return (
     <div
       style={{
@@ -9,11 +9,7 @@ export default function LogoBTN() {
         border: "1px red solid",
       }}
     >
-      <img
-        src="../assets/icons/logoBTN.png"
-        alt="official logo"
-        width={"60vw"}
-      />
+      <img src="../assets/icons/logoBTN.png" alt="official logo" width={size} />
     </div>
   );
 }

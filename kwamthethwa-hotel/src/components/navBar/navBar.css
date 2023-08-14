@@ -1,0 +1,11 @@
+nav{
+    padding: 10px;
+    display: flex;
+    border: 1px red solid;
+    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    width: "100%";
+    overflow: hidden;
+  }

@@ -1,9 +1,12 @@
 import React from "react";
 import { FaArrowUp, FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import LogoBTN from "../logoBTN";
+import "./footer.css";
+import MakeBTN from "../makeBTN";
 
 const Footer = () => {
   return (
-    <div>
+    <footer>
       {/* Child 1 */}
       <div
         style={{
@@ -25,38 +28,42 @@ const Footer = () => {
 
       {/* Child 2 */}
       <div
+        id="footerLinks"
         style={{
           display: "flex",
-          justifyContent: "space-between",
           padding: "20px",
           backgroundColor: "#dddddd",
         }}
       >
-        <div>
-          <div>
-            {/* Logo and Bio */}
-            <img src="../assets/icons/logoBTN.png" alt="Logo" />
-            <p>Brief bio here</p>
-          </div>
+        <div id="footerLogoBio" style={{ marginRight: 5, width: "30%" }}>
+          {/* Logo and Bio */}
+          <LogoBTN size="80vw" />
+          <p>
+            Nurtured by family bonds and ignited by creativity, KwaMthethwa
+            Hotel offers a cultural haven, embracing Zulu heritage through
+            hospitality and artistry, inviting you to celebrate tradition and
+            family essence.
+          </p>
         </div>
-        <div>
+        <div style={{ marginRight: 5 }}>
           <h3>Pages</h3>
-          <ul>
-            <li>Rooms</li>
-            <li>Dining</li>
-            <li>Experiences</li>
-            <li>Contact Us</li>
-          </ul>
+          <MakeBTN name="Rooms" borderWidth="1" address="/rooms" />
+          <MakeBTN name="Dining" borderWidth="1" address="/dining" />
+          <MakeBTN name="Experiences" borderWidth="1" address="/experiences" />
+          <MakeBTN name="Contact Us" borderWidth="1" address="/contact" />
         </div>
-        <div>
+        <div style={{ marginRight: 5 }}>
           <h3>Contact Info</h3>
-          <ul>
-            <li>Contact Address</li>
-            <li>Telephone</li>
-            <li>Email</li>
-          </ul>
+          <p>
+            123 Zulu Heritage Lane
+            <br /> Newtown
+            <br /> Johannesburg
+            <br /> South Africa
+          </p>
+          <p>info@kwamthethwahotel.co.za</p>
+          <p>+27 11 555 6789</p>
         </div>
-        <div>
+        <div id="footerStayInTouch">
           <h3>Stay in Touch</h3>
           <input type="email" placeholder="Enter email address" />
           <button>
@@ -66,27 +73,15 @@ const Footer = () => {
       </div>
 
       {/* Child 3 */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "20px",
-          borderTop: "1px solid gray",
-          backgroundColor: "#dddddd",
-        }}
-      >
-        <div>
+      <div id="copyright">
+        <div style={{ marginRight: 10 }}>
           <p>Copyright © 2023 KwaMthethwa Hotel. All rights reserved</p>
         </div>
-        <div>
-          <img
-            src="../assets/icons/logoBTN.png"
-            alt="Small Logo"
-            style={{ width: "3vw" }}
-          />
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <LogoBTN size="40vw" />
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

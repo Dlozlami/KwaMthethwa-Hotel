@@ -1,0 +1,36 @@
+footer{
+    overflow: hidden;
+}
+
+#copyright{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 1px solid gray;
+    background-color: #dddddd;
+    align-items: center;
+  }
+
+@media (max-width: 770px) {
+    #footerLogoBio {
+        display: none;
+      }
+      #footerLinks {
+        justify-content: null;
+      }
+}
+
+@media (min-width: 770px) {
+    #footerLinks {
+      justify-content: space-between;
+    }
+}
+
+@media (min-width: 995px) {
+    /* #footerStayInTouch{
+        display: block;
+    } */
+}
+
+
+  

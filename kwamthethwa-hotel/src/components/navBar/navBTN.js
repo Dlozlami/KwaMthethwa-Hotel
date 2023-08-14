@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function MyBTN({
+export default function NavBTN({
   name = "myBtn",
   bgColor = "white",
   color = "black",
   address = "/",
-  borderWidth = "0",
-  borderColor = "black",
   fontSize = "16",
   fontWeight = "100",
   margin = "2vw",
@@ -22,8 +20,6 @@ export default function MyBTN({
         alignItems: "center",
         backgroundColor: { bgColor },
         color: { color },
-        borderWidth: { borderWidth },
-        borderColor: { borderColor },
         fontSize: { fontSize },
         fontWeight: { fontWeight },
         margin: { margin },
