@@ -30,7 +30,6 @@ const Footer = () => {
       <div
         id="footerLinks"
         style={{
-          display: "flex",
           padding: "20px",
           backgroundColor: "#dddddd",
         }}
@@ -45,14 +44,31 @@ const Footer = () => {
             family essence.
           </p>
         </div>
-        <div style={{ marginRight: 5 }}>
+        <div
+          id="num2"
+          style={{
+            marginRight: 5,
+            width: "17%",
+            display: "inline-block",
+            verticalAlign: "top",
+          }}
+        >
           <h3>Pages</h3>
           <MakeBTN name="Rooms" borderWidth="1" address="/rooms" />
           <MakeBTN name="Dining" borderWidth="1" address="/dining" />
           <MakeBTN name="Experiences" borderWidth="1" address="/experiences" />
           <MakeBTN name="Contact Us" borderWidth="1" address="/contact" />
         </div>
-        <div style={{ marginRight: 5 }}>
+        <div
+          id="num3"
+          style={{
+            marginRight: 15,
+            width: "23%",
+            display: "inline-block",
+            verticalAlign: "top",
+            border: "1px red solid",
+          }}
+        >
           <h3>Contact Info</h3>
           <p>
             123 Zulu Heritage Lane
@@ -63,7 +79,15 @@ const Footer = () => {
           <p>info@kwamthethwahotel.co.za</p>
           <p>+27 11 555 6789</p>
         </div>
-        <div id="footerStayInTouch">
+
+        <div
+          id="footerStayInTouch"
+          style={{
+            width: "27%",
+            display: "inline-block",
+            verticalAlign: "top",
+          }}
+        >
           <h3>Stay in Touch</h3>
           <input type="email" placeholder="Enter email address" />
           <button>

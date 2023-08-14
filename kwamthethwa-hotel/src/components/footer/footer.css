@@ -1,6 +1,9 @@
 footer{
     overflow: hidden;
 }
+#footerLogoBio {
+  display: inline-block;
+}
 
 #copyright{
     display: flex;
@@ -13,10 +16,8 @@ footer{
 
 @media (max-width: 770px) {
     #footerLogoBio {
+        background-color: blue;
         display: none;
-      }
-      #footerLinks {
-        justify-content: null;
       }
 }
 
