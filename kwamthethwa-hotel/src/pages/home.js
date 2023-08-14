@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "../components/footer";
-import Carousel from "../components/carousel";
+import Footer from "../components/footer/footer";
+import Carousel from "../components/carousel/carousel";
 import { landing } from "../data/landingPictures";
 
 export default function home() {
