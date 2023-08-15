@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./menu.css";
-import { Link } from "react-router-dom";
+import { a, useNavigate } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import Currency from "../currency";
 
 export default function Menu() {
+  const navigate = useNavigate();
   const [isModalOpen, setModalOpen] = useState(false);
   const menuSize = window.screen.width > 699 ? "50%" : "100%";
-  console.log("Menu width: ", menuSize);
+  //console.log("Menu width: ", menuSize);
   const openModal = () => {
     console.log("Status: ", isModalOpen);
     setModalOpen(true);
@@ -48,28 +49,63 @@ export default function Menu() {
           <div>
             <Currency color="white" />
           </div>
-          <div>
-            <Link to="/rooms" style={{ textDecoration: "none" }}>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigate("/");
+              closeModal();
+            }}
+          >
+            <a href="#" style={{ textDecoration: "none" }}>
+              HOME
+            </a>
+          </div>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigate("/rooms");
+              closeModal();
+            }}
+          >
+            <a href="#" style={{ textDecoration: "none" }}>
               ROOMS
-            </Link>
+            </a>
           </div>
 
-          <div>
-            <Link to="/dining" style={{ textDecoration: "none" }}>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigate("/dining");
+              closeModal();
+            }}
+          >
+            <a href="#" style={{ textDecoration: "none" }}>
               DINING
-            </Link>
+            </a>
           </div>
 
-          <div>
-            <Link to="/experiences" style={{ textDecoration: "none" }}>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigate("/experiences");
+              closeModal();
+            }}
+          >
+            <a href="#" style={{ textDecoration: "none" }}>
               EXPERIENCES
-            </Link>
+            </a>
           </div>
 
-          <div>
-            <Link to="/contact" style={{ textDecoration: "none" }}>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigate("/contact");
+              closeModal();
+            }}
+          >
+            <a href="#" style={{ textDecoration: "none" }}>
               CONTACT US
-            </Link>
+            </a>
           </div>
         </div>
       )}

@@ -7,6 +7,8 @@ import Contact from "./pages/contact";
 import Dining from "./pages/dining";
 import NoPage from "./pages/noPage";
 import Bookings from "./pages/bookings";
+import Login from "./pages/login";
+import Register from "./pages/register";
 import "./App.css";
 
 export default function App() {
@@ -19,6 +21,8 @@ export default function App() {
         <Route path="experiences" element={<Experiences />} />
         <Route path="contact" element={<Contact />} />
         <Route path="bookings" element={<Bookings />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>

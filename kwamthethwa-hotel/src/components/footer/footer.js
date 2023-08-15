@@ -3,6 +3,7 @@ import { FaArrowUp, FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import LogoBTN from "../logoBTN";
 import "./footer.css";
 import MakeBTN from "../makeBTN";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -16,13 +17,36 @@ const Footer = () => {
           backgroundColor: "#F2F2F2",
         }}
       >
-        <div>
+        <div
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          }}
+        >
           <FaArrowUp />
         </div>
         <div>
-          <FaFacebook style={{ marginRight: "1vw" }} />
-          <FaTwitter style={{ marginRight: "1vw" }} />
-          <FaInstagram />
+          <Link
+            to="https://www.facebook.com/"
+            style={{ textDecoration: "none", marginRight: "4vw" }}
+          >
+            <FaFacebook />
+          </Link>
+          <Link
+            to="https://twitter.com/?"
+            style={{ textDecoration: "none", marginRight: "4vw" }}
+          >
+            <FaTwitter />
+          </Link>
+          <Link
+            to="https://www.instagram.com/"
+            style={{ textDecoration: "none" }}
+          >
+            <FaInstagram />
+          </Link>
         </div>
       </div>
 
@@ -92,7 +116,7 @@ const Footer = () => {
         >
           <h3>Stay in Touch</h3>
           <input type="email" placeholder="Enter email address" />
-          <button>
+          <button style={{ padding: "10px" }}>
             <FaArrowUp />
           </button>
         </div>

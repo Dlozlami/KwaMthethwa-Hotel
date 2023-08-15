@@ -8,10 +8,15 @@
 
     overflow: auto;
     background-image: url("../public/assets/images/bodyBG.jpg");
-    background-size: cover;
-    background-position: center;
     background-repeat: no-repeat;
+
+    background-position: center;
+    background-size: cover;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
 
 }
 @font-face {
@@ -22,5 +27,115 @@
 @font-face {
   font-family: bodyFont;
   src: url("../public/assets/fonts/Lato/Lato-Regular.ttf");
+}
+
+
+#mainContent{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pic{
+  width: 200px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.additionalInfo{
+  font-style: italic;
+}
+
+.flexHorizontal{
+  display: flex;
+
+}
+
+.flexVertical{
+  display: flex;
+  flex-direction: column;
+}
+
+.profile{
+  display: flex;
+}
+
+.formStyles{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 50px;
+  background-color: whitesmoke;
+}
+
+
+
+#logoTitle{
+  font-size: xx-large;
+  font-weight: 500;
+  font-family: commando;
+}
+
+#logo{
+  /* align-self: start; */
+  background-color: black;
+  padding: 10px;
+  border: 1px black solid;
+  color: white;
+  font-size: xx-large;
+  font-weight: 500;
+  font-family: commando;
+}
+
+/* .sideArtPanelAdd{
+  background-image: url('../public/assets/images/desk.jpg');
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 60%;
+  color: #d2ff58;
+  padding: 2%;
+}
+
+.sideArtPanelDisplay{
+  background-image: url('../public/assets/images/damir-kopezhanov-nC6CyrVBtkU-unsplash.jpg');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50%;
+  color: #d2ff58;
+  padding: 2%;
+} */
+
+label{
+  display: block;
+  font-size: medium;
+  font-weight: 600;
+}
+
+input{
+  background-color: #e3d7ff;
+  padding: 10px;
+}
+
+.limeButton{
+  color: whitesmoke;
+  background-color: #6874e8;
+  cursor: pointer;
+}
+
+.navLink{
+  background-color: transparent;
+}
+
+.popup{
+  display: flex;
 }
 
