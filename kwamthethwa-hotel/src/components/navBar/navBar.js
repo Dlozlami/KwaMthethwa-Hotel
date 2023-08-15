@@ -44,9 +44,46 @@ export default function NavBar() {
           <div>
             <UserBTN />
           </div>
+          <div>
+            <button
+              style={{
+                fontSize: "18px",
+                padding: "10px 20px",
+                backgroundColor: "gray",
+                color: "white",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+                marginLeft: 10,
+              }}
+            >
+              Book Now
+            </button>
+          </div>
         </div>
       </nav>
-
+      <div
+        style={{
+          position: "fixed",
+          bottom: 20,
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+      >
+        <button
+          style={{
+            fontSize: "18px",
+            padding: "10px 20px",
+            backgroundColor: "#007bff",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Book Now
+        </button>
+      </div>
       <Outlet />
     </>
   );

@@ -8,7 +8,9 @@
 
     overflow: auto;
     background-image: url("../public/assets/images/bodyBG.jpg");
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 20px;
 
 }

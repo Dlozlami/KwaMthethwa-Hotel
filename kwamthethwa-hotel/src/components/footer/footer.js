@@ -76,7 +76,9 @@ const Footer = () => {
             <br /> Johannesburg
             <br /> South Africa
           </p>
+          <br />
           <p>info@kwamthethwahotel.co.za</p>
+          <br />
           <p>+27 11 555 6789</p>
         </div>
 
