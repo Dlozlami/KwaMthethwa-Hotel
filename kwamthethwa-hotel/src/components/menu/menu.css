@@ -2,7 +2,7 @@
 /* .dor{
     background-color: blue;
 } */
-npm i react-modal
+
 .overlay{
     /* Height & width depends on how you want to reveal the overlay (see JS below) */   
     height: 100%;
@@ -24,9 +24,8 @@ npm i react-modal
   
   /* The navigation links inside the overlay */
   .overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 36px;
+    padding: 7px;
+    font-size: 3em;
     color: #818181;
     display: block; /* Display block instead of inline */
     transition: 0.3s; /* Transition effects on hover (color) */

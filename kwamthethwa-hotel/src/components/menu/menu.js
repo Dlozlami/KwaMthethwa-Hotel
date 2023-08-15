@@ -6,7 +6,8 @@ import Currency from "../currency";
 
 export default function Menu() {
   const [isModalOpen, setModalOpen] = useState(false);
-
+  const menuSize = window.screen.width > 699 ? "50%" : "100%";
+  console.log("Menu width: ", menuSize);
   const openModal = () => {
     console.log("Status: ", isModalOpen);
     setModalOpen(true);
@@ -24,10 +25,11 @@ export default function Menu() {
       </div>
       {isModalOpen && (
         <div
+          id="modalContainer"
           className="overlay"
           style={{
             position: "fixed",
-            width: "50%",
+            width: "100%",
             height: "100%",
             top: 0,
             left: 0,

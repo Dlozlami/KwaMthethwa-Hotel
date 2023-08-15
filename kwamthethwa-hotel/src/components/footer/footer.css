@@ -18,20 +18,19 @@ footer{
     #footerLogoBio {
         background-color: blue;
         display: none;
-      }
+      }#copyright{
+      margin-bottom: 30px;
+    }
 }
 
 @media (min-width: 770px) {
     #footerLinks {
       justify-content: space-between;
     }
+    
 }
 
-@media (min-width: 995px) {
-    /* #footerStayInTouch{
-        display: block;
-    } */
-}
+
 
 
   
