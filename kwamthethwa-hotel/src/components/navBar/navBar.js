@@ -1,18 +1,18 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import LogoBTN from "../logoBTN";
 import Currency from "../currency";
 import UserBTN from "../userBTN";
 import "./navBar.css";
 import NavBTN from "./navBTN";
-
+import Menu from "../menu/menu";
 export default function NavBar() {
   return (
     <>
       <nav>
+        <div id="mobileView">
+          <Menu />
+        </div>
         <div>
-          {window.screen.width > 0
-            ? console.log("Screen Width: ", window.screen.width)
-            : null}
           <LogoBTN size={"60vw"} />
         </div>
         <div
@@ -23,66 +23,72 @@ export default function NavBar() {
             alignItems: "center",
           }}
         >
-          <div>
+          <div id="tabToDesktopView">
             <NavBTN name="ROOMS" borderWidth="1" address="/rooms" />
           </div>
 
-          <div>
+          <div id="tabToDesktopView">
             <NavBTN name="DINING" borderWidth="1" address="/dining" />
           </div>
 
-          <div>
+          <div id="tabToDesktopView">
             <NavBTN name="EXPERIENCES" borderWidth="1" address="/experiences" />
           </div>
 
-          <div>
+          <div id="tabToDesktopView">
             <NavBTN name="CONTACT US" borderWidth="1" address="/contact" />
           </div>
-          <div>
+          <div id="tabToDesktopView">
             <Currency />
           </div>
           <div>
             <UserBTN />
           </div>
-          <div>
-            <button
+          <div id="tabToDesktopView">
+            <Link
+              to="/bookings"
               style={{
                 fontSize: "18px",
                 padding: "10px 20px",
-                backgroundColor: "gray",
+                backgroundColor: "#006c67",
                 color: "white",
                 border: "none",
                 borderRadius: "5px",
                 cursor: "pointer",
                 marginLeft: 10,
+                textDecoration: "none",
               }}
             >
               Book Now
-            </button>
+            </Link>
           </div>
         </div>
       </nav>
       <div
+        id="mobileView"
         style={{
           position: "fixed",
-          bottom: 20,
+          bottom: 0,
           left: "50%",
+          backgroundColor: "#006c67",
+          width: "100%",
           transform: "translateX(-50%)",
+          padding: 10,
+          fontWeight: 600,
+          color: "white",
         }}
       >
-        <button
+        <Link
+          to="/bookings"
           style={{
-            fontSize: "18px",
-            padding: "10px 20px",
-            backgroundColor: "#007bff",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
+            textDecoration: "none",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
           }}
         >
           Book Now
-        </button>
+        </Link>
       </div>
       <Outlet />
     </>

@@ -6,6 +6,7 @@ import Experiences from "./pages/experiences";
 import Contact from "./pages/contact";
 import Dining from "./pages/dining";
 import NoPage from "./pages/noPage";
+import Bookings from "./pages/bookings";
 import "./App.css";
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="dining" element={<Dining />} />
         <Route path="experiences" element={<Experiences />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="bookings" element={<Bookings />} />
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>

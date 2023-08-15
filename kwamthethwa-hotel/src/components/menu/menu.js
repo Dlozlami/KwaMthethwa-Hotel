@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./modal.css";
+import "./menu.css";
 import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
+import Currency from "../currency";
 
 export default function Menu() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -18,9 +19,9 @@ export default function Menu() {
 
   return (
     <div className="dor">
-      <button onClick={openModal}>
-        <FiMenu />
-      </button>
+      <div onClick={openModal}>
+        <FiMenu size={48} />
+      </div>
       {isModalOpen && (
         <div
           className="overlay"
@@ -41,6 +42,9 @@ export default function Menu() {
         >
           <div className="closebtn" onClick={closeModal}>
             &times;
+          </div>
+          <div>
+            <Currency color="white" />
           </div>
           <div>
             <Link to="/rooms" style={{ textDecoration: "none" }}>

@@ -4,7 +4,7 @@ import { PiUserCircleFill } from "react-icons/pi";
 export default function UserBTN() {
   return (
     <div className="w3-ripple" style={{ cursor: "pointer" }}>
-      <PiUserCircleFill size={30} />
+      <PiUserCircleFill size={40} />
     </div>
   );
 }

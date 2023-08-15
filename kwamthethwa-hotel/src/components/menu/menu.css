@@ -57,5 +57,6 @@ npm i react-modal
       font-size: 40px;
       top: 15px;
       right: 35px;
+      background-color: blue;
     }
   }
