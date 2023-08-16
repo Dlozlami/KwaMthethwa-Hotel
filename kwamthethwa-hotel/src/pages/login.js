@@ -53,6 +53,7 @@ export default function Login() {
           style={{
             border: "none",
             borderBottom: "1px black solid",
+            backgroundColor: "#d4af37",
           }}
         >
           <h1

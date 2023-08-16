@@ -7,11 +7,10 @@
 #mainView{
 
     overflow: auto;
-    background-image: url("../public/assets/images/bodyBG.jpg");
-    background-repeat: no-repeat;
+    background-image: url("../public/assets/images/polka-dot.jpg");
+    background-repeat:repeat;
 
-    background-position: center;
-    background-size: cover;
+
     padding: 20px;
     display: flex;
     flex-direction: column;

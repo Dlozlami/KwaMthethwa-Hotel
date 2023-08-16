@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./menu.css";
-import { a, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import Currency from "../currency";
 
 export default function Menu() {
   const navigate = useNavigate();
   const [isModalOpen, setModalOpen] = useState(false);
-  const menuSize = window.screen.width > 699 ? "50%" : "100%";
+  //const menuSize = window.screen.width > 699 ? "50%" : "100%";
   //console.log("Menu width: ", menuSize);
   const openModal = () => {
     console.log("Status: ", isModalOpen);
@@ -56,7 +56,7 @@ export default function Menu() {
               closeModal();
             }}
           >
-            <a href="#" style={{ textDecoration: "none" }}>
+            <a href="/" style={{ textDecoration: "none" }}>
               HOME
             </a>
           </div>
@@ -67,7 +67,7 @@ export default function Menu() {
               closeModal();
             }}
           >
-            <a href="#" style={{ textDecoration: "none" }}>
+            <a href="/rooms" style={{ textDecoration: "none" }}>
               ROOMS
             </a>
           </div>
@@ -79,7 +79,7 @@ export default function Menu() {
               closeModal();
             }}
           >
-            <a href="#" style={{ textDecoration: "none" }}>
+            <a href="/dining" style={{ textDecoration: "none" }}>
               DINING
             </a>
           </div>
@@ -91,7 +91,7 @@ export default function Menu() {
               closeModal();
             }}
           >
-            <a href="#" style={{ textDecoration: "none" }}>
+            <a href="/experiences" style={{ textDecoration: "none" }}>
               EXPERIENCES
             </a>
           </div>
@@ -103,7 +103,7 @@ export default function Menu() {
               closeModal();
             }}
           >
-            <a href="#" style={{ textDecoration: "none" }}>
+            <a href="/contact" style={{ textDecoration: "none" }}>
               CONTACT US
             </a>
           </div>
