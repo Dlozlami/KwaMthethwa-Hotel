@@ -9,8 +9,6 @@
     overflow: auto;
     background-image: url("../public/assets/images/polka-dot.jpg");
     background-repeat:repeat;
-
-
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -136,5 +134,9 @@ input{
 
 .popup{
   display: flex;
+}
+
+section{
+  padding: 10px;
 }
 
