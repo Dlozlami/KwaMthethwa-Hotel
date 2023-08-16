@@ -28,7 +28,6 @@ export default function Contact() {
           style={{
             display: "flex",
             marginBottom: "10px",
-            backgroundColor: "white",
           }}
         >
           <div
@@ -89,7 +88,7 @@ export default function Contact() {
           </div>
         </section>
 
-        <section>
+        <section className="w3-card" style={{ marginBottom: "10px" }}>
           <h4>Send Us a Message</h4>
           <form>
             <label htmlFor="fullName">Full Name</label>
