@@ -25,19 +25,10 @@ export default function Login() {
   };
 
   const printWelcome = () => (
-    <div
-      style={{
-        width: "95vw",
-        height: "85vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div id="mainView">
       <div
         className=" w3-card-4 w3-round-large w3-white"
-        style={{ padding: "20px", width: "30vw" }}
+        style={{ padding: "20px" }}
       >
         <h1 style={{ fontWeight: "500", color: "darkGray" }}>
           Welcome, {userData.name}!

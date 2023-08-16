@@ -1,9 +1,10 @@
 // Importing express and cors
+
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-const User = require("../models/user.model");
+const User = require("./models/user.model");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const app = express();
@@ -33,11 +34,11 @@ app.get("/users/", function (req, res) {
 });
 
 app.post("/users/login", function (req, res) {
-  const accountId = req.body.username;
+  const accountEmail = req.body.email;
   const accountPwd = req.body.password;
 
   // Validate username and password
-  User.findOne({ emp_num: accountId })
+  User.findOne({ email: accountEmail })
     .then((user) => {
       if (!user) {
         return res.status(404).send("User not found");

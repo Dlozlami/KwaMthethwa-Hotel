@@ -6,9 +6,9 @@ const initialState = {
 };
 
 export const addUser = createAsyncThunk(
-  'register/addUser',
+  "register/addUser",
   async (newUser, thunkAPI) => {
-    const url = 'http://localhost:5000/employees/';
+    const url = "http://localhost:8080/users/";
 
     try {
       await axios.post(url, newUser);
@@ -24,14 +24,13 @@ export const addUser = createAsyncThunk(
 );
 
 const registerSlice = createSlice({
-  name: 'register',
+  name: "register",
   initialState,
   reducers: {
-
     setUserAddedTemporary: (state, { payload }) => {
       state.userAdded = payload;
     },
-  }
+  },
 });
 
 export const { setUserAdded, setUserAddedTemporary } = registerSlice.actions;

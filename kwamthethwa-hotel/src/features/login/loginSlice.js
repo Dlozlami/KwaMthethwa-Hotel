@@ -1,11 +1,10 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import jwt_decode from 'jwt-decode';
-
+import jwt_decode from "jwt-decode";
 
 const initialState = {
   userData: {
-    emp_num:"",
+    emp_num: "",
     name: "",
     surname: "",
     email: "",
@@ -17,20 +16,22 @@ const initialState = {
   },
   validPwd: 0,
   validUsername: 0,
-  isLoggedIn:false,
-
+  isLoggedIn: false,
 };
 
 export const setLogin = createAsyncThunk(
-  'login/setLogin',
-  async ([username, password], thunkAPI) => {
-    const url = `http://localhost:5000/employees/login/`;
+  "login/setLogin",
+  async ([email, password], thunkAPI) => {
+    const url = `http://localhost:8080/users/login/`;
     try {
-      const resp = await axios.post(url, { username: username, password: password });
+      const resp = await axios.post(url, {
+        email: email,
+        password: password,
+      });
 
       const token = resp.data.token; // Extract the token from the response
 
-      localStorage.setItem('axzjwtUser', token); // Store the token in local storage
+      localStorage.setItem("axzjwtUser", token); // Store the token in local storage
 
       const decodedToken = jwt_decode(token); // Decode the token to extract the user data
       console.log(decodedToken);
@@ -39,26 +40,21 @@ export const setLogin = createAsyncThunk(
       thunkAPI.dispatch(setUserData(decodedToken)); // Set the user data in the state
       thunkAPI.dispatch(setIsLoggedIn(true));
       return;
-
     } catch (error) {
       thunkAPI.dispatch(setValidUsername(2));
       thunkAPI.dispatch(setValidPwd(0));
-      return thunkAPI.rejectWithValue('Something went wrong');
+      return thunkAPI.rejectWithValue("Something went wrong");
     }
   }
 );
 
-
-
-
 const loginSlice = createSlice({
-  name: 'login',
+  name: "login",
   initialState,
   reducers: {
-
     clearState: (state, { payload }) => {
       state.userData = {
-        id:"",
+        id: "",
         password: "",
         name: "",
         surname: "",
@@ -70,7 +66,7 @@ const loginSlice = createSlice({
         phone: "",
       };
       state.isLoggedIn = false;
-      localStorage.removeItem('axzjwtUser');
+      localStorage.removeItem("axzjwtUser");
     },
 
     setValidPwd: (state, { payload }) => {
@@ -88,9 +84,7 @@ const loginSlice = createSlice({
     setUserData: (state, { payload }) => {
       state.userData = payload;
     },
-    
   },
-
 });
 
 // Include the methods in normal reducers in actions to avoid undefined errors
@@ -99,7 +93,7 @@ export const {
   clearState,
   setValidPwd,
   setValidUsername,
-  setUserData
+  setUserData,
 } = loginSlice.actions;
 
 export default loginSlice.reducer;
