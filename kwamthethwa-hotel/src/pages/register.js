@@ -164,7 +164,7 @@ export default function Register() {
             <br />
             {userAdded ? (
               <div className="w3-panel w3-green w3-round-small w3-padding-16">
-                New employee added successfully!
+                Sign up is successful!
               </div>
             ) : (
               ""
@@ -176,7 +176,7 @@ export default function Register() {
               style={{ marginRight: "5vw" }}
               className="limeButton w3-btn w3-border w3-border-black w3-round-large"
             >
-              Add Employee
+              Sign up
             </button>
           </div>
         </div>

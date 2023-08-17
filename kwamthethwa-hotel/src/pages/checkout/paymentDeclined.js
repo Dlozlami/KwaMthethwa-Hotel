@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../components/footer/footer";
 
-export default function Rooms() {
+export default function Declined() {
   return (
     <>
       <div id="mainView">

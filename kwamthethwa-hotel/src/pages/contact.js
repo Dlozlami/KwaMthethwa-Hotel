@@ -88,7 +88,10 @@ export default function Contact() {
           </div>
         </section>
 
-        <section className="w3-card" style={{ marginBottom: "10px" }}>
+        <section
+          className="w3-card formStyles"
+          style={{ marginBottom: "10px" }}
+        >
           <h4>Send Us a Message</h4>
           <form>
             <label htmlFor="fullName">Full Name</label>

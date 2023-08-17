@@ -1,23 +1,10 @@
-// Importing express and cors
-
+require("dotenv").config();
+const https = require("https");
 const express = require("express");
-const cors = require("cors");
-const morgan = require("morgan");
-const mongoose = require("mongoose");
-const User = require("./models/user.model");
-const jwt = require("jsonwebtoken");
-const crypto = require("crypto");
-const app = express();
-app.use(cors());
-app.use(express.json());
-app.use(morgan("tiny"));
+const router = express.Router();
+const User = require("../models/user.model");
 
-const secretKey =
-  "4f+7errqerqer742ereewqet42t4rg564ryt3+67+651wqrqrqr414r[w0-iiwqokweidg8wqj2pss9tffb96ywaxboi-=[;k28uw4rq4ewfrqf+q";
-
-mongoose.connect("mongodb://127.0.0.1:27017/KwaMthethwaHotel");
-
-app.get("/users/", function (req, res) {
+router.get("/users/", function (req, res) {
   const accountId = req.params.id;
 
   User.find({})
@@ -33,7 +20,7 @@ app.get("/users/", function (req, res) {
     });
 });
 
-app.post("/users/login", function (req, res) {
+router.post("/users/login", function (req, res) {
   const accountEmail = req.body.email;
   const accountPwd = req.body.password;
 
@@ -62,7 +49,7 @@ app.post("/users/login", function (req, res) {
           position: user.position,
           phone: user.phone,
         },
-        secretKey,
+        process.env.SECRET_KEY,
         { expiresIn: "1h" } // Set the token expiration time
       );
 
@@ -73,7 +60,7 @@ app.post("/users/login", function (req, res) {
     });
 });
 
-app.get("/users/:id", function (req, res) {
+router.get("/users/:id", function (req, res) {
   const accountId = req.params.id;
 
   User.find({ emp_num: accountId })
@@ -89,7 +76,7 @@ app.get("/users/:id", function (req, res) {
     });
 });
 
-app.post("/users", async function (req, res) {
+router.post("/users", async function (req, res) {
   const newAccount = req.body;
 
   try {
@@ -112,7 +99,7 @@ app.post("/users", async function (req, res) {
   }
 });
 
-app.patch("/users/:id", function (req, res) {
+router.patch("/users/:id", function (req, res) {
   const accountId = req.params.id;
   const newData = req.body;
 
@@ -129,7 +116,7 @@ app.patch("/users/:id", function (req, res) {
     });
 });
 
-app.delete("/users/:id", function (req, res) {
+router.delete("/users/:id", function (req, res) {
   const accountId = req.params.id;
 
   User.findOneAndDelete({ emp_num: accountId })
@@ -145,9 +132,4 @@ app.delete("/users/:id", function (req, res) {
     });
 });
 
-// Listening to server at port 5000
-app.listen(8080, function () {
-  console.log(
-    "server started...\nClick the url to gain access: http://localhost:8080/"
-  );
-});
+module.exports = router;
