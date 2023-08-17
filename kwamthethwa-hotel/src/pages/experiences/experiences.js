@@ -6,7 +6,7 @@ export default function Experiences() {
     <>
       <div id="mainView">
         <h3>Experiences</h3>
-      </div>{" "}
+      </div>
       <Footer />
     </>
   );
