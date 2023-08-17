@@ -6,12 +6,16 @@ const User = require("../models/user.model");
 
 router.post("/bookings/checkout", (req, res) => {
   // Extract the required data from the request body
-  const { email, amount } = req.body;
+  const { email, amount, callback_url } = req.body;
   console.log(req.body);
   // Construct the params object from the extracted data
   const params = JSON.stringify({
     email: email,
     amount: amount,
+    callback_url: callback_url,
+    metadata: {
+      cancel_action: "http://localhost:3000/cancelled",
+    },
   });
 
   // Set up the options for the HTTPS request
