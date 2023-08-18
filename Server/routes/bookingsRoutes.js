@@ -12,7 +12,7 @@ router.post("/bookings/checkout", (req, res) => {
   const params = JSON.stringify({
     email: email,
     amount: amount,
-    callback_url: callback_url,
+    callback_url: "http://localhost:3000/successful",
     metadata: {
       cancel_action: "http://localhost:3000/cancelled",
     },

@@ -2,15 +2,17 @@ The structure of bookings
 ==============================
 
 booking:{
-	title:""
-	startDate:getTime
-	endDate:getTime
-	guest:2
-	rate:236000
-	type:Accomodation | Experience
-	discount_programme:""
-	discount_rate:0.12
-	image
+	item._id:string
+	title:string
+	startDate:integer
+	endDate:integer
+	guest:integer
+	rateInCent:integer
+	type:string
+	discount_programme:string
+	discount_rate:float
+	imageurl:string
+	totalAmount=discount_rate*rate*guest
 }
 
 Colors

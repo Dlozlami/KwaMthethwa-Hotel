@@ -24,7 +24,7 @@ export default function NavBar() {
           }}
         >
           <div id="tabToDesktopView">
-            <NavBTN name="ROOMS" borderWidth="1" address="/rooms" />
+            <NavBTN name="SUITES" borderWidth="1" address="/rooms" />
           </div>
 
           <div id="tabToDesktopView">

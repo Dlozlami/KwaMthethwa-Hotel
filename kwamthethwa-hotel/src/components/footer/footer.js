@@ -78,7 +78,7 @@ const Footer = () => {
           }}
         >
           <h3>Pages</h3>
-          <MakeBTN name="Rooms" borderWidth="1" address="/rooms" />
+          <MakeBTN name="Suites" borderWidth="1" address="/rooms" />
           <MakeBTN name="Dining" borderWidth="1" address="/dining" />
           <MakeBTN name="Experiences" borderWidth="1" address="/experiences" />
           <MakeBTN name="Contact Us" borderWidth="1" address="/contact" />
