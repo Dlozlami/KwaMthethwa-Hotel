@@ -10,7 +10,7 @@
 .carousel {
   position: relative;
   width: 100%;
-  height: 90vh; /* Set your desired height */
+  /*height: 90vh; /* Set your desired height */
 }
 
 .carousel-overlay {

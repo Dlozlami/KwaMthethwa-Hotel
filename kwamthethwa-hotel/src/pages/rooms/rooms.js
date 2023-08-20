@@ -1,5 +1,7 @@
 import React from "react";
 import Footer from "../../components/footer/footer";
+import RoomCard from "./roomCard";
+import { roomsData } from "./roomsData";
 
 export default function Rooms() {
   return (
@@ -27,10 +29,13 @@ export default function Rooms() {
           </div>
         </section>
         <section
-          className="w3-card formStyles"
-          style={{ marginBottom: "10px" }}
+          className="w3-card"
+          style={{ marginBottom: "10px", flexDirection: "column" }}
         >
           <h4>Choose your accommodation</h4>
+          {roomsData.map((room) => (
+            <RoomCard key={room.id} room={room} />
+          ))}
         </section>
       </div>
       <Footer />

@@ -3,7 +3,7 @@ import { BsCircleFill } from "react-icons/bs";
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 import "./carousel.css"; // You can define your CSS styles in this file
 
-export default function Carousel({ listOfImgURL, height }) {
+export default function Carousel({ listOfImgURL }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {

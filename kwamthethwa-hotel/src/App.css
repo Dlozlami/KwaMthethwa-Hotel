@@ -4,17 +4,15 @@
   padding: 0;
 }
 
-#mainView{
-
-    overflow: auto;
-    background-image: url("../public/assets/images/polka-dot.jpg");
-    background-repeat:repeat;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center
-
+#mainView {
+  overflow: auto;
+  background-image: url("../public/assets/images/polka-dot.jpg");
+  background-repeat: repeat;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 @font-face {
   font-family: LogoFont;
@@ -26,45 +24,42 @@
   src: url("../public/assets/fonts/Lato/Lato-Regular.ttf");
 }
 
-
-#mainContent{
+#mainContent {
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
 
-.App{
+.App {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.pic{
+.pic {
   width: 200px;
   width: 100px;
   border-radius: 50%;
 }
 
-.additionalInfo{
+.additionalInfo {
   font-style: italic;
 }
 
-.flexHorizontal{
+.flexHorizontal {
   display: flex;
-
 }
 
-.flexVertical{
+.flexVertical {
   display: flex;
   flex-direction: column;
 }
 
-.profile{
+.profile {
   display: flex;
 }
 
-.formStyles{
+.formStyles {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -72,15 +67,13 @@
   background-color: whitesmoke;
 }
 
-
-
-#logoTitle{
+#logoTitle {
   font-size: xx-large;
   font-weight: 500;
   font-family: commando;
 }
 
-#logo{
+#logo {
   /* align-self: start; */
   background-color: black;
   padding: 10px;
@@ -111,34 +104,35 @@
   padding: 2%;
 } */
 
-label{
+label {
   display: block;
   font-size: medium;
   font-weight: 600;
 }
 
-input{
+input {
   background-color: #e3d7ff;
   padding: 10px;
 }
 
-.limeButton{
+.limeButton {
   color: whitesmoke;
   background-color: #6874e8;
   cursor: pointer;
 }
 
-.navLink{
+.navLink {
   background-color: transparent;
 }
 
-.popup{
+.popup {
   display: flex;
 }
 
-section{
-  padding: 10px;
+section {
+  padding: 30px;
   background-color: white;
-  margin-bottom: 10px,
+  margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 10px;
 }
-

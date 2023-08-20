@@ -23,17 +23,10 @@ export default function Contact() {
           </div>
         </section>
 
-        <section
-          className="w3-card"
-          style={{
-            display: "flex",
-            marginBottom: "10px",
-          }}
-        >
+        <section className="w3-card">
           <div
             style={{
               flex: 1,
-              padding: "20px",
             }}
           >
             <div
@@ -88,10 +81,7 @@ export default function Contact() {
           </div>
         </section>
 
-        <section
-          className="w3-card formStyles"
-          style={{ marginBottom: "10px" }}
-        >
+        <section className="w3-card">
           <h4>Send Us a Message</h4>
           <form>
             <label htmlFor="fullName">Full Name</label>
