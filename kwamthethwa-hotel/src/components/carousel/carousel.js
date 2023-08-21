@@ -23,6 +23,7 @@ export default function Carousel({ listOfImgURL }) {
         backgroundImage: `url(${listOfImgURL[currentIndex]})`,
       }}
     >
+      <div> </div>
       <div className="carousel">
         <div className="carousel-overlay">
           <button className="carousel-button" onClick={handlePrevious}>
@@ -32,16 +33,17 @@ export default function Carousel({ listOfImgURL }) {
             <AiOutlineRight />
           </button>
         </div>
-      </div>
-      <div className="pagination">
-        {listOfImgURL.map((_, index) => (
-          <BsCircleFill
-            key={index}
-            className={`pagination-dot ${
-              index === currentIndex ? "active" : ""
-            }`}
-          />
-        ))}
+
+        <div className="pagination">
+          {listOfImgURL.map((_, index) => (
+            <BsCircleFill
+              key={index}
+              className={`pagination-dot ${
+                index === currentIndex ? "active" : ""
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

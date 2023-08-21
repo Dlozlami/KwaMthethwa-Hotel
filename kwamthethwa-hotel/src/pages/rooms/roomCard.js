@@ -5,20 +5,33 @@ import { FaKitchenSet, FaBed, FaCheck } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 
 export default function RoomCard({ room }) {
-  const { currency, currencySymbol } = useSelector((store) => store.bookings);
+  const { currency, currencySymbol, discount_rate } = useSelector(
+    (store) => store.bookings
+  );
   //console.log("This is a room: ", room);
   return (
     <div
-      className="w3-card "
-      style={{ cursor: "pointer", display: "flex", marginBottom: "10px" }}
-      onClick={() => {
-        console.log("Clicked room");
+      id="roomCard"
+      className="w3-card w3-round-large"
+      style={{
+        display: "flex",
+        marginBottom: "10px",
+        backgroundColor: "white",
+        width: "100%",
       }}
     >
-      <div style={{ width: "30%" }}>
+      <div id="roomCard00" style={{ borderRadius: "20%" }}>
         <Carousel listOfImgURL={room.imageURLs} />
       </div>
-      <div style={{ width: "50%", paddingLeft: "2vw" }}>
+
+      <div
+        id="roomCard01"
+        style={{
+          paddingLeft: "20px",
+          paddingRight: "20px",
+          paddingBottom: "20px",
+        }}
+      >
         <h3>{room.title}</h3>
         <p>
           <RxDimensions /> {room.floorSpace} m<sup>2</sup>
@@ -32,12 +45,61 @@ export default function RoomCard({ room }) {
         <p>
           <FaCheck /> WiFi, air conditioning, TV
         </p>
+
+        <button
+          className="w3-ripple"
+          style={{
+            fontSize: "12px",
+            padding: "10px",
+            backgroundColor: "white",
+            color: "#006c67",
+            border: "1px #006c67 solid",
+            borderRadius: "5px",
+            cursor: "pointer",
+            textDecoration: "none",
+          }}
+          onClick={() => {
+            console.log("Clicked room");
+          }}
+        >
+          Read more
+        </button>
       </div>
-      <div style={{ width: "20%" }}>
+
+      <div
+        id="roomCard02"
+        style={{
+          padding: "20px",
+        }}
+      >
         <p>from</p>
         <p>
           {currencySymbol} {((room.rate * currency) / 100).toFixed(2)}
         </p>
+        {discount_rate > 0 ? (
+          <p style={{ color: "#6874e8", fontSize: "10PX" }}>
+            with a discount {currencySymbol}
+            {(((1 - discount_rate) * room.rate * currency) / 100).toFixed(2)}
+          </p>
+        ) : null}
+        <button
+          className="w3-ripple"
+          style={{
+            fontSize: "15px",
+            padding: "10px",
+            backgroundColor: "#006c67",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            textDecoration: "none",
+          }}
+          onClick={() => {
+            console.log("Clicked room");
+          }}
+        >
+          Book Now
+        </button>
       </div>
     </div>
   );

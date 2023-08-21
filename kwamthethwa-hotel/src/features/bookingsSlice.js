@@ -4,7 +4,7 @@ const initialState = {
   discount_programme: "",
   discount_rate: 0,
   currency: 1,
-  currencySymbol: "ZAR",
+  currencySymbol: "R",
   bookingCart: [],
   total: 0,
   subtotal: 0,

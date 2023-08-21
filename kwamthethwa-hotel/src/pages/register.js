@@ -173,8 +173,8 @@ export default function Register() {
             <button
               id="addEmployeeBTN"
               onClick={add}
-              style={{ marginRight: "5vw" }}
-              className="limeButton w3-btn w3-border w3-border-black w3-round-large"
+              style={{ marginRight: "5vw", padding: "10px" }}
+              className="limeButton w3-border w3-border-black w3-ripple w3-round-large"
             >
               Sign up
             </button>

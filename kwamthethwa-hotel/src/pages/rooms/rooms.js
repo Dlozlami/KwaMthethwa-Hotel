@@ -14,6 +14,7 @@ export default function Rooms() {
               "url('./assets/images/pexels-cottonbro-studio-6466230.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
             textAlign: "center",
             color: "white",
             width: "100%",
@@ -28,15 +29,21 @@ export default function Rooms() {
             </p>
           </div>
         </section>
-        <section
+        <div
           className="w3-card"
-          style={{ marginBottom: "10px", flexDirection: "column" }}
+          style={{
+            marginBottom: "10px",
+            flexDirection: "column",
+            padding: "10px",
+            width: "100%",
+            backgroundColor: "white",
+          }}
         >
           <h4>Choose your accommodation</h4>
-          {roomsData.map((room) => (
-            <RoomCard key={room.id} room={room} />
-          ))}
-        </section>
+        </div>
+        {roomsData.map((room) => (
+          <RoomCard key={room.id} room={room} />
+        ))}
       </div>
       <Footer />
     </>

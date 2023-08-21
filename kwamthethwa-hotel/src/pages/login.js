@@ -89,9 +89,9 @@ export default function Login() {
           )}
           <br />
           <button
-            className="limeButton w3-btn w3-border w3-border-black  w3-round-large"
+            className="limeButton w3-border w3-border-black w3-ripple w3-round-large"
             onClick={(e) => dispatch(setLogin(grabInputs()))}
-            style={{ marginRight: "2vw" }}
+            style={{ marginRight: "2vw", padding: "10px" }}
           >
             Log in
           </button>
