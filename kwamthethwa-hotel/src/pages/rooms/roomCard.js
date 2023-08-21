@@ -9,8 +9,8 @@ export default function RoomCard({ room }) {
   //console.log("This is a room: ", room);
   return (
     <div
-      className="w3-card"
-      style={{ cursor: "pointer", display: "flex" }}
+      className="w3-card "
+      style={{ cursor: "pointer", display: "flex", marginBottom: "10px" }}
       onClick={() => {
         console.log("Clicked room");
       }}

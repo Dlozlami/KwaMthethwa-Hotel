@@ -1,5 +1,7 @@
 footer{
     overflow: hidden;
+    bottom: 0;
+    left: 0;
 }
 #footerLogoBio {
   display: inline-block;

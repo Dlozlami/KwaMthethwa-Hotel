@@ -5,9 +5,11 @@ import { carouselImages } from "./homePictures";
 
 export default function home() {
   return (
-    <div style={{ height: "90vh", overflow: "auto" }}>
-      <Carousel listOfImgURL={carouselImages} />
+    <>
+      <div style={{ height: "90vh", overflow: "auto" }}>
+        <Carousel listOfImgURL={carouselImages} />
+      </div>
       <Footer />
-    </div>
+    </>
   );
 }
