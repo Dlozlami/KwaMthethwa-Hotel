@@ -19,7 +19,7 @@ jobs:
           node-version: '18' 
 
       - name: Change the directory
-        run: dir
+        run: cd kwaMthethwa-hotel
       
       - name: Install npm dependencies
         run: npm install
