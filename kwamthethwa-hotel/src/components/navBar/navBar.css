@@ -10,13 +10,13 @@ nav{
     overflow: hidden;
   }
 
-@media (min-width: 769px) {
+@media (min-width: 859px) {
     #mobileView {
       display: none;
     }
 }
 
-@media (max-width: 770px) {
+@media (max-width: 860px) {
   #tabToDesktopView {
     display: none;
   }

@@ -68,7 +68,7 @@ export default function Menu() {
             }}
           >
             <a href="/rooms" style={{ textDecoration: "none" }}>
-              ROOMS
+              SUITES
             </a>
           </div>
 

@@ -48,7 +48,7 @@ export default function NavBar() {
           <div>
             <UserBTN />
           </div>
-          <div id="tabToDesktopView">
+          <div id="tabToDesktopView" className="w3-ripple">
             <Link
               to="/bookings"
               style={{
@@ -80,7 +80,9 @@ export default function NavBar() {
           padding: 10,
           fontWeight: 600,
           color: "white",
+          zIndex: 3,
         }}
+        className="w3-ripple"
       >
         <Link
           to="/bookings"

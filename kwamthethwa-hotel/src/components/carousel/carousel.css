@@ -9,17 +9,14 @@
 }
 
 .carousel {
-  position: relative;
   width: 100%;
-
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100%;
 }
 
 .carousel-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,5 +44,5 @@
 }
 
 .pagination-dot.active {
-  color: rgba(81, 80, 80, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }

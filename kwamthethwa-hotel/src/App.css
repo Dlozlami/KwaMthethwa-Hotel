@@ -24,12 +24,36 @@
   src: url("../public/assets/fonts/Lato/Lato-Regular.ttf");
 }
 
-#mainContent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media (max-width: 656px) {
+
+  #roomCard {
+    flex-direction: column;
+  }
+  #roomCard00 {
+    height: 30vh;
+  }
+  
+  #roomCard01 {
+    border-bottom: 1px gray solid;
+  }
+  
 }
 
+@media (min-width: 657px) {
+  #roomCard00 {
+    width: 30%;
+
+  }
+  #roomCard01 {
+    width: 45%;
+  }
+  #roomCard02 {
+    width: 25%;
+  }
+}
+
+
+roomCardCarousel
 .App {
   display: flex;
   flex-direction: column;
