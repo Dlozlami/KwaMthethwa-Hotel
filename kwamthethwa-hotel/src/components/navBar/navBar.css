@@ -1,0 +1,23 @@
+nav{
+    padding: 20px;
+    display: flex;
+    border: 1px red solid;
+    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    width: "100%";
+    overflow: hidden;
+  }
+
+@media (min-width: 769px) {
+    #mobileView {
+      display: none;
+    }
+}
+
+@media (max-width: 770px) {
+  #tabToDesktopView {
+    display: none;
+  }
+}

@@ -1,0 +1,25 @@
+The structure of bookings
+==============================
+
+booking:{
+	item._id:string
+	title:string
+	startDate:integer
+	endDate:integer
+	guest:integer
+	rateInCent:integer
+	type:string
+	discount_programme:string
+	discount_rate:float
+	imageurl:string
+	totalAmount=discount_rate*rate*guest
+}
+
+Colors
+=====================
+
+[{"name":"Midnight green","hex":"003844","rgb":[0,56,68],"cmyk":[100,18,0,73],"hsb":[191,100,27],"hsl":[191,100,13],"lab":[21,-12,-12]},
+{"name":"Caribbean Current","hex":"006c67","rgb":[0,108,103],"cmyk":[100,0,5,58],"hsb":[177,100,42],"hsl":[177,100,21],"lab":[41,-27,-5]},
+{"name":"Periwinkle","hex":"e3d7ff","rgb":[227,215,255],"cmyk":[11,16,0,0],"hsb":[258,16,100],"hsl":[258,100,92],"lab":[88,12,-18]},
+{"name":"Gold (metallic)","hex":"d4af37","rgb":[212,175,55],"cmyk":[0,17,74,17],"hsb":[46,74,83],"hsl":[46,65,52],"lab":[73,1,63]},
+{"name":"Medium slate blue","hex":"6874e8","rgb":[104,116,232],"cmyk":[55,50,0,9],"hsb":[234,55,91],"hsl":[234,74,66],"lab":[53,28,-60]}]

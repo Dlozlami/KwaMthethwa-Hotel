@@ -1,10 +1,18 @@
 import React from "react";
 import { PiUserCircleFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
-export default function userBTN() {
+export default function UserBTN() {
   return (
-    <div className="navIcon">
-      <PiUserCircleFill />
-    </div>
+    <Link
+      className="w3-ripple"
+      to={"/login"}
+      style={{
+        cursor: "pointer",
+        textDecoration: "none",
+      }}
+    >
+      <PiUserCircleFill size={40} />
+    </Link>
   );
 }

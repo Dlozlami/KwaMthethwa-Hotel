@@ -1,0 +1,38 @@
+footer{
+    overflow: hidden;
+    bottom: 0;
+    left: 0;
+}
+#footerLogoBio {
+  display: inline-block;
+}
+
+#copyright{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 1px solid gray;
+    background-color: #dddddd;
+    align-items: center;
+  }
+
+@media (max-width: 770px) {
+    #footerLogoBio {
+        background-color: blue;
+        display: none;
+      }#copyright{
+      margin-bottom: 30px;
+    }
+}
+
+@media (min-width: 770px) {
+    #footerLinks {
+      justify-content: space-between;
+    }
+    
+}
+
+
+
+
+  
