@@ -3,7 +3,7 @@ import Carousel from "../../components/carousel/carousel";
 import { FaCheck } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 import { RxDimensions } from "react-icons/rx";
-
+import { differenceInDays } from "date-fns";
 import { useDispatch, useSelector } from "react-redux";
 import { addBookingToCart } from "../../features/bookingsSlice";
 
@@ -17,11 +17,16 @@ export default function RoomsModal({ visible, close, room }) {
   const [departureDate, setDepartureDate] = useState("");
   const [numGuests, setNumGuests] = useState(1);
   const handleRoomBooking = () => {
+    let nights = differenceInDays(
+      new Date(departureDate),
+      new Date(arrivalDate)
+    );
+    console.log("nights: ",nights);
     const roomBooking = {
       user_id: userData.id,
       title: room.title,
-      startDate: arrivalDate,
-      endDate: departureDate,
+      startDate: new Date(arrivalDate).getTime(),
+      endDate: new Date(departureDate).getTime(),
       num_guest: numGuests,
       num_courses: null,
       event_time: null,
@@ -31,7 +36,7 @@ export default function RoomsModal({ visible, close, room }) {
       discount_programme: null,
       discount_rate: discount_programme,
       imageurl: room.imageURLs[0],
-      totalAmount: (room.rate - discount_rate * room.rate) * numGuests,
+      totalAmount: (room.rate - discount_rate * room.rate) * numGuests * nights,
       paid: false,
       payment_ref: null,
     };
@@ -132,9 +137,7 @@ export default function RoomsModal({ visible, close, room }) {
                   <input
                     type="date"
                     value={arrivalDate}
-                    onChange={(event) =>
-                      setArrivalDate(new Date(event.target.value))
-                    }
+                    onChange={(event) => setArrivalDate(event.target.value)}
                   />
                 </label>
                 <br />
