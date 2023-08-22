@@ -1,7 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
-  discount_programme: "",
+  discount_programme: null,
   discount_rate: 0,
   currency: 1,
   currencySymbol: "R",
@@ -11,6 +12,19 @@ const initialState = {
   VAT: 0.15,
 };
 
+export const addBooking = createAsyncThunk(
+  "bookings/addBooking",
+  async (booking, thunkAPI) => {
+    const url = "http://localhost:8080/users/";
+    try {
+      await axios.post(url, booking);
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+);
+
 export const bookingsSlice = createSlice({
   name: "bookings",
   initialState,
@@ -19,7 +33,6 @@ export const bookingsSlice = createSlice({
       // If ZAR set currency and symbol
     },
     addBookingToCart(state, action) {
-      // Receive booking objects via action.payload and push them onto bookingsCart
       state.bookingsCart.push(action.payload);
     },
   },

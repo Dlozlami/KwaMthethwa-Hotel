@@ -4,9 +4,9 @@ import jwt_decode from "jwt-decode";
 
 const initialState = {
   userData: {
-    id: "",
-    name: "",
-    surname: "",
+    id: null,
+    name: null,
+    surname: null,
   },
   validPwd: 0,
   validUsername: 0,
@@ -46,14 +46,14 @@ const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    clearState: (state, { payload }) => {
+    clearState: (state) => {
       state.userData = {
-        id: "",
-        name: "",
-        surname: "",
+        id: null,
+        name: null,
+        surname: null,
       };
+      localStorage.removeItem("KMHjwtUser");
       state.isLoggedIn = false;
-      localStorage.removeItem("axzjwtUser");
     },
 
     setValidPwd: (state, { payload }) => {

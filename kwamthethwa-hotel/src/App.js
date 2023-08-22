@@ -12,8 +12,24 @@ import Register from "./pages/register";
 import Successful from "./pages/checkout/paymentSuccessful";
 import Cancelled from "./pages/checkout/paymentCancelled";
 import "./App.css";
+import { useSelector, useDispatch } from "react-redux";
+import jwt_decode from "jwt-decode";
+import { useEffect } from "react";
+import { setUserData, setIsLoggedIn } from "./features/login/loginSlice";
 
 export default function App() {
+  const { isLoggedIn } = useSelector((store) => store.login);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem("KMHjwtUser");
+    if (token) {
+      // If token is present, dispatch setUserData action with the decoded token
+      const decodedToken = jwt_decode(token);
+      dispatch(setUserData(decodedToken));
+      dispatch(setIsLoggedIn(true));
+    }
+  }, [dispatch]);
   return (
     <Routes>
       <Route path="/" element={<NavBar />}>
@@ -22,11 +38,20 @@ export default function App() {
         <Route path="dining" element={<Dining />} />
         <Route path="experiences" element={<Experiences />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="bookings" element={<Bookings />} />
+        <Route
+          path="bookings"
+          element={isLoggedIn ? <Bookings /> : <Login />}
+        />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="successful" element={<Successful />} />
-        <Route path="cancelled" element={<Cancelled />} />
+        <Route
+          path="successful"
+          element={isLoggedIn ? <Successful /> : <Login />}
+        />
+        <Route
+          path="cancelled"
+          element={isLoggedIn ? <Cancelled /> : <Login />}
+        />
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
