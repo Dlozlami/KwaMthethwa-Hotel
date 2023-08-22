@@ -8,16 +8,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { addBookingToCart } from "../../features/bookingsSlice";
 
 export default function RoomsModal({ visible, close, room }) {
-  const { currency, currencySymbol, discount_rate } = useSelector(
+  const { discount_programme, discount_rate } = useSelector(
     (store) => store.bookings
   );
-
+  const { userData } = useSelector((store) => store.login);
   const dispatch = useDispatch();
   const [arrivalDate, setArrivalDate] = useState("");
   const [departureDate, setDepartureDate] = useState("");
   const [numGuests, setNumGuests] = useState(1);
   const handleRoomBooking = () => {
     const roomBooking = {
+      user_id: userData.id,
       title: room.title,
       startDate: arrivalDate,
       endDate: departureDate,
@@ -28,12 +29,13 @@ export default function RoomsModal({ visible, close, room }) {
       type: "suites",
       description: room.description,
       discount_programme: null,
-      discount_rate: 0,
+      discount_rate: discount_programme,
       imageurl: room.imageURLs[0],
       totalAmount: (room.rate - discount_rate * room.rate) * numGuests,
       paid: false,
       payment_ref: null,
     };
+    console.log("New booking: ", roomBooking);
     dispatch(addBookingToCart(roomBooking));
   };
 
@@ -130,7 +132,9 @@ export default function RoomsModal({ visible, close, room }) {
                   <input
                     type="date"
                     value={arrivalDate}
-                    onChange={(event) => setArrivalDate(event.target.value)}
+                    onChange={(event) =>
+                      setArrivalDate(new Date(event.target.value))
+                    }
                   />
                 </label>
                 <br />

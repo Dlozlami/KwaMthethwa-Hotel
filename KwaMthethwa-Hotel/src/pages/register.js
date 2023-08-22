@@ -6,36 +6,9 @@ import Footer from "../components/footer/footer";
 export default function Register() {
   const { userAdded } = useSelector((store) => store.register);
   const dispatch = useDispatch();
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      setSelectedImage(reader.result);
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const generateRandomString = () => {
-    const characters = "0123456789";
-    let randomString = "AXZ";
-
-    for (let i = 0; i < 7; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      randomString += characters[randomIndex];
-    }
-
-    return randomString;
-  };
 
   //eslint-disable-next-line
   const [inputValues, setInputValues] = useState({
-    id: "",
     password: "",
     name: "",
     surname: "",
@@ -46,7 +19,6 @@ export default function Register() {
 
   const add = () => {
     const updatedInputValues = {
-      id: generateRandomString(),
       password: document.getElementById("pwd").value,
       name: document.getElementById("name").value,
       surname: document.getElementById("surname").value,
