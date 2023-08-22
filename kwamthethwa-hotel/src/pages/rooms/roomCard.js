@@ -108,7 +108,7 @@ export default function RoomCard({ room }) {
               cursor: "pointer",
               textDecoration: "none",
             }}
-            onClick={() => navigate("/bookings?reference=suites")}
+            onClick={openModal}
           >
             Book Now
           </button>
