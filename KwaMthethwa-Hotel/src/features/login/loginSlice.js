@@ -28,7 +28,7 @@ export const setLogin = createAsyncThunk(
       localStorage.setItem("KMHjwtUser", token); // Store the token in local storage
 
       const decodedToken = jwt_decode(token); // Decode the token to extract the user data
-      console.log("Logged in token: ", decodedToken);
+      //console.log("Logged in token: ", decodedToken);
       thunkAPI.dispatch(setValidUsername(1));
       thunkAPI.dispatch(setValidPwd(1));
       thunkAPI.dispatch(setUserData(decodedToken)); // Set the user data in the state

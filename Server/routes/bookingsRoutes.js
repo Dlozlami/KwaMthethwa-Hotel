@@ -47,12 +47,11 @@ router.get("/bookings/user/:id", async (req, res) => {
 router.post("/bookings", async (req, res) => {
   try {
     const newBooking = new Booking(req.body);
+    console.log("This is a booking: ", newBooking);
     const savedBooking = await newBooking.save();
     res.json(savedBooking);
   } catch (error) {
-    res
-      .status(500)
-      .json({ error: "An error occurred while adding the booking." });
+    res.status(500).json({ error: error });
   }
 });
 
