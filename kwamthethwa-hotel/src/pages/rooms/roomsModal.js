@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Carousel from "../../components/carousel/carousel";
 import { FaCheck } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 import { RxDimensions } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addBookingToCart } from "../../features/bookingsSlice";
 
 export default function RoomsModal({ visible, close, room }) {
   const { currency, currencySymbol, discount_rate } = useSelector(
     (store) => store.bookings
   );
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [arrivalDate, setArrivalDate] = useState("");
+  const [departureDate, setDepartureDate] = useState("");
+  const [numGuests, setNumGuests] = useState(1);
+  const handleRoomBooking = () => {
+    const roomBooking = {};
+    dispatch(addBookingToCart(roomBooking));
+  };
+
   return (
     <div
       className="modal"
@@ -47,7 +57,7 @@ export default function RoomsModal({ visible, close, room }) {
           }}
         >
           <div>
-            <h3>{room.title}</h3>
+            <h2>{room.title}</h2>
           </div>
           <div>
             <button
@@ -67,7 +77,6 @@ export default function RoomsModal({ visible, close, room }) {
         <div
           style={{
             overflow: "scroll",
-
             height: "80vh",
           }}
         >
@@ -78,7 +87,6 @@ export default function RoomsModal({ visible, close, room }) {
           <div
             style={{
               padding: "20px",
-              borderBottom: "1px gray solid",
             }}
           >
             <div
@@ -93,35 +101,66 @@ export default function RoomsModal({ visible, close, room }) {
               <br />
             </div>
 
-            <div style={{}}>
-              <h2>Add suite to bookings</h2>
-              <p>
-                {currencySymbol} {((room.rate * currency) / 100).toFixed(2)}
-              </p>
-              {discount_rate > 0 ? (
-                <p style={{ color: "#6874e8", fontSize: "10PX" }}>
-                  with a discount {currencySymbol}
-                  {(((1 - discount_rate) * room.rate * currency) / 100).toFixed(
-                    2
-                  )}
-                </p>
-              ) : null}
-              <button
-                className="w3-ripple"
-                style={{
-                  fontSize: "15px",
-                  padding: "10px",
-                  backgroundColor: "#006c67",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "5px",
-                  cursor: "pointer",
-                  textDecoration: "none",
-                }}
-                onClick={() => navigate("/bookings")}
-              >
-                Book Now
-              </button>
+            <div
+              style={{
+                borderBottom: "1px gray solid",
+              }}
+            >
+              <h3>Add suite to bookings</h3>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <label>
+                  Arrival Date:
+                  <br />
+                  <input
+                    type="date"
+                    value={arrivalDate}
+                    onChange={(event) => setArrivalDate(event.target.value)}
+                  />
+                </label>
+                <br />
+                <label>
+                  Departure Date:
+                  <br />
+                  <input
+                    type="date"
+                    value={departureDate}
+                    onChange={(event) => setDepartureDate(event.target.value)}
+                  />
+                </label>
+
+                <label>
+                  Guests:
+                  <br />
+                  <select
+                    value={numGuests}
+                    onChange={(event) =>
+                      setNumGuests(parseInt(event.target.value, 10))
+                    }
+                  >
+                    <option value={1}>1 guest</option>
+                    <option value={2}>2 guests</option>
+                  </select>
+                </label>
+
+                <button
+                  className="w3-ripple"
+                  style={{
+                    fontSize: "15px",
+                    padding: "10px",
+                    backgroundColor: "#006c67",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    textDecoration: "none",
+                  }}
+                  onClick={() => navigate("/bookings")}
+                >
+                  Book Now
+                </button>
+              </div>
+              <br />
+              <br />
             </div>
           </div>
 
@@ -131,7 +170,7 @@ export default function RoomsModal({ visible, close, room }) {
               padding: "20px",
             }}
           >
-            <h2>Amenities</h2>
+            <h3>Amenities</h3>
             <div style={{ display: "flex" }}>
               <div style={{ marginRight: "50px" }}>
                 <div>

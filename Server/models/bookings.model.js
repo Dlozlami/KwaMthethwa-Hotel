@@ -2,22 +2,21 @@ const mongoose = require("mongoose");
 
 const bookingSchema = new mongoose.Schema({
   user_id: { type: String, required: true },
+  title: { type: String, required: true },
   startDate: { type: Number, required: true },
   endDate: { type: Number, required: true },
-  guest: { type: Number, required: true },
+  num_guest: { type: Number, required: true },
+  num_courses: { type: Number, required: true },
+  event_time: { type: String, required: true },
   rateInCent: { type: Number, required: true },
   type: { type: String, required: true },
+  description: { type: String, required: true },
   discount_programme: { type: String },
   discount_rate: { type: Number },
   imageurl: { type: String },
-});
-
-// Define a virtual property for totalAmount
-bookingSchema.virtual("totalAmount").get(function () {
-  return (
-    this.rateInCent * this.guest -
-    this.discount_rate * (this.rateInCent * this.guest)
-  );
+  totalAmount: { type: Number, required: true },
+  paid: { type: Boolean, default: false },
+  payment_ref: { type: String },
 });
 
 const Booking = mongoose.model("Booking", bookingSchema);

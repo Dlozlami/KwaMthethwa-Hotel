@@ -40,10 +40,7 @@ export default function Register() {
     name: "",
     surname: "",
     email: "",
-    bio: "",
-    pic: "",
     birthday: "",
-    position: "",
     phone: "",
   });
 
@@ -54,10 +51,9 @@ export default function Register() {
       name: document.getElementById("name").value,
       surname: document.getElementById("surname").value,
       email: document.getElementById("email").value,
-      bio: document.getElementById("bio").value,
-      pic: selectedImage,
+
       birthday: document.getElementById("birthday").value,
-      position: document.getElementById("position").value,
+
       phone: document.getElementById("phone").value,
     };
 
@@ -72,10 +68,9 @@ export default function Register() {
     document.getElementById("name").value = "";
     document.getElementById("surname").value = "";
     document.getElementById("email").value = "";
-    document.getElementById("bio").value = "";
-    document.getElementById("pic").value = "";
+
     document.getElementById("birthday").value = "";
-    document.getElementById("position").value = "";
+
     document.getElementById("phone").value = "";
     document.getElementById("addEmployeeBTN").disabled = false;
   }
@@ -136,29 +131,13 @@ export default function Register() {
             <input type="password" id="pwd" />
             <br />
             <br />
-            <label htmlFor="bio">Bio</label>
-            <input type="text" id="bio" />
-            <br />
-            <br />
           </div>
           <div>
-            <label htmlFor="pic">Upload photo</label>
-            <input
-              type="file"
-              accept="image/*"
-              id="pic"
-              onChange={handleImageUpload}
-            />
-            <br />
-            <br />
             <label htmlFor="birthday">Date of birth</label>
             <input type="date" id="birthday" placeholder="e.g. 20/12/1952" />
             <br />
             <br />
-            <label htmlFor="position">Job title</label>
-            <input type="text" id="position" />
-            <br />
-            <br />
+
             <label htmlFor="phone">Phone</label>
             <input type="text" id="phone" />
             <br />

@@ -4,15 +4,9 @@ import jwt_decode from "jwt-decode";
 
 const initialState = {
   userData: {
-    emp_num: "",
+    id: "",
     name: "",
     surname: "",
-    email: "",
-    bio: "",
-    pic: "",
-    birthday: "",
-    position: "",
-    phone: "",
   },
   validPwd: 0,
   validUsername: 0,
@@ -31,10 +25,10 @@ export const setLogin = createAsyncThunk(
 
       const token = resp.data.token; // Extract the token from the response
 
-      localStorage.setItem("axzjwtUser", token); // Store the token in local storage
+      localStorage.setItem("KMHjwtUser", token); // Store the token in local storage
 
       const decodedToken = jwt_decode(token); // Decode the token to extract the user data
-      console.log(decodedToken);
+      console.log("Logged in token: ", decodedToken);
       thunkAPI.dispatch(setValidUsername(1));
       thunkAPI.dispatch(setValidPwd(1));
       thunkAPI.dispatch(setUserData(decodedToken)); // Set the user data in the state
@@ -55,15 +49,8 @@ const loginSlice = createSlice({
     clearState: (state, { payload }) => {
       state.userData = {
         id: "",
-        password: "",
         name: "",
         surname: "",
-        email: "",
-        bio: "",
-        pic: "",
-        birthday: "",
-        position: "",
-        phone: "",
       };
       state.isLoggedIn = false;
       localStorage.removeItem("axzjwtUser");
