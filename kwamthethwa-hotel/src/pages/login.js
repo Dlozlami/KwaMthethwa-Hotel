@@ -110,7 +110,7 @@ export default function Login() {
   );
 
   useEffect(() => {
-    const token = localStorage.getItem("axzjwtUser");
+    const token = localStorage.getItem("KMHjwtUser");
     if (token) {
       // If token is present, dispatch setUserData action with the decoded token
       const decodedToken = jwt_decode(token);

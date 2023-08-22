@@ -113,7 +113,7 @@ label {
   font-weight: 600;
 }
 
-input {
+input, select{
   background-color: #e3d7ff;
   padding: 10px;
 }

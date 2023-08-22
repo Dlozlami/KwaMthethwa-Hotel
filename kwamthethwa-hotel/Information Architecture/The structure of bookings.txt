@@ -2,17 +2,21 @@ The structure of bookings
 ==============================
 
 booking:{
-	item._id:string
 	title:string
 	startDate:integer
 	endDate:integer
-	guest:integer
+	num_guest:integer
+	num_courses:integer
+	event_time:string
 	rateInCent:integer
 	type:string
+	description:string
 	discount_programme:string
 	discount_rate:float
 	imageurl:string
-	totalAmount=discount_rate*rate*guest
+	totalAmount=integer
+	paid:boolean
+	payment_ref:string
 }
 
 Colors
