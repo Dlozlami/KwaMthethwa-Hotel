@@ -17,7 +17,23 @@ export default function RoomsModal({ visible, close, room }) {
   const [departureDate, setDepartureDate] = useState("");
   const [numGuests, setNumGuests] = useState(1);
   const handleRoomBooking = () => {
-    const roomBooking = {};
+    const roomBooking = {
+      title: room.title,
+      startDate: arrivalDate,
+      endDate: departureDate,
+      num_guest: numGuests,
+      num_courses: null,
+      event_time: null,
+      rateInCent: room.rate,
+      type: "suites",
+      description: room.description,
+      discount_programme: null,
+      discount_rate: 0,
+      imageurl: room.imageURLs[0],
+      totalAmount: (room.rate - discount_rate * room.rate) * numGuests,
+      paid: false,
+      payment_ref: null,
+    };
     dispatch(addBookingToCart(roomBooking));
   };
 
