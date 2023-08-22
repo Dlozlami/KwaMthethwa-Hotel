@@ -19,10 +19,10 @@ jobs:
           node-version: "18"
 
       - name: Change the directory
-        run: cd kwamthethwa-hotel
+        run: cd KwaMthethwa-Hotel
 
       - name: Install npm dependencies
-        run: npm install --global-style --prefix  /home/runner/work/KwaMthethwa-Hotel/kwamthethwa-hotel/package.json
+        run: npm install
 
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
