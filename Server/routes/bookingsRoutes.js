@@ -47,7 +47,7 @@ router.get("/bookings/user/:id", async (req, res) => {
 router.post("/bookings", async (req, res) => {
   try {
     const newBooking = new Booking(req.body);
-    console.log("This is a booking: ", newBooking);
+    //console.log("This is a booking: ", newBooking);
     const savedBooking = await newBooking.save();
     res.json(savedBooking);
   } catch (error) {
