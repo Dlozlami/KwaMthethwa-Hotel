@@ -6,7 +6,7 @@ const User = require("../models/user.model");
 
 router.post("/bookings/checkout", (req, res) => {
   // Extract the required data from the request body
-  const { email, amount, callback_url } = req.body;
+  const { email, amount } = req.body;
   console.log(req.body);
   // Construct the params object from the extracted data
   const params = JSON.stringify({

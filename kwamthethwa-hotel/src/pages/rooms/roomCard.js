@@ -5,8 +5,10 @@ import { FaKitchenSet, FaBed, FaCheck } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import RoomsModal from "./roomsModal";
 import { useNavigate } from "react-router-dom";
+import { differenceInDays } from "date-fns";
 
 export default function RoomCard({ room }) {
+  let nights = differenceInDays(new Date(2023, 7, 22), new Date(2023, 7, 15));
   const navigate = useNavigate();
   const { currency, currencySymbol, discount_rate } = useSelector(
     (store) => store.bookings
@@ -106,7 +108,7 @@ export default function RoomCard({ room }) {
               cursor: "pointer",
               textDecoration: "none",
             }}
-            onClick={() => navigate("/Register")}
+            onClick={() => navigate("/bookings?reference=suites")}
           >
             Book Now
           </button>

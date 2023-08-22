@@ -106,25 +106,6 @@
   font-family: commando;
 }
 
-/* .sideArtPanelAdd{
-  background-image: url('../public/assets/images/desk.jpg');
-  
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 60%;
-  color: #d2ff58;
-  padding: 2%;
-}
-
-.sideArtPanelDisplay{
-  background-image: url('../public/assets/images/damir-kopezhanov-nC6CyrVBtkU-unsplash.jpg');
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 50%;
-  color: #d2ff58;
-  padding: 2%;
-} */
 
 label {
   display: block;

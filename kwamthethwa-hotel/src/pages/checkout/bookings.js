@@ -1,10 +1,13 @@
 import React from "react";
 import Footer from "../../components/footer/footer";
 
+import "./bookings.css";
+
 export default function Bookings() {
   return (
     <>
-      <div id="mainView">Bookings</div>
+      <div id="mainView">bookingUI</div>
+
       <Footer />
     </>
   );
