@@ -3,7 +3,7 @@ import Carousel from "../../components/carousel/carousel";
 import { FaCheck } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 import { RxDimensions } from "react-icons/rx";
-import { useNavigate } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { addBookingToCart } from "../../features/bookingsSlice";
 
@@ -11,7 +11,7 @@ export default function RoomsModal({ visible, close, room }) {
   const { currency, currencySymbol, discount_rate } = useSelector(
     (store) => store.bookings
   );
-  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const [arrivalDate, setArrivalDate] = useState("");
   const [departureDate, setDepartureDate] = useState("");
@@ -154,7 +154,7 @@ export default function RoomsModal({ visible, close, room }) {
                     cursor: "pointer",
                     textDecoration: "none",
                   }}
-                  onClick={() => navigate("/bookings")}
+                  onClick={handleRoomBooking}
                 >
                   Book Now
                 </button>
