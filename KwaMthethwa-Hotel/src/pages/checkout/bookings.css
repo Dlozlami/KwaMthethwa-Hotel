@@ -4,3 +4,42 @@
     width: 100%;
     padding: 10px;
 }
+
+p span{
+    color: darkgray;
+}
+
+@media (max-width: 789px) {
+
+    #bookingCard {
+      flex-direction: column;
+    }
+    #bookingCard00 {
+      height: 30vh;
+    }
+    
+    #bookingCard01 {
+      border-bottom: 1px gray solid;
+    }
+    #bookingCard02 {
+        justify-content: space-between;
+      }
+  }
+  
+  @media (min-width: 790px) {
+    #bookingCard00 {
+      width: 30%;
+  
+    }
+    #bookingCard01 {
+      width: 50%;
+    }
+    #bookingCard02 {
+      width: 20%;
+      flex-direction: column;
+      justify-content: center;
+    }
+    #editBookings{
+        margin-top: 10vh;
+    }
+  }
