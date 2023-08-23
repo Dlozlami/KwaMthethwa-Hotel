@@ -86,7 +86,7 @@ export default function BookingCard({ booking }) {
           }}
         >
           <div>
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ display: "flex",alignItems:"flex-end"}}>
               <LuUser size={20} style={{ marginRight: "2vw" }} />
               <p>Guests: {booking.num_guest}</p>
             </div>

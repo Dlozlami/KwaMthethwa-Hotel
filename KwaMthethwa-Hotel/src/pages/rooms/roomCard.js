@@ -19,7 +19,6 @@ export default function RoomCard({ room }) {
     setModalVisible(false);
   };
 
-  //console.log("This is a room: ", room);
   return (
     <>
       <div
