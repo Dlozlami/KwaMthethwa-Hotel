@@ -21,7 +21,7 @@ export default function RoomsModal({ visible, close, room }) {
       new Date(departureDate),
       new Date(arrivalDate)
     );
-    console.log("nights: ",nights);
+    console.log("nights: ", nights);
     const roomBooking = {
       user_id: userData.id,
       title: room.title,
@@ -130,8 +130,14 @@ export default function RoomsModal({ visible, close, room }) {
               }}
             >
               <h3>Add suite to bookings</h3>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <label>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                }}
+              >
+                <label style={{ marginBottom: "10px" }}>
                   Arrival Date:
                   <br />
                   <input
@@ -141,7 +147,7 @@ export default function RoomsModal({ visible, close, room }) {
                   />
                 </label>
                 <br />
-                <label>
+                <label style={{ marginBottom: "10px" }}>
                   Departure Date:
                   <br />
                   <input
@@ -151,7 +157,7 @@ export default function RoomsModal({ visible, close, room }) {
                   />
                 </label>
 
-                <label>
+                <label style={{ marginBottom: "10px" }}>
                   Guests:
                   <br />
                   <select
@@ -164,24 +170,24 @@ export default function RoomsModal({ visible, close, room }) {
                     <option value={2}>2 guests</option>
                   </select>
                 </label>
-
-                <button
-                  className="w3-ripple"
-                  style={{
-                    fontSize: "15px",
-                    padding: "10px",
-                    backgroundColor: "#006c67",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                    textDecoration: "none",
-                  }}
-                  onClick={handleRoomBooking}
-                >
-                  Book Now
-                </button>
               </div>
+              <button
+                className="w3-ripple"
+                style={{
+                  fontSize: "15px",
+                  padding: "10px",
+                  backgroundColor: "#006c67",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  textDecoration: "none",
+                  height: "5vh",
+                }}
+                onClick={handleRoomBooking}
+              >
+                Book Now
+              </button>
               <br />
               <br />
             </div>
