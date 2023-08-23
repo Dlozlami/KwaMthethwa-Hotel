@@ -21,6 +21,9 @@ jobs:
       - name: Change the directory
         run: cd KwaMthethwa-Hotel
 
+      - name: list files around
+        run: ls
+
       - name: Install npm dependencies
         run: npm install
 
