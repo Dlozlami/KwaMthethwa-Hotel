@@ -1,18 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../components/footer/footer";
-import { fetchBookingsByID } from "../../features/bookingsSlice";
+import {
+  fetchBookingsByID,
+  calculateSubtotalAndTotal,
+} from "../../features/bookingsSlice";
 import BookingCard from "./bookingsCard";
 import "./bookings.css";
 
 export default function Bookings() {
+  const [reloadBookings, setReloadBookings] = useState(false);
   const { userData } = useSelector((store) => store.login);
-  const { bookingsCart } = useSelector((store) => store.bookings);
+  const { bookingsCart, total } = useSelector((store) => store.bookings);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchBookingsByID(userData.id));
-    console.log("Rendering");
-  }, [userData.id, dispatch]);
+    dispatch(calculateSubtotalAndTotal());
+    console.log("Rendering total: ", total);
+    // eslint-disable-next-line
+  }, [reloadBookings]);
 
   return (
     <>
@@ -39,8 +46,13 @@ export default function Bookings() {
             </p>
           </div>
         </section>
+        {console.log("Rendering total: ", total)}
         {bookingsCart.map((booking) => (
-          <BookingCard key={booking._id} booking={booking} />
+          <BookingCard
+            key={booking._id}
+            booking={booking}
+            reload={() => setReloadBookings(!reloadBookings)}
+          />
         ))}
         <div
           className="w3-card"

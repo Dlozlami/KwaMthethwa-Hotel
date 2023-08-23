@@ -18,6 +18,7 @@ export const fetchBookingsByID = createAsyncThunk(
     const url = `http://localhost:8080/bookings/user/${user_id}`;
     try {
       const response = await axios.get(url);
+      //thunkAPI.dispatch(calculateSubtotalAndTotal());
       return response.data;
     } catch (error) {
       console.error(error);
@@ -40,6 +41,20 @@ export const addBookingToCart = createAsyncThunk(
   }
 );
 
+export const deleteFromCart = createAsyncThunk(
+  "bookings/deleteFromCart",
+  async (booking_id, thunkAPI) => {
+    const url = `http://localhost:8080/bookings/${booking_id}`;
+    try {
+      const response = await axios.delete(url, booking_id);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+);
+
 export const bookingsSlice = createSlice({
   name: "bookings",
   initialState,
@@ -47,14 +62,26 @@ export const bookingsSlice = createSlice({
     setCurrency(state, action) {
       // If ZAR set currency and symbol
     },
+    calculateSubtotalAndTotal(state) {
+      console.log("calculateSubtotalAndTotal: ", state.total);
+      if (state.bookingsCart.length > 0) {
+        const subtotal = state.bookingsCart.reduce(
+          (acc, booking) => acc + booking.totalAmount,
+          0
+        );
+        const total = subtotal + subtotal * state.VAT;
+        state.subtotal = subtotal;
+        state.total = total;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchBookingsByID.fulfilled, (state, action) => {
-      state.bookingsCart = action.payload; // Update the state with the fetched lists of bookings
+      state.bookingsCart = action.payload;
     });
   },
 });
 
-export const { setCurrency } = bookingsSlice.actions;
+export const { setCurrency, calculateSubtotalAndTotal } = bookingsSlice.actions;
 
 export default bookingsSlice.reducer;

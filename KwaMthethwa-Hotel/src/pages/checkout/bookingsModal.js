@@ -51,7 +51,7 @@ export default function BookingsModal({ visible, close, booking }) {
       className="modal"
       style={{
         display: visible ? "block" : "none",
-        backgroundColor: "rgba(0, 0, 0, 0.7)",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
         position: "fixed",
         top: 0,
         left: 0,
@@ -97,6 +97,102 @@ export default function BookingsModal({ visible, close, booking }) {
               <IoCloseCircle size={30} />
             </button>
           </div>
+        </div>
+
+        <div
+          id="bookingCard00"
+          style={{
+            backgroundImage: `url(${booking.imageurl})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        ></div>
+
+        <div
+          style={{
+            padding: "10px",
+          }}
+        >
+          <h3>Edit suite booking</h3>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+            }}
+          >
+            <label style={{ marginBottom: "10px" }}>
+              Arrival Date:
+              <br />
+              <input
+                type="date"
+                value={arrivalDate}
+                onChange={(event) => setArrivalDate(event.target.value)}
+              />
+            </label>
+            <br />
+            <label style={{ marginBottom: "10px" }}>
+              Departure Date:
+              <br />
+              <input
+                type="date"
+                value={departureDate}
+                onChange={(event) => setDepartureDate(event.target.value)}
+              />
+            </label>
+
+            <label style={{ marginBottom: "10px" }}>
+              Guests:
+              <br />
+              <select
+                value={numGuests}
+                onChange={(event) =>
+                  setNumGuests(parseInt(event.target.value, 10))
+                }
+              >
+                <option value={1}>1 guest</option>
+                <option value={2}>2 guests</option>
+              </select>
+            </label>
+          </div>
+          <button
+            className="w3-ripple"
+            style={{
+              fontSize: "15px",
+              padding: "10px",
+              backgroundColor: "#006c67",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              textDecoration: "none",
+              height: "5vh",
+              marginRight: "3vw",
+            }}
+            onClick={handleRoomBooking}
+          >
+            Save changes
+          </button>
+          <button
+            className="w3-ripple"
+            style={{
+              fontSize: "15px",
+              padding: "10px",
+              backgroundColor: "#006c67",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              textDecoration: "none",
+              height: "5vh",
+            }}
+            onClick={close}
+          >
+            Cancel
+          </button>
+          <br />
+          <br />
         </div>
       </div>
     </div>

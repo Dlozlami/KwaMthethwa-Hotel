@@ -3,9 +3,15 @@ import { format } from "date-fns";
 import { LuCalendarDays, LuUser, LuEdit, LuTrash2 } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 import BookingsModal from "./bookingsModal";
-import { bookingsSlice } from "../../features/bookingsSlice";
+import {
+  deleteFromCart,
+  fetchBookingsByID,
+  calculateSubtotalAndTotal,
+} from "../../features/bookingsSlice";
 
 export default function BookingCard({ booking }) {
+  const { userData } = useSelector((store) => store.login);
+  const { currencySymbol, currency } = useSelector((store) => store.bookings);
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -18,9 +24,11 @@ export default function BookingCard({ booking }) {
   };
 
   const deleteBooking = () => {
-    setModalVisible(false);
+    dispatch(deleteFromCart(booking._id));
+    dispatch(fetchBookingsByID(userData.id));
+    dispatch(calculateSubtotalAndTotal());
   };
-  const { currencySymbol, currency } = useSelector((store) => store.bookings);
+
   return (
     <>
       <div
@@ -100,11 +108,15 @@ export default function BookingCard({ booking }) {
               className="w3-ripple"
               onClick={openModal}
             />
-            <LuTrash2 size={20} className="w3-ripple" />
+            <LuTrash2 size={20} className="w3-ripple" onClick={deleteBooking} />
           </div>
         </div>
       </div>
-      <BookingsModal visible={openModal} close={closeModal} booking={booking} />
+      <BookingsModal
+        visible={modalVisible}
+        close={closeModal}
+        booking={booking}
+      />
     </>
   );
 }
