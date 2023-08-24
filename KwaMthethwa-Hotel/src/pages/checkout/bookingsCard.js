@@ -9,7 +9,7 @@ import {
   calculateSubtotalAndTotal,
 } from "../../features/bookingsSlice";
 
-export default function BookingCard({ booking }) {
+export default function BookingCard({ booking, reload }) {
   const { userData } = useSelector((store) => store.login);
   const { currencySymbol, currency } = useSelector((store) => store.bookings);
   const dispatch = useDispatch();
@@ -27,6 +27,7 @@ export default function BookingCard({ booking }) {
     dispatch(deleteFromCart(booking._id));
     dispatch(fetchBookingsByID(userData.id));
     dispatch(calculateSubtotalAndTotal());
+    reload();
   };
 
   return (
@@ -86,14 +87,14 @@ export default function BookingCard({ booking }) {
           }}
         >
           <div>
-            <div style={{ display: "flex",alignItems:"flex-end"}}>
+            <div style={{ display: "flex", alignItems: "flex-start" }}>
               <LuUser size={20} style={{ marginRight: "2vw" }} />
               <p>Guests: {booking.num_guest}</p>
             </div>
-            <p>
+            <h4>
               {currencySymbol}{" "}
-              {((booking.rateInCent * currency) / 100).toFixed(2)}
-            </p>
+              {((booking.totalAmount * currency) / 100).toFixed(2)}
+            </h4>
           </div>
           <div
             id="editBookings"
@@ -116,6 +117,7 @@ export default function BookingCard({ booking }) {
         visible={modalVisible}
         close={closeModal}
         booking={booking}
+        reload={reload}
       />
     </>
   );

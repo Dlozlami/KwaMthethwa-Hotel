@@ -1,0 +1,38 @@
+.flexRowApart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.totalContainer{
+    border-radius: 10px;
+    background-color: goldenrod;
+    padding: 20px;
+    width: 100%;
+}
+
+.subtotal{
+    color: whitesmoke;
+    font-size: large;
+    font-weight: 400;
+}
+
+.total{
+    color: whitesmoke;
+    font-size: x-large;
+    font-weight: 800;
+}
+
+.payBTN{
+    border-radius: 10px;
+    background-color: whitesmoke;
+    color: goldenrod;
+    font-size: x-large;
+    font-weight: 800;
+    padding: 10px;
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    cursor: pointer;
+}

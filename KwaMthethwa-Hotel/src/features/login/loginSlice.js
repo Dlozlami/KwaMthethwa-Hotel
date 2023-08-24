@@ -3,11 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import jwt_decode from "jwt-decode";
 
 const initialState = {
-  userData: {
-    id: null,
-    name: null,
-    surname: null,
-  },
+  userData: null,
   validPwd: 0,
   validUsername: 0,
   isLoggedIn: false,
@@ -47,11 +43,7 @@ const loginSlice = createSlice({
   initialState,
   reducers: {
     clearState: (state) => {
-      state.userData = {
-        id: null,
-        name: null,
-        surname: null,
-      };
+      state.userData = null;
       localStorage.removeItem("KMHjwtUser");
       state.isLoggedIn = false;
     },

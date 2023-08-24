@@ -40,6 +40,7 @@ router.post("/users/login", function (req, res) {
           id: user._id,
           name: user.name,
           surname: user.surname,
+          email: user.email,
         },
         process.env.SECRET_KEY,
         { expiresIn: "1h" } // Set the token expiration time

@@ -7,6 +7,7 @@ import {
 } from "../../features/bookingsSlice";
 import BookingCard from "./bookingsCard";
 import "./bookings.css";
+import Totals from "../../components/totals/totals";
 
 export default function Bookings() {
   const [reloadBookings, setReloadBookings] = useState(false);
@@ -15,11 +16,11 @@ export default function Bookings() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("Rendering total: ", total);
     dispatch(fetchBookingsByID(userData.id));
     dispatch(calculateSubtotalAndTotal());
-    console.log("Rendering total: ", total);
     // eslint-disable-next-line
-  }, [reloadBookings]);
+  }, []);
 
   return (
     <>
@@ -46,7 +47,7 @@ export default function Bookings() {
             </p>
           </div>
         </section>
-        {console.log("Rendering total: ", total)}
+
         {bookingsCart.map((booking) => (
           <BookingCard
             key={booking._id}
@@ -69,7 +70,9 @@ export default function Bookings() {
             backgroundRepeat: "no-repeat",
           }}
         ></div>
+        {total ? <Totals /> : null}
       </div>
+
       <Footer />
     </>
   );

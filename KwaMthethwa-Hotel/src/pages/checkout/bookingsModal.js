@@ -3,9 +3,9 @@ import { IoCloseCircle } from "react-icons/io5";
 
 import { differenceInDays } from "date-fns";
 import { useDispatch, useSelector } from "react-redux";
-import { addBookingToCart } from "../../features/bookingsSlice";
+import { updateBooking } from "../../features/bookingsSlice";
 
-export default function BookingsModal({ visible, close, booking }) {
+export default function BookingsModal({ visible, close, booking, reload }) {
   const { discount_programme, discount_rate } = useSelector(
     (store) => store.bookings
   );
@@ -21,7 +21,7 @@ export default function BookingsModal({ visible, close, booking }) {
       new Date(arrivalDate)
     );
     console.log("nights: ", nights);
-    const roomBooking = {
+    const bookingData = {
       user_id: userData.id,
       title: booking.title,
       startDate: new Date(arrivalDate).getTime(),
@@ -42,8 +42,9 @@ export default function BookingsModal({ visible, close, booking }) {
       paid: false,
       payment_ref: null,
     };
-    console.log("New booking: ", roomBooking);
-    dispatch(addBookingToCart(roomBooking));
+    console.log("New booking update: ", bookingData);
+    dispatch(updateBooking(bookingData));
+    reload();
   };
 
   return (
