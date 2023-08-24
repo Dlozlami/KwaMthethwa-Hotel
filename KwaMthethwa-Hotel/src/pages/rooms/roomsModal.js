@@ -6,16 +6,19 @@ import { RxDimensions } from "react-icons/rx";
 import { differenceInDays } from "date-fns";
 import { useDispatch, useSelector } from "react-redux";
 import { addBookingToCart } from "../../features/bookingsSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function RoomsModal({ visible, close, room }) {
   const { discount_programme, discount_rate } = useSelector(
     (store) => store.bookings
   );
   const { userData } = useSelector((store) => store.login);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [arrivalDate, setArrivalDate] = useState("");
   const [departureDate, setDepartureDate] = useState("");
   const [numGuests, setNumGuests] = useState(1);
+
   const handleRoomBooking = () => {
     let nights = differenceInDays(
       new Date(departureDate),
@@ -42,6 +45,7 @@ export default function RoomsModal({ visible, close, room }) {
     };
     console.log("New booking: ", roomBooking);
     dispatch(addBookingToCart(roomBooking));
+    navigate("/bookings");
   };
 
   return (
