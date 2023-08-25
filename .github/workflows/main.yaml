@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: "18"
 
+      - name: Change dir
+        run: cd KwaMthethwaHotel
+
       - name: List files
         run: ls
 
