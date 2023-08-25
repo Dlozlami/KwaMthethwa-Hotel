@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./totals.css";
 import { useSelector, useDispatch } from "react-redux";
 import "./totals.css";
@@ -6,8 +6,10 @@ import {
   payNow,
   calculateSubtotalAndTotal,
 } from "../../features/bookingsSlice";
+import Preloader from "../preloader/preloader";
 
 export default function Totals() {
+  const [loader, setLoader] = useState(false);
   const { userData } = useSelector((store) => store.login);
   const { bookingsCart, total, subtotal, VAT, currencySymbol } = useSelector(
     (store) => store.bookings
@@ -15,6 +17,7 @@ export default function Totals() {
   const dispatch = useDispatch();
 
   const handlePayNow = async () => {
+    setLoader(true);
     try {
       const url = await dispatch(
         payNow({ email: userData.email, amount: total })
@@ -35,31 +38,34 @@ export default function Totals() {
   }, [bookingsCart, dispatch]);
 
   return (
-    <div className="totalContainer">
-      <div style={{ borderBottom: "1px white solid", paddingBottom: "10px" }}>
-        <div className="flexRowApart">
-          <span className="subtotal">Subtotal</span>
-          <span className="subtotal">{(subtotal / 100).toFixed(2)}</span>
+    <>
+      <div className="totalContainer">
+        <div style={{ borderBottom: "1px white solid", paddingBottom: "10px" }}>
+          <div className="flexRowApart">
+            <span className="subtotal">Subtotal</span>
+            <span className="subtotal">{(subtotal / 100).toFixed(2)}</span>
+          </div>
+          <div className="flexRowApart">
+            <span className="subtotal">VAT @ 15%</span>
+            <span className="subtotal">
+              {(Math.floor(subtotal * VAT) / 100).toFixed(2)}
+            </span>
+          </div>
         </div>
-        <div className="flexRowApart">
-          <span className="subtotal">VAT @ 15%</span>
-          <span className="subtotal">
-            {(Math.floor(subtotal * VAT) / 100).toFixed(2)}
-          </span>
+        <br />
+        <div>
+          <div className="flexRowApart">
+            <span className="total">TOTAL</span>
+            <span className="total">
+              {currencySymbol} {(total / 100).toFixed(2)}
+            </span>
+          </div>
+          <div className="payBTN w3-ripple" onClick={handlePayNow}>
+            Pay Now
+          </div>
         </div>
       </div>
-      <br />
-      <div>
-        <div className="flexRowApart">
-          <span className="total">TOTAL</span>
-          <span className="total">
-            {currencySymbol} {(total / 100).toFixed(2)}
-          </span>
-        </div>
-        <div className="payBTN w3-ripple" onClick={handlePayNow}>
-          Pay Now
-        </div>
-      </div>
-    </div>
+      <Preloader visible={loader} />
+    </>
   );
 }

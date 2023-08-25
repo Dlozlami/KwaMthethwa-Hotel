@@ -16,11 +16,11 @@ export default function Bookings() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("Rendering total: ", total);
+    console.log("Rendering total: ", reloadBookings);
     dispatch(fetchBookingsByID(userData.id));
     dispatch(calculateSubtotalAndTotal());
     // eslint-disable-next-line
-  }, []);
+  }, [reloadBookings]);
 
   return (
     <>
@@ -52,7 +52,7 @@ export default function Bookings() {
           <BookingCard
             key={booking._id}
             booking={booking}
-            reload={() => setReloadBookings(reloadBookings)}
+            reload={() => setReloadBookings(!reloadBookings)}
           />
         ))}
         {!total ? (
