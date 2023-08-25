@@ -63,7 +63,7 @@ export default function Bookings() {
             padding: "10px",
             width: "100%",
             backgroundColor: "white",
-            height: "10vh",
+            height: "20vh",
             backgroundImage: "url('./assets/images/barcode.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
