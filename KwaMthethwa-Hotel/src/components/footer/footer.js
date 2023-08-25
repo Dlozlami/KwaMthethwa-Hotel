@@ -80,8 +80,8 @@ const Footer = () => {
           <h3>Pages</h3>
           <MakeBTN name="Home" borderWidth="1" address="/" />
           <MakeBTN name="Suites" borderWidth="1" address="/rooms" />
-          <MakeBTN name="Dining" borderWidth="1" address="/dining" />
-          <MakeBTN name="Experiences" borderWidth="1" address="/experiences" />
+          {/* <MakeBTN name="Dining" borderWidth="1" address="/dining" />
+          <MakeBTN name="Experiences" borderWidth="1" address="/experiences" /> */}
           <MakeBTN name="Contact Us" borderWidth="1" address="/contact" />
         </div>
         <div
@@ -91,7 +91,6 @@ const Footer = () => {
             width: "23%",
             display: "inline-block",
             verticalAlign: "top",
-            border: "1px red solid",
           }}
         >
           <h3>Contact Info</h3>

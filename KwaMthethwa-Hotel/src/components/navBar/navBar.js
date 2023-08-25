@@ -18,7 +18,7 @@ export default function NavBar() {
         <div
           style={{
             display: "flex",
-            border: "1px red solid",
+
             flexDirection: "row",
             alignItems: "center",
           }}
@@ -31,13 +31,13 @@ export default function NavBar() {
             <NavBTN name="SUITES" borderWidth="1" address="/rooms" />
           </div>
 
-          <div id="tabToDesktopView">
+          {/* <div id="tabToDesktopView">
             <NavBTN name="DINING" borderWidth="1" address="/dining" />
           </div>
 
           <div id="tabToDesktopView">
             <NavBTN name="EXPERIENCES" borderWidth="1" address="/experiences" />
-          </div>
+          </div> */}
 
           <div id="tabToDesktopView">
             <NavBTN name="CONTACT US" borderWidth="1" address="/contact" />

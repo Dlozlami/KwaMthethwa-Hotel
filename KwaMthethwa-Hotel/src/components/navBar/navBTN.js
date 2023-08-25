@@ -24,7 +24,7 @@ export default function NavBTN({
         fontWeight: { fontWeight },
         margin: { margin },
         textDecoration: "none",
-        border: "1px red solid",
+
         fontFamily: "bodyFont",
       }}
       onClick={onClickFunction}

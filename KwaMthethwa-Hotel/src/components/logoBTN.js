@@ -8,7 +8,6 @@ export default function LogoBTN({ size }) {
       style={{
         cursor: "pointer",
         width: "10vw",
-        border: "1px red solid",
         textDecoration: "none",
       }}
     >

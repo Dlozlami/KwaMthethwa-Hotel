@@ -45,6 +45,20 @@ export const setLogin = createAsyncThunk(
   }
 );
 
+export const updateUser = createAsyncThunk(
+  "login/updateUser",
+  async (newData, thunkAPI) => {
+    const url = `http://localhost:8080/users/${newData[1]}`;
+    try {
+      const response = await axios.patch(url, newData[0]);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+);
+
 const loginSlice = createSlice({
   name: "login",
   initialState,

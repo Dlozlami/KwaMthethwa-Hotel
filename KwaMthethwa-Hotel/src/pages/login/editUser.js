@@ -104,20 +104,6 @@ export default function BookingsModal({ visible, close, user }) {
                 onChange={(event) => setSurname(event.target.value)}
               />
             </label>
-
-            <label style={{ marginBottom: "10px" }}>
-              Guests:
-              <br />
-              <select
-                value={numGuests}
-                onChange={(event) =>
-                  setNumGuests(parseInt(event.target.value, 10))
-                }
-              >
-                <option value={1}>1 guest</option>
-                <option value={2}>2 guests</option>
-              </select>
-            </label>
           </div>
           <button
             className="w3-ripple"
@@ -133,7 +119,7 @@ export default function BookingsModal({ visible, close, user }) {
               height: "5vh",
               marginRight: "3vw",
             }}
-            onClick={handleRoomBooking}
+            onClick={handleUserUpdate}
           >
             Save changes
           </button>
