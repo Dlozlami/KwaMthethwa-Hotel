@@ -34,6 +34,8 @@ export default function AdminDashboard() {
           Welcome, {userData.name}!
         </h1>
         <p>This is the admin dashboard.</p>
+        <br />
+        <br />
         <button
           className="limeButton w3-btn w3-border w3-border-black w3-round-large"
           onClick={() => dispatch(clearState())}

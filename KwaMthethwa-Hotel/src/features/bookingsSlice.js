@@ -19,7 +19,7 @@ export const fetchBookingsByID = createAsyncThunk(
     const url = `http://localhost:8080/bookings/user/${user_id}`;
     try {
       const response = await axios.get(url);
-      //thunkAPI.dispatch(calculateSubtotalAndTotal());
+
       return response.data;
     } catch (error) {
       console.error(error);
@@ -30,10 +30,10 @@ export const fetchBookingsByID = createAsyncThunk(
 
 export const updateBooking = createAsyncThunk(
   "bookings/updateBooking",
-  async (booking, thunkAPI) => {
-    const url = `http://localhost:8080/bookings/${booking._id}`;
+  async (bookingList, thunkAPI) => {
+    const url = `http://localhost:8080/bookings/${bookingList[1]}`;
     try {
-      const response = await axios.patch(url, booking);
+      const response = await axios.patch(url, bookingList[0]);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -95,11 +95,18 @@ export const bookingsSlice = createSlice({
   name: "bookings",
   initialState,
   reducers: {
-    setCurrency(state, action) {
-      // If ZAR set currency and symbol
+    clearBookings(state) {
+      state.discount_programme = null;
+      state.discount_rate = 0;
+      state.currency = 1;
+      state.currencySymbol = "R";
+      state.bookingsCart = [];
+      state.total = 0;
+      state.subtotal = 0;
+      state.checkoutData = null;
     },
     calculateSubtotalAndTotal(state) {
-      console.log("calculateSubtotalAndTotal: ", state.total);
+      //console.log("calculateSubtotalAndTotal: ", state.total);
       if (state.bookingsCart.length > 0) {
         const subtotal = state.bookingsCart.reduce(
           (acc, booking) => acc + booking.totalAmount,
@@ -108,6 +115,9 @@ export const bookingsSlice = createSlice({
         const total = subtotal + Math.floor(subtotal * state.VAT);
         state.subtotal = subtotal;
         state.total = total;
+      } else {
+        state.subtotal = 0;
+        state.total = 0;
       }
     },
     setCheckoutData(state, action) {
@@ -118,10 +128,21 @@ export const bookingsSlice = createSlice({
     builder
       .addCase(fetchBookingsByID.fulfilled, (state, action) => {
         state.bookingsCart = action.payload;
+        if (state.bookingsCart.length > 0) {
+          const subtotal = state.bookingsCart.reduce(
+            (acc, booking) => acc + booking.totalAmount,
+            0
+          );
+          const total = subtotal + Math.floor(subtotal * state.VAT);
+          state.subtotal = subtotal;
+          state.total = total;
+        } else {
+          state.subtotal = 0;
+          state.total = 0;
+        }
       })
       .addCase(payNow.fulfilled, (state, action) => {
         state.checkoutData = action.payload;
-        //take state.checkoutData.reference and add it to all booking objects booking.payment_ref in  state.bookingsCart list
         const reference = state.checkoutData.reference;
         state.bookingsCart.forEach((booking) => {
           booking.payment_ref = reference;
@@ -130,7 +151,11 @@ export const bookingsSlice = createSlice({
   },
 });
 
-export const { setCurrency, calculateSubtotalAndTotal, setCheckoutData } =
-  bookingsSlice.actions;
+export const {
+  setCurrency,
+  calculateSubtotalAndTotal,
+  setCheckoutData,
+  clearBookings,
+} = bookingsSlice.actions;
 
 export default bookingsSlice.reducer;

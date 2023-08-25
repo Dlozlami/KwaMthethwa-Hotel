@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 
 const bookingSchema = new mongoose.Schema({
   user_id: { type: String, required: true },
+  name: { type: String, required: true },
+  surname: { type: String, required: true },
+  email: { type: String, required: true },
   title: { type: String, required: true },
   startDate: { type: Number, required: true },
   endDate: { type: Number },
@@ -17,6 +20,7 @@ const bookingSchema = new mongoose.Schema({
   totalAmount: { type: Number, required: true },
   paid: { type: Boolean, default: false },
   payment_ref: { type: String },
+  payment_date: { type: Number },
 });
 
 const Booking = mongoose.model("Booking", bookingSchema);

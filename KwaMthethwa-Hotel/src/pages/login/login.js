@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { useEffect } from "react";
 import Footer from "../../components/footer/footer";
+import { clearBookings } from "../../features/bookingsSlice";
 
 export default function Login() {
   const { userData, validPwd, validUsername, isLoggedIn } = useSelector(
@@ -35,7 +36,10 @@ export default function Login() {
         </h1>
         <button
           className="limeButton w3-btn w3-border w3-border-black w3-round-large"
-          onClick={() => dispatch(clearState())}
+          onClick={() => {
+            dispatch(clearState());
+            dispatch(clearBookings());
+          }}
         >
           log out
         </button>

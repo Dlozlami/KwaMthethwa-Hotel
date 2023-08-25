@@ -10,7 +10,7 @@ import "./bookings.css";
 import Totals from "../../components/totals/totals";
 
 export default function Bookings() {
-  const [reloadBookings, setReloadBookings] = useState(false);
+  const [reloadBookings, setReloadBookings] = useState(true);
   const { userData } = useSelector((store) => store.login);
   const { bookingsCart, total } = useSelector((store) => store.bookings);
   const dispatch = useDispatch();
@@ -52,9 +52,28 @@ export default function Bookings() {
           <BookingCard
             key={booking._id}
             booking={booking}
-            reload={() => setReloadBookings(!reloadBookings)}
+            reload={() => setReloadBookings(reloadBookings)}
           />
         ))}
+        {!total ? (
+          <div
+            className="w3-card"
+            style={{
+              marginBottom: "10px",
+              flexDirection: "column",
+              padding: "10px",
+              width: "100%",
+              backgroundColor: "white",
+            }}
+          >
+            <h4>No booked items</h4>
+            <p>You have made no reservations.</p>
+            <p>
+              Please choose a suite, an experience or reserve a table at our
+              restaurant.
+            </p>
+          </div>
+        ) : null}
         <div
           className="w3-card"
           style={{
@@ -70,7 +89,7 @@ export default function Bookings() {
             backgroundRepeat: "no-repeat",
           }}
         ></div>
-        {total ? <Totals /> : null}
+        <Totals />
       </div>
 
       <Footer />

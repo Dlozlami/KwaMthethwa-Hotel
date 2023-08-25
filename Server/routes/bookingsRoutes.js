@@ -113,7 +113,7 @@ router.post("/bookings/checkout", (req, res) => {
     path: "/transaction/initialize",
     method: "POST",
     headers: {
-      Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`, // Replace with your actual Paystack API secret key
+      Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
       "Content-Type": "application/json",
     },
   };

@@ -27,6 +27,9 @@ export default function RoomsModal({ visible, close, room }) {
     console.log("nights: ", nights);
     const roomBooking = {
       user_id: userData.id,
+      name: userData.name,
+      surname: userData.surname,
+      email: userData.email,
       title: room.title,
       startDate: new Date(arrivalDate).getTime(),
       endDate: new Date(departureDate).getTime(),

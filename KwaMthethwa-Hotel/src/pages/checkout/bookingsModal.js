@@ -14,7 +14,7 @@ export default function BookingsModal({ visible, close, booking, reload }) {
   const [arrivalDate, setArrivalDate] = useState("");
   const [departureDate, setDepartureDate] = useState("");
   const [numGuests, setNumGuests] = useState(1);
-
+  //console.log("bookingsModal line 17 booking: ", booking);
   const handleRoomBooking = () => {
     let nights = differenceInDays(
       new Date(departureDate),
@@ -34,7 +34,7 @@ export default function BookingsModal({ visible, close, booking, reload }) {
       description: booking.description,
       discount_programme: null,
       discount_rate: discount_programme,
-      imageurl: booking.imageURLs[0],
+      imageurl: booking.imageURLs,
       totalAmount:
         (booking.rateInCent - discount_rate * booking.rateInCent) *
         numGuests *
@@ -43,8 +43,9 @@ export default function BookingsModal({ visible, close, booking, reload }) {
       payment_ref: null,
     };
     console.log("New booking update: ", bookingData);
-    dispatch(updateBooking(bookingData));
+    dispatch(updateBooking([bookingData, booking._id]));
     reload();
+    close();
   };
 
   return (

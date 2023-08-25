@@ -11,7 +11,6 @@ import Login from "./pages/login/login";
 import Register from "./pages/register";
 import Successful from "./pages/checkout/paymentSuccessful";
 import Cancelled from "./pages/checkout/paymentCancelled";
-import ClientServices from "./pages/login/clientServices";
 import AdminDashboard from "./pages/login/adminDashboard";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
