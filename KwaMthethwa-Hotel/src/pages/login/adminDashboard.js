@@ -4,13 +4,13 @@ import {
   clearState,
   setUserData,
   setIsLoggedIn,
-} from "../features/login/loginSlice";
+} from "../../features/login/loginSlice";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { useEffect } from "react";
-import Footer from "../components/footer/footer";
+import Footer from "../../components/footer/footer";
 
-export default function Login() {
+export default function AdminDashboard() {
   const { userData, validPwd, validUsername, isLoggedIn } = useSelector(
     (store) => store.login
   );
@@ -33,6 +33,7 @@ export default function Login() {
         <h1 style={{ fontWeight: "500", color: "darkGray" }}>
           Welcome, {userData.name}!
         </h1>
+        <p>This is the admin dashboard.</p>
         <button
           className="limeButton w3-btn w3-border w3-border-black w3-round-large"
           onClick={() => dispatch(clearState())}

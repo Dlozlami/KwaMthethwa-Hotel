@@ -7,6 +7,7 @@ const initialState = {
   validPwd: 0,
   validUsername: 0,
   isLoggedIn: false,
+  isAdmin: false,
 };
 
 export const setLogin = createAsyncThunk(
@@ -24,11 +25,17 @@ export const setLogin = createAsyncThunk(
       localStorage.setItem("KMHjwtUser", token); // Store the token in local storage
 
       const decodedToken = jwt_decode(token); // Decode the token to extract the user data
-      //console.log("Logged in token: ", decodedToken);
+
       thunkAPI.dispatch(setValidUsername(1));
       thunkAPI.dispatch(setValidPwd(1));
       thunkAPI.dispatch(setUserData(decodedToken)); // Set the user data in the state
       thunkAPI.dispatch(setIsLoggedIn(true));
+
+      if (decodedToken.email.split("0")[0].toLowerCase() === "adminkmh") {
+        thunkAPI.dispatch(setIsAdmin(true));
+        console.log("Logged in as Admin! ");
+      }
+
       return;
     } catch (error) {
       thunkAPI.dispatch(setValidUsername(2));
@@ -46,6 +53,7 @@ const loginSlice = createSlice({
       state.userData = null;
       localStorage.removeItem("KMHjwtUser");
       state.isLoggedIn = false;
+      state.isAdmin = false;
     },
 
     setValidPwd: (state, { payload }) => {
@@ -58,6 +66,10 @@ const loginSlice = createSlice({
 
     setIsLoggedIn: (state, { payload }) => {
       state.isLoggedIn = payload;
+    },
+
+    setIsAdmin: (state, { payload }) => {
+      state.isAdmin = payload;
     },
 
     setUserData: (state, { payload }) => {
@@ -73,6 +85,7 @@ export const {
   setValidPwd,
   setValidUsername,
   setUserData,
+  setIsAdmin,
 } = loginSlice.actions;
 
 export default loginSlice.reducer;

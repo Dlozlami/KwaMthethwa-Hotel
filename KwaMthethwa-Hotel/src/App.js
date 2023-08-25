@@ -7,10 +7,12 @@ import Contact from "./pages/contact";
 import Dining from "./pages/dining/dining";
 import NoPage from "./pages/noPage";
 import Bookings from "./pages/checkout/bookings";
-import Login from "./pages/login";
+import Login from "./pages/login/login";
 import Register from "./pages/register";
 import Successful from "./pages/checkout/paymentSuccessful";
 import Cancelled from "./pages/checkout/paymentCancelled";
+import ClientServices from "./pages/login/clientServices";
+import AdminDashboard from "./pages/login/adminDashboard";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
@@ -18,7 +20,7 @@ import { useEffect } from "react";
 import { setUserData, setIsLoggedIn } from "./features/login/loginSlice";
 
 export default function App() {
-  const { isLoggedIn } = useSelector((store) => store.login);
+  const { isLoggedIn, isAdmin } = useSelector((store) => store.login);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,7 +44,10 @@ export default function App() {
           path="bookings"
           element={isLoggedIn ? <Bookings /> : <Login />}
         />
-        <Route path="login" element={<Login />} />
+        <Route
+          path="login"
+          element={isAdmin ? <AdminDashboard /> : <Login />}
+        />
         <Route path="register" element={<Register />} />
         <Route
           path="successful"
