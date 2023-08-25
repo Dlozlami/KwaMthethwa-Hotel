@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: "18"
 
+      - name: List files
+        run: ls
+
       - name: Install npm dependencies
         run: npm install
 
