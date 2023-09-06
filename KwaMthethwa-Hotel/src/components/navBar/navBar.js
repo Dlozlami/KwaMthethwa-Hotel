@@ -24,7 +24,7 @@ export default function NavBar() {
           }}
         >
           <div id="tabToDesktopView">
-            <NavBTN name="HOMES" borderWidth="1" address="/" />
+            <NavBTN name="HOME" borderWidth="1" address="/" />
           </div>
 
           <div id="tabToDesktopView">
@@ -43,7 +43,7 @@ export default function NavBar() {
             <NavBTN name="CONTACT US" borderWidth="1" address="/contact" />
           </div>
           <div id="tabToDesktopView">
-            <Currency />
+            <Currency color="white" />
           </div>
           <div>
             <UserBTN />

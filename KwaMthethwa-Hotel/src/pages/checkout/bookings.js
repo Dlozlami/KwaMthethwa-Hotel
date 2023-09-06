@@ -16,7 +16,7 @@ export default function Bookings() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("Rendering total: ", reloadBookings);
+    //console.log("Rendering total: ", reloadBookings);
     dispatch(fetchBookingsByID(userData.id));
     dispatch(calculateSubtotalAndTotal());
     // eslint-disable-next-line

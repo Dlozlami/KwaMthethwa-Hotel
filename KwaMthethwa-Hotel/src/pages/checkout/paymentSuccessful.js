@@ -37,7 +37,12 @@ export default function Successful() {
             >
               Receipt #{ref}
             </h1>
-            <p>Payment sucessful.</p>
+            <p>
+              Payment sucessful | Date:
+              <span style={{ color: "#006c67", fontWeight: 700 }}>
+                12/06/2023
+              </span>
+            </p>
             <br />
           </div>
           <br />
@@ -52,6 +57,19 @@ export default function Successful() {
             <br />
             <br />
             <br /> <br />
+            <div
+              className="w3-card"
+              style={{
+                marginBottom: "10px",
+                width: "100%",
+                backgroundColor: "white",
+                height: "10vh",
+                backgroundImage: "url('./assets/images/barcode.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
           </div>
         </div>
       </div>

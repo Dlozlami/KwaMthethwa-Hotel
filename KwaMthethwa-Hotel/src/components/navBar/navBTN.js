@@ -6,7 +6,7 @@ export default function NavBTN({
   bgColor = "white",
   color = "black",
   address = "/",
-  fontSize = "16",
+  fontSize = "20",
   fontWeight = "100",
   margin = "2vw",
 
@@ -20,8 +20,8 @@ export default function NavBTN({
         alignItems: "center",
         backgroundColor: { bgColor },
         color: { color },
-        fontSize: { fontSize },
-        fontWeight: { fontWeight },
+        fontSize: 20,
+        fontWeight: 600,
         margin: { margin },
         textDecoration: "none",
 
