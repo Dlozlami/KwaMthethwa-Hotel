@@ -5,7 +5,7 @@ import Footer from "../../components/footer/footer";
 import { clearBookings } from "../../features/bookingsSlice";
 import EditDetails from "./editDetails";
 
-export default function AdminDashboard() {
+export default function ClientPortal() {
   const { userData } = useSelector((store) => store.login);
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
@@ -29,7 +29,7 @@ export default function AdminDashboard() {
             <h1 style={{ fontWeight: "500", color: "darkGray" }}>
               Welcome, {userData && userData.name}!
             </h1>
-            <p>This is the Admin Dashboard.</p>
+            <p>This is your client portal.</p>
             <br />
           </div>
           <br />

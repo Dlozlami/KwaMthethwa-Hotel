@@ -5,6 +5,7 @@ import "./totals.css";
 import {
   payNow,
   calculateSubtotalAndTotal,
+  updateBooking,
 } from "../../features/bookingsSlice";
 import Preloader from "../preloader/preloader";
 
@@ -23,6 +24,7 @@ export default function Totals() {
         payNow({ email: userData.email, amount: total })
       );
       //console.log("This is checkoutData", url);
+      addPaymentRef(url.payload.reference);
       if (url) {
         window.location.href = url.payload.authorization_url;
       } else {
@@ -30,6 +32,12 @@ export default function Totals() {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const addPaymentRef = async (ref) => {
+    for (const booking of bookingsCart) {
+      dispatch(updateBooking([{ payment_ref: ref }, booking._id]));
     }
   };
 

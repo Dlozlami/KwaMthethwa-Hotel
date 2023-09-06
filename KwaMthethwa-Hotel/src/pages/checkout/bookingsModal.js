@@ -41,6 +41,7 @@ export default function BookingsModal({ visible, close, booking, reload }) {
         nights,
       paid: false,
       payment_ref: null,
+      payment_date: null,
     };
     console.log("New booking update: ", bookingData);
     dispatch(updateBooking([bookingData, booking._id]));

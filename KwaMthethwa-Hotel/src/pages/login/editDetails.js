@@ -1,22 +1,32 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../features/bookingsSlice";
+import { updateUser } from "../../features/login/loginSlice";
 import { IoCloseCircle } from "react-icons/io5";
 
-export default function BookingsModal({ visible, close, user }) {
+export default function EditDetails({ visible, close }) {
   const { userData } = useSelector((store) => store.login);
   const dispatch = useDispatch();
-  const [name, setName] = useState(user.name);
-  const [surname, setSurname] = useState(user.surname);
-  const [birthday, setBirthday] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [phone, setPhone] = useState(null);
+  const [name, setName] = useState(userData.name);
+  const [surname, setSurname] = useState(userData.surname);
+  const [birthday, setBirthday] = useState(userData.birthday);
+  const [email, setEmail] = useState(userData.email);
+  const [phone, setPhone] = useState(userData.phone);
+  //const [password, setPassword] = useState("");
 
   const handleUserUpdate = () => {
-    const newData = {};
-
-    console.log("New user details update: ");
-    dispatch(updateUser([newData, userData.id]));
+    const newData = {
+      name: name,
+      surname: surname,
+      email: email,
+      birthday: birthday,
+      phone: phone,
+    };
+    dispatch(updateUser([userData.id, newData]));
+    setName("");
+    setSurname("");
+    setEmail("");
+    setPhone("");
+    setBirthday("");
     close();
   };
 
@@ -53,10 +63,13 @@ export default function BookingsModal({ visible, close, user }) {
             justifyContent: "space-between",
             alignItems: "center",
             padding: "10px",
+            border: "none",
+            borderBottom: "1px black solid",
+            backgroundColor: "#d4af37",
           }}
         >
           <div>
-            <h2>Edit personal details</h2>
+            <h2>Edit your details</h2>
           </div>
           <div>
             <button
@@ -75,33 +88,65 @@ export default function BookingsModal({ visible, close, user }) {
 
         <div
           style={{
-            padding: "10px",
+            padding: "20px",
           }}
         >
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
               flexWrap: "wrap",
+              marginBottom: "10px",
             }}
           >
-            <label style={{ marginBottom: "10px" }}>
+            <label style={{ marginBottom: "10px", marginRight: "10px" }}>
               Name:
               <br />
               <input
-                type="date"
+                type="text"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
               />
             </label>
             <br />
-            <label style={{ marginBottom: "10px" }}>
-              Departure Date:
+            <label style={{ marginBottom: "10px", marginRight: "10px" }}>
+              Surname:
+              <br />
+              <input
+                type="text"
+                value={surname}
+                onChange={(event) => setSurname(event.target.value)}
+              />
+            </label>
+
+            <br />
+            <label style={{ marginBottom: "10px", marginRight: "10px" }}>
+              Email:
+              <br />
+              <input
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </label>
+
+            <br />
+            <label style={{ marginBottom: "10px", marginRight: "10px" }}>
+              Phone:
+              <br />
+              <input
+                type="text"
+                value={phone}
+                onChange={(event) => setPhone(event.target.value)}
+              />
+            </label>
+            <br />
+            <label style={{ marginBottom: "10px", marginRight: "10px" }}>
+              Birthday:
               <br />
               <input
                 type="date"
-                value={surname}
-                onChange={(event) => setSurname(event.target.value)}
+                value={birthday}
+                onChange={(event) => setBirthday(event.target.value)}
               />
             </label>
           </div>
@@ -140,8 +185,6 @@ export default function BookingsModal({ visible, close, user }) {
           >
             Cancel
           </button>
-          <br />
-          <br />
         </div>
       </div>
     </div>

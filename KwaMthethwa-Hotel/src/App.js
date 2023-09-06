@@ -2,9 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/navBar/navBar";
 import Home from "./pages/home/home";
 import Rooms from "./pages/rooms/rooms";
-import Experiences from "./pages/experiences/experiences";
 import Contact from "./pages/contact";
-import Dining from "./pages/dining/dining";
 import NoPage from "./pages/noPage";
 import Bookings from "./pages/checkout/bookings";
 import Login from "./pages/login/login";
@@ -12,41 +10,39 @@ import Register from "./pages/register";
 import Successful from "./pages/checkout/paymentSuccessful";
 import Cancelled from "./pages/checkout/paymentCancelled";
 import AdminDashboard from "./pages/login/adminDashboard";
+import ClientPortal from "./pages/login/clientPortal";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import jwt_decode from "jwt-decode";
 import { useEffect } from "react";
-import { setUserData, setIsLoggedIn } from "./features/login/loginSlice";
+import { refreshLogin } from "./features/login/loginSlice";
 
 export default function App() {
   const { isLoggedIn, isAdmin } = useSelector((store) => store.login);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const token = localStorage.getItem("KMHjwtUser");
-    if (token) {
-      // If token is present, dispatch setUserData action with the decoded token
-      const decodedToken = jwt_decode(token);
-      dispatch(setUserData(decodedToken));
-      dispatch(setIsLoggedIn(true));
-    }
+    dispatch(refreshLogin());
   }, [dispatch]);
+
   return (
     <Routes>
       <Route path="/" element={<NavBar />}>
         <Route index element={<Home />} />
         <Route path="rooms" element={<Rooms />} />
-        <Route path="dining" element={<Dining />} />
-        <Route path="experiences" element={<Experiences />} />
+        {isLoggedIn ? (
+          <Route
+            path="profile"
+            element={isAdmin ? <AdminDashboard /> : <ClientPortal />}
+          />
+        ) : (
+          <Route path="profile" element={<Login />} />
+        )}
         <Route path="contact" element={<Contact />} />
         <Route
           path="bookings"
           element={isLoggedIn ? <Bookings /> : <Login />}
         />
-        <Route
-          path="login"
-          element={isAdmin ? <AdminDashboard /> : <Login />}
-        />
+        <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route
           path="successful"

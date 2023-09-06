@@ -72,7 +72,7 @@ export default function Menu() {
             </a>
           </div>
 
-          <div
+          {/* <div
             style={{ cursor: "pointer" }}
             onClick={() => {
               navigate("/dining");
@@ -94,7 +94,7 @@ export default function Menu() {
             <a href="/experiences" style={{ textDecoration: "none" }}>
               EXPERIENCES
             </a>
-          </div>
+          </div> */}
 
           <div
             style={{ cursor: "pointer" }}

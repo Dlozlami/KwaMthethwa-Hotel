@@ -74,7 +74,7 @@ export const payNow = createAsyncThunk(
   "bookings/payNow",
   async (receipt, thunkAPI) => {
     try {
-      console.log("BookingsSlice line 77 receipt: ", receipt);
+      //console.log("BookingsSlice line 77 receipt: ", receipt);
       const response = await axios.post(
         "http://localhost:8080/bookings/checkout",
         receipt
@@ -83,6 +83,7 @@ export const payNow = createAsyncThunk(
         "BookingsSlice line 81 response.data.data: ",
         response.data.data
       );
+
       //thunkAPI.dispatch(setCheckoutData(response.data.data));
       return response.data.data;
     } catch (error) {

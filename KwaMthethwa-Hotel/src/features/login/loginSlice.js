@@ -48,9 +48,24 @@ export const setLogin = createAsyncThunk(
 export const updateUser = createAsyncThunk(
   "login/updateUser",
   async (newData, thunkAPI) => {
-    const url = `http://localhost:8080/users/${newData[1]}`;
+    const url = `http://localhost:8080/users/${newData[0]}`;
     try {
-      const response = await axios.patch(url, newData[0]);
+      const response = await axios.patch(url, newData[1]);
+      alert("User details updated successfully!");
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+);
+
+export const getUser = createAsyncThunk(
+  "login/getUser",
+  async (id, thunkAPI) => {
+    const url = `http://localhost:8080/users/${id}`;
+    try {
+      const response = await axios.get(url);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -89,6 +104,15 @@ const loginSlice = createSlice({
     setUserData: (state, { payload }) => {
       state.userData = payload;
     },
+    refreshLogin: (state) => {
+      const token = localStorage.getItem("KMHjwtUser");
+      if (token) {
+        // If token is present, dispatch setUserData action with the decoded token
+        const decodedToken = jwt_decode(token);
+        state.userData = decodedToken;
+        state.isLoggedIn = true;
+      }
+    },
   },
 });
 
@@ -100,6 +124,7 @@ export const {
   setValidUsername,
   setUserData,
   setIsAdmin,
+  refreshLogin,
 } = loginSlice.actions;
 
 export default loginSlice.reducer;

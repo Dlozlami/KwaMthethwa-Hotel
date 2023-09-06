@@ -59,18 +59,21 @@ export default function Register() {
   return (
     <>
       <div id="mainView">
-        <div className="formStyles" style={{ overflow: "auto" }}>
+        <div
+          className=" w3-card-4 w3-round-large w3-white"
+          style={{ overflow: "auto" }}
+        >
           <div
             style={{
               border: "none",
               borderBottom: "1px black solid",
-              marginRight: 30,
+              padding: "20px",
+              backgroundColor: "#d4af37",
             }}
           >
             <h1
               style={{
                 fontWeight: "500",
-                color: "darkGray",
               }}
             >
               Sign up
@@ -79,56 +82,60 @@ export default function Register() {
             <br />
           </div>
           <br />
-          <div style={{ marginRight: 30 }}>
-            <label htmlFor="name">Name</label>
-            <input type="text" id="name" />
-            <br />
-            <br />
-            <label htmlFor="surname">Surname</label>
-            <input type="text" id="surname" />
-            <br />
-            <br />
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" onChange={(e) => checkEmail(e)} />
-            <br />
-            <span
-              className="w3-text-red"
-              id="invalidEmail"
-              style={{ display: "none" }}
-            >
-              * This is not a valid email address.
-            </span>
-            <br />
-            <label htmlFor="bio">Password</label>
-            <input type="password" id="pwd" />
-            <br />
-            <br />
-          </div>
-          <div>
-            <label htmlFor="birthday">Date of birth</label>
-            <input type="date" id="birthday" placeholder="e.g. 20/12/1952" />
-            <br />
-            <br />
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <div style={{ padding: "20px" }}>
+              <label htmlFor="name">Name</label>
+              <input type="text" id="name" />
+              <br />
+              <br />
+              <label htmlFor="surname">Surname</label>
+              <input type="text" id="surname" />
+              <br />
+              <br />
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" onChange={(e) => checkEmail(e)} />
+              <br />
+              <span
+                className="w3-text-red"
+                id="invalidEmail"
+                style={{ display: "none" }}
+              >
+                * This is not a valid email address.
+              </span>
+              <br />
+              <label htmlFor="bio">Password</label>
+              <input type="password" id="pwd" />
+              <br />
+              <br />
+            </div>
+            <div style={{ padding: "20px" }}>
+              <label htmlFor="birthday">Date of birth</label>
+              <input type="date" id="birthday" placeholder="e.g. 20/12/1952" />
+              <br />
+              <br />
 
-            <label htmlFor="phone">Phone</label>
-            <input type="text" id="phone" />
-            <br />
-            {userAdded ? (
-              <div className="w3-panel w3-green w3-round-small w3-padding-16">
-                Sign up is successful!
-              </div>
-            ) : (
-              ""
-            )}
-            <br />
-            <button
-              id="addEmployeeBTN"
-              onClick={add}
-              style={{ marginRight: "5vw", padding: "10px" }}
-              className="limeButton w3-border w3-border-black w3-ripple w3-round-large"
-            >
-              Sign up
-            </button>
+              <label htmlFor="phone">Phone</label>
+              <input type="text" id="phone" />
+              <br />
+              {userAdded ? (
+                <div className="w3-panel w3-green w3-round-small w3-padding-16">
+                  Sign up is successful!
+                </div>
+              ) : (
+                ""
+              )}
+              <br />
+              <button
+                id="addEmployeeBTN"
+                onClick={add}
+                style={{ marginRight: "5vw", padding: "10px" }}
+                className="limeButton w3-border w3-border-black w3-ripple w3-round-large"
+              >
+                Sign up
+              </button>
+              <br />
+              <br />
+            </div>
           </div>
         </div>
       </div>
