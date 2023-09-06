@@ -46,31 +46,32 @@ export default function Successful() {
             <br />
           </div>
           <br />
-          <div style={{ padding: "20px" }}>
-            <label htmlFor="id">Username</label>
-            <input type="text" id="id" className="w3-round" />
+          <div style={{ borderBottom: "1px black solid", padding: "20px" }}>
+            <p>User details</p>
             <br />
-            <label htmlFor="id">Password</label>
-            <br />
-            <input type="password" id="password" className="w3-round" />
-            <br />
-            <br />
-            <br />
-            <br /> <br />
-            <div
-              className="w3-card"
-              style={{
-                marginBottom: "10px",
-                width: "100%",
-                backgroundColor: "white",
-                height: "10vh",
-                backgroundImage: "url('./assets/images/barcode.jpg')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
           </div>
+          <div style={{ borderBottom: "1px black solid", padding: "20px" }}>
+            <p>receipt items</p>
+            <br />
+          </div>
+          <div style={{ padding: "20px" }}>
+            <p>Totals</p>
+            <br />
+          </div>
+          <br /> <br />
+          <div
+            className="w3-card"
+            style={{
+              marginBottom: "20px",
+              width: "100%",
+              backgroundColor: "white",
+              height: "10vh",
+              backgroundImage: "url('./assets/images/barcode.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          ></div>
         </div>
       </div>
       <Footer />
