@@ -44,6 +44,18 @@ router.get("/bookings/user/:id", async (req, res) => {
   }
 });
 
+// Route to get bookings by user_id
+router.get("/bookings/user/:id", async (req, res) => {
+  try {
+    const userBookings = await Booking.find({ user_id: req.params.id });
+    res.json(userBookings);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching bookings." });
+  }
+});
+
 // Route to add a new booking
 router.post("/bookings", async (req, res) => {
   try {
@@ -74,6 +86,7 @@ router.delete("/bookings/:id", async (req, res) => {
 
 // Route to update a booking by _id
 router.patch("/bookings/:id", async (req, res) => {
+  console.log("bookingRoutes line 77 req.body:", req.body);
   try {
     const updatedBooking = await Booking.findByIdAndUpdate(
       req.params.id,
