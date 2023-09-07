@@ -8,6 +8,7 @@ import {
   updateBooking,
 } from "../../features/bookingsSlice";
 import Preloader from "../preloader/preloader";
+import { addReceipt } from "../../features/receiptSlice";
 
 export default function Totals() {
   const [loader, setLoader] = useState(false);
@@ -15,6 +16,7 @@ export default function Totals() {
   const { bookingsCart, total, subtotal, VAT, currencySymbol } = useSelector(
     (store) => store.bookings
   );
+
   const dispatch = useDispatch();
 
   const handlePayNow = async () => {
@@ -25,6 +27,7 @@ export default function Totals() {
       );
       //console.log("This is checkoutData", url);
       addPaymentRef(url.payload.reference);
+
       if (url) {
         window.location.href = url.payload.authorization_url;
       } else {
@@ -39,6 +42,19 @@ export default function Totals() {
     for (const booking of bookingsCart) {
       dispatch(updateBooking([{ payment_ref: ref }, booking._id]));
     }
+    const newReceipt = {
+      user_id: userData.id,
+      name: userData.name,
+      surname: userData.surname,
+      email: userData.email,
+      subtotal: (subtotal / 100).toFixed(2),
+      vat: (Math.floor(subtotal * VAT) / 100).toFixed(2),
+      total: (total / 100).toFixed(2),
+      payment_ref: ref,
+      receiptItems: [],
+      currencySymbol: currencySymbol,
+    };
+    dispatch(addReceipt(newReceipt));
   };
 
   useEffect(() => {

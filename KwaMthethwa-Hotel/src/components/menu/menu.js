@@ -10,12 +10,12 @@ export default function Menu() {
   //const menuSize = window.screen.width > 699 ? "50%" : "100%";
   //console.log("Menu width: ", menuSize);
   const openModal = () => {
-    console.log("Status: ", isModalOpen);
+    //console.log("Status: ", isModalOpen);
     setModalOpen(true);
   };
 
   const closeModal = () => {
-    console.log("Status: ", isModalOpen);
+    //console.log("Status: ", isModalOpen);
     setModalOpen(false);
   };
 

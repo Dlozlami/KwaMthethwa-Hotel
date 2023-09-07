@@ -3,11 +3,61 @@ const express = require("express");
 const https = require("https");
 const router = express.Router();
 const Receipt = require("../models/receipts.model");
+const Booking = require("../models/bookings.model");
 
 // Route to get all receipts
 router.get("/receipts", async (req, res) => {
   try {
     const receipts = await Receipt.find();
+    res.json(receipts);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching receipts." });
+  }
+});
+
+// Route to update a receipt by its ID
+router.patch("/receipts/:id", async (req, res) => {
+  try {
+    const receiptId = req.params.id;
+    const updates = req.body; // Updated data from the request body
+
+    // Find the receipt by ID and update it
+    const updatedReceipt = await Receipt.findByIdAndUpdate(receiptId, updates, {
+      new: true, // To return the updated receipt
+    });
+
+    if (!updatedReceipt) {
+      // If the receipt with the specified ID is not found, return a 404 response
+      return res.status(404).json({ error: "Receipt not found" });
+    }
+
+    // Return the updated receipt in the response
+    res.json(updatedReceipt);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "An error occurred while updating the receipt." });
+  }
+});
+
+// Route to get all receipts that are paid
+router.get("/receipts/paid", async (req, res) => {
+  try {
+    const receipts = await Receipt.find({ payment_date: { $ne: null } });
+    res.json(receipts);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching receipts." });
+  }
+});
+
+// Route to get all receipts that are not yet paid
+router.get("/receipts/unpaid", async (req, res) => {
+  try {
+    const receipts = await Receipt.find({ payment_date: null });
     res.json(receipts);
   } catch (error) {
     res
@@ -28,9 +78,59 @@ router.get("/receipts/user/:id", async (req, res) => {
   }
 });
 
+// Route to get all receipts that are paid from a user by their ID
+router.get("/receipts/paid/user/:id", async (req, res) => {
+  try {
+    const userId = req.params.id; // Get the user ID from the route parameters
+    const receipts = await Receipt.find({
+      user_id: userId,
+      payment_date: { $ne: null },
+    });
+    res.json(receipts);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching receipts." });
+  }
+});
+
+// Route to get all receipts that are not yet paid from a user by their ID
+router.get("/receipts/unpaid/user/:id", async (req, res) => {
+  try {
+    const userId = req.params.id; // Get the user ID from the route parameters
+    const receipts = await Receipt.find({
+      user_id: userId,
+      payment_date: null,
+    });
+    res.json(receipts);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching receipts." });
+  }
+});
+
+// Route to get a receipt by its ref
+router.get("/receipts/ref/:id", async (req, res) => {
+  try {
+    const ref = req.params.id; // Get the user ID from the route parameters
+    const receipts = await Receipt.find({
+      payment_ref: ref,
+    });
+    res.json(receipts);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching the receipt." });
+  }
+});
+
 // Route to add a new receipt
 router.post("/receipts", async (req, res) => {
   try {
+    const userBookings = await Booking.find({
+      payment_ref: req.body.payment_ref,
+    });
     const newReceipt = new Receipt(req.body);
     const savedReceipt = await newReceipt.save();
     res.json(savedReceipt);

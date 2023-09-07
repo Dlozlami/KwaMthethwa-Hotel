@@ -1,22 +1,40 @@
 import React, { useEffect } from "react";
 import Footer from "../../components/footer/footer";
 import { useSelector, useDispatch } from "react-redux";
-import { updateBooking } from "../../features/bookingsSlice";
+import {
+  fetchBookingsByID,
+  calculateSubtotalAndTotal,
+  updateBooking,
+} from "../../features/bookingsSlice";
+// eslint-disable-next-line
+import { updateReceipt, getReceiptByRef } from "../../features/receiptSlice";
 
 export default function Successful() {
+  const { userData } = useSelector((store) => store.login);
+  const { bookingsCart } = useSelector((store) => store.bookings);
+  const { receiptByRef } = useSelector((store) => store.receipt);
+  const today = new Date();
   const searchParams = new URLSearchParams(window.location.search);
   const ref = searchParams.get("reference");
-  const { bookingsCart } = useSelector((store) => store.bookings);
+
   const dispatch = useDispatch();
   const confirmPaid = async () => {
     for (const booking of bookingsCart) {
       dispatch(updateBooking([{ paid: true }, booking._id]));
+      console.log("paymentSuccessfull line 15 booking._id:", booking._id);
     }
+    console.log("paymentSuccessfull line 19 render:");
+    //dispatch(updateReceipt([]));
+    //dispatch(updateReceipt([]));
   };
 
   useEffect(() => {
+    dispatch(getReceiptByRef(ref));
+    dispatch(fetchBookingsByID(userData.id));
+    dispatch(calculateSubtotalAndTotal());
     confirmPaid();
-  });
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
@@ -38,16 +56,20 @@ export default function Successful() {
               Receipt #{ref}
             </h1>
             <p>
-              Payment sucessful | Date:
-              <span style={{ color: "#006c67", fontWeight: 700 }}>
-                12/06/2023
+              Payment sucessful
+              <br />
+              <span style={{ color: "#e3d7ff", fontWeight: 700 }}>
+                {today.toUTCString()}
               </span>
             </p>
             <br />
           </div>
           <br />
           <div style={{ borderBottom: "1px black solid", padding: "20px" }}>
-            <p>User details</p>
+            <p style={{ fontSize: 18, fontWeight: 700 }}>
+              {receiptByRef.name} {receiptByRef.surname}
+            </p>
+            <p>{receiptByRef.email}</p>
             <br />
           </div>
           <div style={{ borderBottom: "1px black solid", padding: "20px" }}>
@@ -55,7 +77,26 @@ export default function Successful() {
             <br />
           </div>
           <div style={{ padding: "20px" }}>
-            <p>Totals</p>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <span>Subtotal</span>
+              <span>{receiptByRef.subtotal}</span>
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <span>VAT @ 15.0%</span>
+              <span>{receiptByRef.vat}</span>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontSize: 18,
+                fontWeight: 700,
+              }}
+            >
+              <span>Total</span>
+              <span>{receiptByRef.total}</span>
+            </div>
+
             <br />
           </div>
           <br /> <br />
