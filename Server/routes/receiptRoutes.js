@@ -131,8 +131,28 @@ router.post("/receipts", async (req, res) => {
     const userBookings = await Booking.find({
       payment_ref: req.body.payment_ref,
     });
-    const newReceipt = new Receipt(req.body);
-    const savedReceipt = await newReceipt.save();
+    let bookingItems = [];
+    for (const booking of userBookings) {
+      bookingItems.push({
+        title: booking.title,
+        num_guest: booking.num_guest,
+        rateInCent: booking.rateInCent,
+      });
+    }
+    const newReceipt = {
+      user_id: req.body.id,
+      name: req.body.name,
+      surname: req.body.surname,
+      email: req.body.email,
+      subtotal: (req.body.subtotal / 100).toFixed(2),
+      vat: (Math.floor(req.body.subtotal * req.body.vat) / 100).toFixed(2),
+      total: (req.body.total / 100).toFixed(2),
+      payment_ref: req.body.payment_ref,
+      receiptItems: bookingItems,
+      currencySymbol: req.body.currencySymbol,
+    };
+    const addReceipt = new Receipt(newReceipt);
+    const savedReceipt = await addReceipt.save();
     res.json(savedReceipt);
   } catch (error) {
     res.status(500).json({ error: error });
