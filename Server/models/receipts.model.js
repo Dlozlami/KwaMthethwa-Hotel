@@ -15,6 +15,7 @@ const receiptSchema = new mongoose.Schema({
   vat: { type: Number, required: true },
   total: { type: Number, required: true },
   payment_ref: { type: String },
+  payment_date: { type: Number },
   currencySymbol: { type: String },
   receiptItems: [receiptItemSchema], // Array of receipt items
 });

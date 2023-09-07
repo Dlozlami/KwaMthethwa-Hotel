@@ -136,11 +136,16 @@ router.post("/receipts", async (req, res) => {
       bookingItems.push({
         title: booking.title,
         num_guest: booking.num_guest,
-        rateInCent: booking.rateInCent,
+        rateInCents: booking.rateInCent,
+      });
+      console.log({
+        title: booking.title,
+        num_guest: booking.num_guest,
+        rateInCents: booking.rateInCent,
       });
     }
     const newReceipt = {
-      user_id: req.body.id,
+      user_id: req.body.user_id,
       name: req.body.name,
       surname: req.body.surname,
       email: req.body.email,
@@ -148,6 +153,7 @@ router.post("/receipts", async (req, res) => {
       vat: (Math.floor(req.body.subtotal * req.body.vat) / 100).toFixed(2),
       total: (req.body.total / 100).toFixed(2),
       payment_ref: req.body.payment_ref,
+      payment_date: null,
       receiptItems: bookingItems,
       currencySymbol: req.body.currencySymbol,
     };

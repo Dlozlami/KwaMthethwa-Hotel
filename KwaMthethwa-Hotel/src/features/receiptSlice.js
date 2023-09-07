@@ -95,6 +95,7 @@ export const addReceipt = createAsyncThunk(
         receipt
       );
       alert("Receipt added successfully!");
+      console.log("Receipt added successfully!");
       return response.data;
     } catch (error) {
       console.error(error);

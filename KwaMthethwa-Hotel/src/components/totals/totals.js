@@ -51,6 +51,7 @@ export default function Totals() {
       vat: (Math.floor(subtotal * VAT) / 100).toFixed(2),
       total: (total / 100).toFixed(2),
       payment_ref: ref,
+      payment_date: null,
       receiptItems: [],
       currencySymbol: currencySymbol,
     };

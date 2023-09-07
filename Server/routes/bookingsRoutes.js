@@ -35,7 +35,10 @@ router.get("/bookings/:id", async (req, res) => {
 // Route to get bookings by user_id
 router.get("/bookings/user/:id", async (req, res) => {
   try {
-    const userBookings = await Booking.find({ user_id: req.params.id });
+    const userBookings = await Booking.find({
+      user_id: req.params.id,
+      paid: false,
+    });
     res.json(userBookings);
   } catch (error) {
     res
@@ -44,10 +47,13 @@ router.get("/bookings/user/:id", async (req, res) => {
   }
 });
 
-// Route to get bookings by user_id
-router.get("/bookings/user/:id", async (req, res) => {
+// Route to get bookings by user_id which would be paid
+router.get("/bookings/user/paid/:id", async (req, res) => {
   try {
-    const userBookings = await Booking.find({ user_id: req.params.id });
+    const userBookings = await Booking.find({
+      user_id: req.params.id,
+      paid: true,
+    });
     res.json(userBookings);
   } catch (error) {
     res
