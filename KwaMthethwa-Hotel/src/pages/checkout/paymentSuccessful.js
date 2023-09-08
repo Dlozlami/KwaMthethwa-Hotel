@@ -31,11 +31,12 @@ export default function Successful() {
 
   useEffect(() => {
     console.log("helllo:");
-    // dispatch(getReceiptByRef(ref));
-    // dispatch(fetchBookingsByID(userData.id));
-    // dispatch(calculateSubtotalAndTotal());
-    // confirmPaid();
-    //console.log("helllo:");
+    dispatch(getReceiptByRef(ref));
+    dispatch(fetchBookingsByID(userData.id));
+    dispatch(calculateSubtotalAndTotal());
+    confirmPaid();
+    console.log("helllo:");
+    // eslint-disable-next-line
   }, []);
 
   return (

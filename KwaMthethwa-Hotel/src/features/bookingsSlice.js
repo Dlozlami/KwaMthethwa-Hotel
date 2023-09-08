@@ -6,6 +6,12 @@ const initialState = {
   discount_rate: 0,
   currency: 1,
   currencySymbol: "R",
+  userPaidBooking: [],
+  userUnpaidBooking: [],
+  userBookings: [],
+  allPaidBooking: [],
+  allUnpaidBooking: [],
+  allBookings: [],
   bookingsCart: [],
   total: 0,
   subtotal: 0,
@@ -20,6 +26,19 @@ export const fetchBookingsByID = createAsyncThunk(
     try {
       const response = await axios.get(url);
 
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+);
+
+export const fetchAllBookings = createAsyncThunk(
+  "bookings/fetchAllBookings",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/bookings/`);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -127,6 +146,15 @@ export const bookingsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchAllBookings.fulfilled, (state, action) => {
+        state.allBookings = action.payload;
+        state.allPaidBooking = action.payload.filter(
+          (bookings) => bookings.paid === true
+        );
+        state.allUnpaidBooking = action.payload.filter(
+          (bookings) => bookings.paid === false
+        );
+      })
       .addCase(fetchBookingsByID.fulfilled, (state, action) => {
         state.bookingsCart = action.payload;
         if (state.bookingsCart.length > 0) {
@@ -141,6 +169,12 @@ export const bookingsSlice = createSlice({
           state.subtotal = 0;
           state.total = 0;
         }
+        state.userPaidBooking = action.payload.filter(
+          (bookings) => bookings.paid === true
+        );
+        state.userUnpaidBooking = action.payload.filter(
+          (bookings) => bookings.paid === false
+        );
       })
       .addCase(payNow.fulfilled, (state, action) => {
         state.checkoutData = action.payload;
