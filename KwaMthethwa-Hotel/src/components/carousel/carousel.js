@@ -23,7 +23,10 @@ export default function Carousel({ listOfImgURL }) {
         backgroundImage: `url(${listOfImgURL[currentIndex]})`,
       }}
     >
-      <div> </div>
+      <div className="mainSign">
+        <h1>KwaMthethwa Hotel</h1>
+        <p>A Cultural Haven Awaits</p>
+      </div>
       <div className="carousel">
         <div className="carousel-overlay">
           <button className="carousel-button" onClick={handlePrevious}>

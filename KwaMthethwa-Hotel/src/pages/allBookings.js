@@ -40,8 +40,8 @@ export default function AllBookings() {
               Client Boookings
             </h1>
             <p>
-              Use the controls to view all bookings, unpaid bookings or paid
-              bookings
+              Use the controls below to view all bookings, unpaid bookings or
+              paid bookings
             </p>
             <br />
             <div>
@@ -59,7 +59,7 @@ export default function AllBookings() {
           {active === "All" ? (
             <div>
               {allBookings.map((booking) => (
-                <div></div>
+                <div className="b" style={{}}></div>
               ))}
             </div>
           ) : null}

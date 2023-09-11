@@ -4,6 +4,12 @@
   padding: 0;
 }
 
+body,
+html,
+#root {
+  height: 100%;
+}
+
 #mainView {
   overflow: auto;
   background-image: url("../public/assets/images/polka-dot.jpg");
@@ -15,7 +21,7 @@
   justify-content: center;
 }
 @font-face {
-  font-family: LogoFont;
+  font-family: logoFont;
   src: url("../public/assets/fonts/kaufmann/KAUFMANB.ttf");
 }
 
@@ -25,24 +31,21 @@
 }
 
 @media (max-width: 656px) {
-
   #roomCard {
     flex-direction: column;
   }
   #roomCard00 {
     height: 30vh;
   }
-  
+
   #roomCard01 {
     border-bottom: 1px gray solid;
   }
-  
 }
 
 @media (min-width: 657px) {
   #roomCard00 {
     width: 30%;
-
   }
   #roomCard01 {
     width: 45%;
@@ -106,14 +109,14 @@
   font-family: commando;
 }
 
-
 label {
   display: block;
   font-size: medium;
   font-weight: 600;
 }
 
-input, select{
+input,
+select {
   background-color: #e3d7ff;
   padding: 10px;
 }
