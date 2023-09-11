@@ -7,7 +7,7 @@ export default function FilterBTN({ active, setActive, name }) {
 
   const handleClick = () => {
     setActive(name);
-    console.log("filterBTN line 12 active: ", active);
+    //console.log("filterBTN line 12 active: ", active);
   };
 
   return (
