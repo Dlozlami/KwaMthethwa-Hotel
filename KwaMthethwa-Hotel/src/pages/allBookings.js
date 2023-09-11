@@ -6,9 +6,11 @@ import { fetchAllBookings } from "../features/bookingsSlice";
 import { updateReceipt, getReceiptByRef } from "../features/receiptSlice";
 import FilterBTN from "../components/filterBTN";
 import { useSelector, useDispatch } from "react-redux";
+import AllBookingsCard from "../components/allBookingsCard";
 
 export default function AllBookings() {
   const [active, setActive] = useState(null);
+  const [reloadBookings, setReloadBookings] = useState(true);
   const { allBookings, allUnpaidBooking, allPaidBooking } = useSelector(
     (store) => store.bookings
   );
@@ -23,7 +25,10 @@ export default function AllBookings() {
   return (
     <>
       <div id="mainView">
-        <div className=" w3-card-4 w3-round-large w3-white">
+        <div
+          className=" w3-card-4 w3-round-large w3-white"
+          style={{ width: "90%" }}
+        >
           <div
             style={{
               border: "none",
@@ -59,12 +64,36 @@ export default function AllBookings() {
           {active === "All" ? (
             <div>
               {allBookings.map((booking) => (
-                <div className="b" style={{}}></div>
+                <AllBookingsCard
+                  key={booking._id}
+                  booking={booking}
+                  reload={() => setReloadBookings(!reloadBookings)}
+                />
               ))}
             </div>
           ) : null}
-          {active === "Paid" ? <div></div> : null}
-          {active === "Unpaid" ? <div></div> : null}
+          {active === "Paid" ? (
+            <div>
+              {allPaidBooking.map((booking) => (
+                <AllBookingsCard
+                  key={booking._id}
+                  booking={booking}
+                  reload={() => setReloadBookings(!reloadBookings)}
+                />
+              ))}
+            </div>
+          ) : null}
+          {active === "Unpaid" ? (
+            <div>
+              {allUnpaidBooking.map((booking) => (
+                <AllBookingsCard
+                  key={booking._id}
+                  booking={booking}
+                  reload={() => setReloadBookings(!reloadBookings)}
+                />
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
       <Footer />

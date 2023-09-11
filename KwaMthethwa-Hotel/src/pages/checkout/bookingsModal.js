@@ -81,7 +81,8 @@ export default function BookingsModal({ visible, close, booking, reload }) {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            padding: "10px",
+            padding: "20px",
+            backgroundColor: "#d4af37",
           }}
         >
           <div>
@@ -103,18 +104,18 @@ export default function BookingsModal({ visible, close, booking, reload }) {
         </div>
 
         <div
-          id="bookingCard00"
           style={{
             backgroundImage: `url(${booking.imageurl})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
+            height: "40vh",
           }}
         ></div>
 
         <div
           style={{
-            padding: "10px",
+            padding: "20px",
           }}
         >
           <h3>Edit suite booking</h3>
@@ -125,7 +126,7 @@ export default function BookingsModal({ visible, close, booking, reload }) {
               flexWrap: "wrap",
             }}
           >
-            <label style={{ marginBottom: "10px" }}>
+            <label style={{ marginBottom: "10px", marginRight: "10px" }}>
               Arrival Date:
               <br />
               <input
@@ -135,7 +136,7 @@ export default function BookingsModal({ visible, close, booking, reload }) {
               />
             </label>
             <br />
-            <label style={{ marginBottom: "10px" }}>
+            <label style={{ marginBottom: "10px", marginRight: "10px" }}>
               Departure Date:
               <br />
               <input

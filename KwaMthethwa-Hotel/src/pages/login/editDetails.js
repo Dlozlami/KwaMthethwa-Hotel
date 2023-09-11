@@ -62,7 +62,7 @@ export default function EditDetails({ visible, close }) {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            padding: "10px",
+            padding: "20px",
             border: "none",
             borderBottom: "1px black solid",
             backgroundColor: "#d4af37",
