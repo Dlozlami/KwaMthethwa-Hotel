@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { refreshLogin } from "./features/login/loginSlice";
 import AllBookings from "./pages/allBookings";
+import UserBookings from "./pages/userBookings";
 
 export default function App() {
   const { isLoggedIn, isAdmin } = useSelector((store) => store.login);
@@ -57,6 +58,10 @@ export default function App() {
         <Route
           path="allbookings"
           element={isLoggedIn ? <AllBookings /> : <Login />}
+        />
+        <Route
+          path="userbookings/:id"
+          element={isLoggedIn ? <UserBookings /> : <Login />}
         />
         <Route path="*" element={<NoPage />} />
       </Route>

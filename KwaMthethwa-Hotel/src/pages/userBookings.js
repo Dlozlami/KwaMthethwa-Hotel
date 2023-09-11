@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../components/footer/footer";
-import { fetchAllBookings } from "../features/bookingsSlice";
+import { fetchBookingsByID } from "../features/bookingsSlice";
 import FilterBTN from "../components/filterBTN";
 import { useSelector, useDispatch } from "react-redux";
 import AllBookingsCard from "../components/allBookingsCard";
 
-export default function AllBookings() {
+export default function UserBookings() {
   const [active, setActive] = useState(null);
   const [reloadBookings, setReloadBookings] = useState(true);
-  const { allBookings, allUnpaidBooking, allPaidBooking } = useSelector(
+  const { bookingsCart, userUnpaidBooking, userPaidBooking } = useSelector(
     (store) => store.bookings
   );
   const dispatch = useDispatch();
-
+  const searchParams = new URLSearchParams(window.location.search);
+  const ref = searchParams.get("reference");
   useEffect(() => {
     //console.log("Rendering total: ");
-    dispatch(fetchAllBookings());
+    dispatch(fetchBookingsByID(ref));
     // eslint-disable-next-line
   }, []);
 
@@ -39,7 +40,7 @@ export default function AllBookings() {
                 fontWeight: "500",
               }}
             >
-              Client Bookings
+              Transaction History
             </h1>
             <p>
               Use the controls below to view all bookings, unpaid bookings or
@@ -60,7 +61,7 @@ export default function AllBookings() {
           <br />
           {active === "All" ? (
             <div>
-              {allBookings.map((booking) => (
+              {bookingsCart.map((booking) => (
                 <AllBookingsCard
                   key={booking._id}
                   booking={booking}
@@ -71,7 +72,7 @@ export default function AllBookings() {
           ) : null}
           {active === "Paid" ? (
             <div>
-              {allPaidBooking.map((booking) => (
+              {userPaidBooking.map((booking) => (
                 <AllBookingsCard
                   key={booking._id}
                   booking={booking}
@@ -82,7 +83,7 @@ export default function AllBookings() {
           ) : null}
           {active === "Unpaid" ? (
             <div>
-              {allUnpaidBooking.map((booking) => (
+              {userUnpaidBooking.map((booking) => (
                 <AllBookingsCard
                   key={booking._id}
                   booking={booking}

@@ -100,15 +100,21 @@ export default function AllBookingsCard({ booking, reload }) {
               {((booking.totalAmount * currency) / 100).toFixed(2)}
             </h4>
           </div>
-          <div id="editBookings">
-            <LuEdit
-              size={20}
-              style={{ marginRight: "3vw" }}
-              className="w3-ripple"
-              onClick={openModal}
-            />
-            <LuTrash2 size={20} className="w3-ripple" onClick={deleteBooking} />
-          </div>
+          {booking.paid ? null : (
+            <div id="editBookings">
+              <LuEdit
+                size={20}
+                style={{ marginRight: "3vw" }}
+                className="w3-ripple"
+                onClick={openModal}
+              />
+              <LuTrash2
+                size={20}
+                className="w3-ripple"
+                onClick={deleteBooking}
+              />
+            </div>
+          )}
         </div>
       </div>
       <BookingsModal

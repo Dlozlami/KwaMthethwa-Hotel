@@ -50,7 +50,7 @@ export default function EditDetails({ visible, close }) {
         style={{
           backgroundColor: "white",
           borderRadius: "10px",
-          width: "90vw",
+          maxWidth: "880px",
           position: "absolute",
           top: "50%",
           left: "50%",
@@ -150,6 +150,7 @@ export default function EditDetails({ visible, close }) {
               />
             </label>
           </div>
+          <br />
           <button
             className="w3-ripple"
             style={{

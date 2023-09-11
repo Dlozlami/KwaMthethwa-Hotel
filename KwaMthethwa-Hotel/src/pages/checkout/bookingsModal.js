@@ -11,8 +11,8 @@ export default function BookingsModal({ visible, close, booking, reload }) {
   );
   const { userData } = useSelector((store) => store.login);
   const dispatch = useDispatch();
-  const [arrivalDate, setArrivalDate] = useState("");
-  const [departureDate, setDepartureDate] = useState("");
+  const [arrivalDate, setArrivalDate] = useState(booking.startDate);
+  const [departureDate, setDepartureDate] = useState(booking.endDate);
   const [numGuests, setNumGuests] = useState(1);
   //console.log("bookingsModal line 17 booking: ", booking);
   const handleRoomBooking = () => {
@@ -69,7 +69,7 @@ export default function BookingsModal({ visible, close, booking, reload }) {
         style={{
           backgroundColor: "white",
           borderRadius: "10px",
-          width: "90vw",
+          maxWidth: "880px",
           position: "absolute",
           top: "50%",
           left: "50%",
@@ -160,6 +160,7 @@ export default function BookingsModal({ visible, close, booking, reload }) {
               </select>
             </label>
           </div>
+          <br />
           <button
             className="w3-ripple"
             style={{

@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import Footer from "../../components/footer/footer";
 import { clearBookings } from "../../features/bookingsSlice";
 import EditDetails from "./editDetails";
+import { useNavigate } from "react-router-dom";
 
 export default function ClientPortal() {
   const { userData } = useSelector((store) => store.login);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -17,7 +19,10 @@ export default function ClientPortal() {
   const closeModal = () => {
     setModalVisible(false);
   };
-
+  const params = {
+    param1: "value1",
+    param2: "value2",
+  };
   return (
     <>
       <div id="mainView">
@@ -34,7 +39,18 @@ export default function ClientPortal() {
           </div>
           <br />
           <div style={{ borderBottom: "1px black solid", cursor: "pointer" }}>
-            <p onClick={openModal}>Update your details &gt;</p>
+            <p onClick={openModal} style={{ fontWeight: 700 }}>
+              Update your details &gt;
+            </p>
+            <br />
+            <p
+              onClick={() =>
+                navigate("/userbookings/rooms/", { queryParams: params })
+              }
+              style={{ fontWeight: 700 }}
+            >
+              Transaction History &gt;
+            </p>
             <br />
           </div>
           <br />

@@ -8,7 +8,6 @@ const initialState = {
   currencySymbol: "R",
   userPaidBooking: [],
   userUnpaidBooking: [],
-  userBookings: [],
   allPaidBooking: [],
   allUnpaidBooking: [],
   allBookings: [],
