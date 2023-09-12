@@ -19,10 +19,7 @@ export default function ClientPortal() {
   const closeModal = () => {
     setModalVisible(false);
   };
-  const params = {
-    param1: "value1",
-    param2: "value2",
-  };
+
   return (
     <>
       <div id="mainView">
@@ -44,9 +41,7 @@ export default function ClientPortal() {
             </p>
             <br />
             <p
-              onClick={() =>
-                navigate("/userbookings/rooms/", { queryParams: params })
-              }
+              onClick={() => navigate(`/userbookings/${userData.id}`)}
               style={{ fontWeight: 700 }}
             >
               Transaction History &gt;

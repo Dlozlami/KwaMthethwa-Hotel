@@ -4,6 +4,7 @@ import { fetchBookingsByID } from "../features/bookingsSlice";
 import FilterBTN from "../components/filterBTN";
 import { useSelector, useDispatch } from "react-redux";
 import AllBookingsCard from "../components/allBookingsCard";
+import { useParams } from "react-router-dom";
 
 export default function UserBookings() {
   const [active, setActive] = useState(null);
@@ -11,9 +12,11 @@ export default function UserBookings() {
   const { bookingsCart, userUnpaidBooking, userPaidBooking } = useSelector(
     (store) => store.bookings
   );
+  const ref = useParams().id;
   const dispatch = useDispatch();
-  const searchParams = new URLSearchParams(window.location.search);
-  const ref = searchParams.get("reference");
+
+  console.log("Rendering params: ", ref);
+
   useEffect(() => {
     //console.log("Rendering total: ");
     dispatch(fetchBookingsByID(ref));
