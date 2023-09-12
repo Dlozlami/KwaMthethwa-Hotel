@@ -36,8 +36,7 @@ router.get("/bookings/:id", async (req, res) => {
 router.get("/bookings/user/:id", async (req, res) => {
   try {
     const userBookings = await Booking.find({
-      user_id: req.params.id,
-      paid: false,
+      user_id: req.params.id
     });
     res.json(userBookings);
   } catch (error) {

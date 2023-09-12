@@ -21,6 +21,7 @@ export default function EditDetails({ visible, close }) {
       birthday: birthday,
       phone: phone,
     };
+
     dispatch(updateUser([userData.id, newData]));
     setName("");
     setSurname("");

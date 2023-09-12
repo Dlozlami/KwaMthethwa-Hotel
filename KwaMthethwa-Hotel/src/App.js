@@ -59,10 +59,12 @@ export default function App() {
           path="allbookings"
           element={isLoggedIn ? <AllBookings /> : <Login />}
         />
+
         <Route
           path="userbookings/:id"
           element={isLoggedIn ? <UserBookings /> : <Login />}
         />
+
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>

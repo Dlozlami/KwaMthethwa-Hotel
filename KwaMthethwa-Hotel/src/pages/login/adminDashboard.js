@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import Footer from "../../components/footer/footer";
 import { clearBookings } from "../../features/bookingsSlice";
 import EditDetails from "./editDetails";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminDashboard() {
   const { userData } = useSelector((store) => store.login);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -33,8 +35,28 @@ export default function AdminDashboard() {
             <br />
           </div>
           <br />
-          <div style={{ borderBottom: "1px black solid", cursor: "pointer" }}>
+          <div
+            style={{
+              borderBottom: "1px black solid",
+              cursor: "pointer",
+              fontWeight: 700,
+            }}
+          >
             <p onClick={openModal}>Update your details &gt;</p>
+            <br />
+            <p
+              onClick={() => navigate(`/allbookings`)}
+              style={{ fontWeight: 700 }}
+            >
+              All Booking History &gt;
+            </p>
+            <br />
+            <p
+              onClick={() => navigate(`/allbookings`)}
+              style={{ fontWeight: 700 }}
+            >
+              All user details &gt;
+            </p>
             <br />
           </div>
           <br />

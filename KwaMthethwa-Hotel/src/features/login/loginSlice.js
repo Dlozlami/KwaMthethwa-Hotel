@@ -7,7 +7,6 @@ const initialState = {
   validPwd: 0,
   validUsername: 0,
   isLoggedIn: false,
-  isAdmin: false,
 };
 
 export const setLogin = createAsyncThunk(
