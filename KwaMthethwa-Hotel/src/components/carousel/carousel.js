@@ -3,7 +3,7 @@ import { BsCircleFill } from "react-icons/bs";
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 import "./carousel.css"; // You can define your CSS styles in this file
 
-export default function Carousel({ listOfImgURL }) {
+export default function Carousel({ listOfImgURL, title, subtitle }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -24,8 +24,8 @@ export default function Carousel({ listOfImgURL }) {
       }}
     >
       <div className="mainSign">
-        <h1>KwaMthethwa Hotel</h1>
-        <p>A Cultural Haven Awaits</p>
+        <h1>{title}</h1>
+        <p>{subtitle}</p>
       </div>
       <div className="carousel">
         <div className="carousel-overlay">

@@ -14,51 +14,54 @@ export default function home() {
           height: "100%",
         }}
       >
-        <Carousel listOfImgURL={carouselImages} />
+        <Carousel
+          listOfImgURL={carouselImages}
+          title={"KwaMthethwa Hotel"}
+          subtitle={"A Cultural Haven Awaits"}
+        />
       </div>
-      <div id="storySection ">
-        <div id="">
+      <div id="storySection">
+        <div className="w3-card-2" id="storyBox">
+          <div id="story00"></div>
           <div
-            style={{
-              backgroundImage: `url('./')`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              height: "40vh",
-            }}
-          ></div>
-          <div>
-            In the heart of bustling Johannesburg, amidst the vibrant tapestry
-            of the city, two sisters, Thandi and Nomusa, embarked on a
-            remarkable journey that would forever honor their Zulu heritage and
-            the enduring spirit of their family. Following the unexpected loss
-            of their beloved matriarch, a beacon of wisdom and love, Thandi and
-            Nomusa found solace in a neglected, timeworn building. With fond
-            memories of their grandmother's tales and the echoes of her
-            laughter, they envisioned transforming the building into a haven of
-            warmth and creativity – a sanctuary where the essence of family and
-            the pulse of Zulu culture would intertwine. Armed with determination
-            and a shared vision, the sisters poured their hearts into restoring
-            the old building. Every stroke of paint, every piece of furniture
-            lovingly chosen, carried with it the spirit of their ancestors. The
-            result was KwaMthethwa Hotel – a testament to their heritage and an
-            embodiment of their grandmother's teachings about love, unity, and
-            creativity. The hotel's halls adorned with Zulu art and crafts
-            echoed the stories of generations. The scent of traditional meals
-            wafting from the kitchen evoked memories of family gatherings around
-            the fire. Each room, uniquely designed with a blend of modern
-            comfort and traditional aesthetics, was a canvas for the sisters'
-            artistic expression. As KwaMthethwa Hotel flourished, its reputation
-            as a cultural haven spread far and wide. Guests were welcomed not
-            just as visitors, but as part of an extended family, embraced by the
-            sisters' genuine hospitality and the legacy of their matriarch's
-            love. Thandi and Nomusa had turned their grief into a celebration of
-            life, building a living tribute to their grandmother's legacy.
-            Through KwaMthethwa Hotel, they not only realized their dream but
-            also provided a nurturing space where families could create lasting
-            memories, and where the timeless essence of Zulu culture would
-            continue to thrive, embraced by the bonds of family and the power of
-            creativity.
+            id="story01"
+            className="w3-card-2 w3-padding-24 w3-round-large"
+            style={{ backgroundColor: "white", padding: 20, minWidth: "50%" }}
+          >
+            <h1>Our Story</h1>
+            <p>
+              In the heart of bustling Johannesburg, amidst the vibrant tapestry
+              of the city, two sisters, Thandi and Nomusa, embarked on a
+              remarkable journey that would forever honor their Zulu heritage
+              and the enduring spirit of their family. Following the unexpected
+              loss of their beloved matriarch, a beacon of wisdom and love,
+              Thandi and Nomusa found solace in a neglected, timeworn building.
+              With fond memories of their grandmother's tales and the echoes of
+              her laughter, they envisioned transforming the building into a
+              haven of warmth and creativity – a sanctuary where the essence of
+              family and the pulse of Zulu culture would intertwine. Armed with
+              determination and a shared vision, the sisters poured their hearts
+              into restoring the old building. Every stroke of paint, every
+              piece of furniture lovingly chosen, carried with it the spirit of
+              their ancestors. The result was KwaMthethwa Hotel – a testament to
+              their heritage and an embodiment of their grandmother's teachings
+              about love, unity, and creativity. The hotel's halls adorned with
+              Zulu art and crafts echoed the stories of generations. The scent
+              of traditional meals wafting from the kitchen evoked memories of
+              family gatherings around the fire. Each room, uniquely designed
+              with a blend of modern comfort and traditional aesthetics, was a
+              canvas for the sisters' artistic expression. As KwaMthethwa Hotel
+              flourished, its reputation as a cultural haven spread far and
+              wide. Guests were welcomed not just as visitors, but as part of an
+              extended family, embraced by the sisters' genuine hospitality and
+              the legacy of their matriarch's love. Thandi and Nomusa had turned
+              their grief into a celebration of life, building a living tribute
+              to their grandmother's legacy. Through KwaMthethwa Hotel, they not
+              only realized their dream but also provided a nurturing space
+              where families could create lasting memories, and where the
+              timeless essence of Zulu culture would continue to thrive,
+              embraced by the bonds of family and the power of creativity.
+            </p>
           </div>
         </div>
       </div>

@@ -1,0 +1,41 @@
+h1 {
+    font-family: logoFont;
+  }
+  
+
+#storySection{
+    background-image: url("../../../public/assets/images/polka-dot.jpg");
+    background-repeat: repeat;
+    padding: 20px;
+
+
+
+  }
+
+#story00{
+    background-image: url("./pexels-iván-rivero-1001965.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    min-width: 50%;
+  }
+
+@media (min-width: 800px) {
+    #storyBox{
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+      }
+      #story00{
+        
+        width: 100;
+      }
+  }
+
+  @media (max-width: 799px) {
+
+      #story00{
+        height: 40vh;
+      }
+  }

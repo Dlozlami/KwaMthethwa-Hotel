@@ -10,6 +10,10 @@ html,
   height: 100%;
 }
 
+h2{
+  color: whitesmoke;
+  font-weight: 700;
+}
 #mainView {
   overflow: auto;
   background-image: url("../public/assets/images/polka-dot.jpg");

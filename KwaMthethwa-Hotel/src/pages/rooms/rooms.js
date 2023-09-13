@@ -10,8 +10,7 @@ export default function Rooms() {
         <section
           className="w3-card"
           style={{
-            backgroundImage:
-              "url('./assets/images/pexels-cottonbro-studio-6466230.jpg')",
+            backgroundImage: "url('./assets/images/pexels-pixabay-164595.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -36,10 +35,10 @@ export default function Rooms() {
             flexDirection: "column",
             padding: "10px",
             width: "100%",
-            backgroundColor: "white",
+            backgroundColor: "#e3d7ff",
           }}
         >
-          <h4>Choose your accommodation</h4>
+          <h2>Choose your accommodation</h2>
         </div>
         {roomsData.map((room) => (
           <RoomCard key={room.id} room={room} />
