@@ -7,6 +7,10 @@ const initialState = {
   validPwd: 0,
   validUsername: 0,
   isLoggedIn: false,
+  isAdmin: false,
+  allUsers: [],
+  clientUsers: [],
+  adminUsers: [],
 };
 
 export const setLogin = createAsyncThunk(
@@ -30,7 +34,7 @@ export const setLogin = createAsyncThunk(
       thunkAPI.dispatch(setUserData(decodedToken)); // Set the user data in the state
       thunkAPI.dispatch(setIsLoggedIn(true));
 
-      if (decodedToken.email.split("0")[0].toLowerCase() === "adminkmh") {
+      if (decodedToken.admin) {
         thunkAPI.dispatch(setIsAdmin(true));
         console.log("Logged in as Admin! ");
       }
@@ -47,9 +51,11 @@ export const setLogin = createAsyncThunk(
 export const updateUser = createAsyncThunk(
   "login/updateUser",
   async (newData, thunkAPI) => {
-    const url = `http://localhost:8080/users/${newData[0]}`;
     try {
-      const response = await axios.patch(url, newData[1]);
+      const response = await axios.patch(
+        `http://localhost:8080/users/${newData[0]}`,
+        newData[1]
+      );
       alert("User details updated successfully!");
       return response.data;
     } catch (error) {
@@ -65,6 +71,33 @@ export const getUser = createAsyncThunk(
     const url = `http://localhost:8080/users/${id}`;
     try {
       const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+);
+
+export const deleteUser = createAsyncThunk(
+  "login/deleteUser",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.delete(`http://localhost:8080/users/${id}`);
+      alert("User deleted successfully!");
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+);
+
+export const getAllUsers = createAsyncThunk(
+  "login/getAllUsers",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/users/`);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -112,6 +145,14 @@ const loginSlice = createSlice({
         state.isLoggedIn = true;
       }
     },
+  },
+
+  extraReducers: (builder) => {
+    builder.addCase(getAllUsers.fulfilled, (state, action) => {
+      state.allUsers = action.payload;
+      state.clientUsers = action.payload.filter((user) => user.admin === false);
+      state.adminUsers = action.payload.filter((user) => user.admin === true);
+    });
   },
 });
 

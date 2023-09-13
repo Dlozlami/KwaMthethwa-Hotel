@@ -20,7 +20,7 @@ router.get("/users/", function (req, res) {
 });
 
 router.post("/users/login", function (req, res) {
-  const accountEmail = req.body.email;
+  const accountEmail = req.body.email.toLowerCase();
   const accountPwd = req.body.password;
 
   // Validate username and password
@@ -77,12 +77,13 @@ router.post("/users", async function (req, res) {
 
   try {
     const newUser = await User.create({
-      name: newAccount.name,
+      name: newAccount.name.toLowerCase(),
       surname: newAccount.surname,
       email: newAccount.email,
       password: newAccount.password,
       birthday: newAccount.birthday,
       phone: newAccount.phone,
+      admin: false,
     });
     res.json({ status: "Goodly" });
   } catch (err) {

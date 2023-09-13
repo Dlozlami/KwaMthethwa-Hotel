@@ -52,7 +52,7 @@ export default function AdminDashboard() {
             </p>
             <br />
             <p
-              onClick={() => navigate(`/allbookings`)}
+              onClick={() => navigate(`/manageusers`)}
               style={{ fontWeight: 700 }}
             >
               All user details &gt;

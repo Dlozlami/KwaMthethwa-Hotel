@@ -38,7 +38,7 @@ export default function Rooms() {
             backgroundColor: "#e3d7ff",
           }}
         >
-          <h2>Choose your accommodation</h2>
+          <h2 style={{ color: "whitesmoke" }}>Choose your accommodation</h2>
         </div>
         {roomsData.map((room) => (
           <RoomCard key={room.id} room={room} />

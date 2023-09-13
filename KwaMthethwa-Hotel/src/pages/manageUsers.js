@@ -1,27 +1,24 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../components/footer/footer";
-import { fetchBookingsByID } from "../features/bookingsSlice";
+import { getAllUsers } from "../features/login/loginSlice";
 import FilterBTN from "../components/filterBTN";
 import { useSelector, useDispatch } from "react-redux";
-import AllBookingsCard from "../components/allBookingsCard";
-import { useParams } from "react-router-dom";
+import AllUsersCard from "../components/allUsersCard";
 
-export default function UserBookings() {
+export default function ManageUsers() {
   const [active, setActive] = useState(null);
   const [reloadBookings, setReloadBookings] = useState(true);
-  const { bookingsCart, userUnpaidBooking, userPaidBooking } = useSelector(
-    (store) => store.bookings
+  const { allUsers, clientUsers, adminUsers } = useSelector(
+    (store) => store.login
   );
-  const ref = useParams().id;
-  const dispatch = useDispatch();
 
-  console.log("Rendering params: ", ref);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     //console.log("Rendering total: ");
-    dispatch(fetchBookingsByID(ref));
+    dispatch(getAllUsers());
     // eslint-disable-next-line
-  }, []);
+  }, [reloadBookings]);
 
   return (
     <>
@@ -43,70 +40,76 @@ export default function UserBookings() {
                 fontWeight: "500",
               }}
             >
-              Transaction History
+              Manage Users
             </h1>
             <p>
-              Use the controls below to view all bookings, unpaid bookings or
-              paid bookings
+              Use the controls below to view client and add admin privileges.
             </p>
             <br />
             <div>
               <FilterBTN active={active} setActive={setActive} name={"All"} />
-              <FilterBTN active={active} setActive={setActive} name={"Paid"} />
               <FilterBTN
                 active={active}
                 setActive={setActive}
-                name={"Unpaid"}
+                name={"Clients"}
               />
+              <FilterBTN active={active} setActive={setActive} name={"Admin"} />
             </div>
             <br />
           </div>
           <br />
           {active === "All" ? (
-            <div>
-              {bookingsCart.length === 0 ? (
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+              }}
+            >
+              {allUsers.length === 0 ? (
                 <div style={{ padding: 20 }}>
-                  <p>No bookings to display.</p>
+                  <p>No people to display.</p>
                 </div>
               ) : (
-                bookingsCart.map((booking) => (
-                  <AllBookingsCard
-                    key={booking._id}
-                    booking={booking}
+                allUsers.map((user) => (
+                  <AllUsersCard
+                    key={user._id}
+                    user={user}
                     reload={() => setReloadBookings(!reloadBookings)}
                   />
                 ))
               )}
             </div>
           ) : null}
-          {active === "Paid" ? (
-            <div>
-              {userPaidBooking.length === 0 ? (
+
+          {active === "Clients" ? (
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+              {clientUsers.length === 0 ? (
                 <div style={{ padding: 20 }}>
-                  <p>No paid bookings to display.</p>
+                  <p>No clients to display.</p>
                 </div>
               ) : (
-                userPaidBooking.map((booking) => (
-                  <AllBookingsCard
-                    key={booking._id}
-                    booking={booking}
+                clientUsers.map((user) => (
+                  <AllUsersCard
+                    key={user._id}
+                    user={user}
                     reload={() => setReloadBookings(!reloadBookings)}
                   />
                 ))
               )}
             </div>
           ) : null}
-          {active === "Unpaid" ? (
-            <div>
-              {userUnpaidBooking.length === 0 ? (
+
+          {active === "Admin" ? (
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+              {adminUsers.length === 0 ? (
                 <div style={{ padding: 20 }}>
-                  <p>No unpaid bookings to display.</p>
+                  <p>No admins to display.</p>
                 </div>
               ) : (
-                userUnpaidBooking.map((booking) => (
-                  <AllBookingsCard
-                    key={booking._id}
-                    booking={booking}
+                adminUsers.map((user) => (
+                  <AllUsersCard
+                    key={user._id}
+                    user={user}
                     reload={() => setReloadBookings(!reloadBookings)}
                   />
                 ))

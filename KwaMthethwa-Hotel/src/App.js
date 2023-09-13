@@ -17,6 +17,7 @@ import { useEffect } from "react";
 import { refreshLogin } from "./features/login/loginSlice";
 import AllBookings from "./pages/allBookings";
 import UserBookings from "./pages/userBookings";
+import ManageUsers from "./pages/manageUsers";
 
 export default function App() {
   const { isLoggedIn, isAdmin } = useSelector((store) => store.login);
@@ -63,6 +64,15 @@ export default function App() {
         <Route
           path="userbookings/:id"
           element={isLoggedIn ? <UserBookings /> : <Login />}
+        />
+        <Route
+          path="manageusers"
+          element={isLoggedIn ? <ManageUsers /> : <Login />}
+        />
+
+        <Route
+          path="test"
+          element={isLoggedIn ? <AdminDashboard /> : <Login />}
         />
 
         <Route path="*" element={<NoPage />} />
