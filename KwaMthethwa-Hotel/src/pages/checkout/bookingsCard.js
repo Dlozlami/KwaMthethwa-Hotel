@@ -1,6 +1,12 @@
 import React, { useState } from "react";
-import { format } from "date-fns";
-import { LuCalendarDays, LuUser, LuEdit, LuTrash2 } from "react-icons/lu";
+import { format, differenceInDays } from "date-fns";
+import {
+  LuCalendarDays,
+  LuUser,
+  LuEdit,
+  LuTrash2,
+  LuMoonStar,
+} from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 import BookingsModal from "./bookingsModal";
 import {
@@ -8,12 +14,17 @@ import {
   fetchBookingsByID,
   calculateSubtotalAndTotal,
 } from "../../features/bookingsSlice";
+const { formatNumberWithSpaces } = require("../../components/utils");
 
 export default function BookingCard({ booking, reload }) {
   const { userData } = useSelector((store) => store.login);
   const { currencySymbol, currency } = useSelector((store) => store.bookings);
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
+  const nights = differenceInDays(
+    new Date(booking.endDate),
+    new Date(booking.startDate)
+  );
 
   const openModal = () => {
     setModalVisible(true);
@@ -72,7 +83,7 @@ export default function BookingCard({ booking, reload }) {
               {formatUnixTimestamp(booking.endDate)} | 11:00
             </p>
           </div>
-
+          <br />
           <p style={{ borderTop: "1px gray solid", color: "gray" }}>
             {booking.description}
           </p>
@@ -91,9 +102,13 @@ export default function BookingCard({ booking, reload }) {
               <LuUser size={20} style={{ marginRight: "2vw" }} />
               <p>Guests: {booking.num_guest}</p>
             </div>
+            <div style={{ display: "flex", alignItems: "flex-start" }}>
+              <LuMoonStar size={20} style={{ marginRight: "2vw" }} />
+              <p>Nights: {nights}</p>
+            </div>
             <h4>
               {currencySymbol}{" "}
-              {((booking.totalAmount * currency) / 100).toFixed(2)}
+              {formatNumberWithSpaces((booking.totalAmount * currency) / 100)}
             </h4>
           </div>
           <div

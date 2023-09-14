@@ -94,8 +94,8 @@ export const addReceipt = createAsyncThunk(
         `http://localhost:8080/receipts/`,
         receipt
       );
-      alert("Receipt added successfully!");
-      console.log("Receipt added successfully!");
+      alert("Receipt created successfully!");
+      //console.log("Receipt added successfully!");
       return response.data;
     } catch (error) {
       console.error(error);
@@ -105,14 +105,14 @@ export const addReceipt = createAsyncThunk(
 );
 
 export const updateReceipt = createAsyncThunk(
-  "receipt/addReceipt",
+  "receipt/updateReceipt",
   async (receipt, thunkAPI) => {
     try {
       const response = await axios.patch(
         `http://localhost:8080/receipts/${receipt[0]}`,
         receipt[1]
       );
-      alert("Receipt added successfully!");
+      alert("Receipt payment successful!");
       return response.data;
     } catch (error) {
       console.error(error);

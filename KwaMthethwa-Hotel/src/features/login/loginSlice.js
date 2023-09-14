@@ -33,7 +33,7 @@ export const setLogin = createAsyncThunk(
       thunkAPI.dispatch(setValidPwd(1));
       thunkAPI.dispatch(setUserData(decodedToken)); // Set the user data in the state
       thunkAPI.dispatch(setIsLoggedIn(true));
-
+      console.log("LoginSlice line 36 decodedToken: ", decodedToken);
       if (decodedToken.admin) {
         thunkAPI.dispatch(setIsAdmin(true));
         console.log("Logged in as Admin! ");
@@ -142,6 +142,10 @@ const loginSlice = createSlice({
         // If token is present, dispatch setUserData action with the decoded token
         const decodedToken = jwt_decode(token);
         state.userData = decodedToken;
+        //console.log("decodedToken: ", decodedToken);
+        if (decodedToken.admin) {
+          state.isAdmin = true;
+        }
         state.isLoggedIn = true;
       }
     },

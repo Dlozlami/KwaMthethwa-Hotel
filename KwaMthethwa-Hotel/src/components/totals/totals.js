@@ -9,6 +9,7 @@ import {
 } from "../../features/bookingsSlice";
 import Preloader from "../preloader/preloader";
 import { addReceipt } from "../../features/receiptSlice";
+const { formatNumberWithSpaces } = require("../../components/utils");
 
 export default function Totals() {
   const [loader, setLoader] = useState(false);
@@ -68,12 +69,14 @@ export default function Totals() {
         <div style={{ borderBottom: "1px white solid", paddingBottom: "10px" }}>
           <div className="flexRowApart">
             <span className="subtotal">Subtotal</span>
-            <span className="subtotal">{(subtotal / 100).toFixed(2)}</span>
+            <span className="subtotal">
+              {formatNumberWithSpaces(subtotal / 100)}
+            </span>
           </div>
           <div className="flexRowApart">
             <span className="subtotal">VAT @ 15%</span>
             <span className="subtotal">
-              {(Math.floor(subtotal * VAT) / 100).toFixed(2)}
+              {formatNumberWithSpaces(Math.floor(subtotal * VAT) / 100)}
             </span>
           </div>
         </div>
@@ -82,7 +85,7 @@ export default function Totals() {
           <div className="flexRowApart">
             <span className="total">TOTAL</span>
             <span className="total">
-              {currencySymbol} {(total / 100).toFixed(2)}
+              {currencySymbol} {formatNumberWithSpaces(total / 100)}
             </span>
           </div>
           <div className="payBTN w3-ripple" onClick={handlePayNow}>

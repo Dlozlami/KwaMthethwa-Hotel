@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../components/footer/footer";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -6,48 +6,56 @@ import {
   calculateSubtotalAndTotal,
   updateBooking,
 } from "../../features/bookingsSlice";
+import { LuUser } from "react-icons/lu";
 // eslint-disable-next-line
 import { updateReceipt, getReceiptByRef } from "../../features/receiptSlice";
+import Preloader from "../../components/preloader/preloader";
+const { formatNumberWithSpaces } = require("../../components/utils");
 
 export default function Successful() {
   const { userData } = useSelector((store) => store.login);
   const { bookingsCart } = useSelector((store) => store.bookings);
   const { receiptByRef } = useSelector((store) => store.receipt);
+  const [loader, setLoader] = useState(true);
+
   const today = new Date();
   const searchParams = new URLSearchParams(window.location.search);
   const ref = searchParams.get("reference");
-  console.log("paymentSuccessfull line 19 render:");
+  console.log("paymentSuccessfull line 24 render:");
   const dispatch = useDispatch();
+
   const confirmPaid = async () => {
+    const receipt = await dispatch(getReceiptByRef(ref));
+    dispatch(fetchBookingsByID(userData.id));
+    dispatch(calculateSubtotalAndTotal());
     for (const booking of bookingsCart) {
       dispatch(updateBooking([{ paid: true }, booking._id]));
-      console.log("paymentSuccessfull line 15 booking._id:", booking._id);
+      //console.log("paymentSuccessfull line 15 booking._id:", booking._id);
     }
-
-    dispatch(
-      updateReceipt([receiptByRef._id, { payment_date: today.getTime() }])
+    console.log(
+      "paymentSuccessfull line 35 receipt id:",
+      receipt.payload[0]._id
     );
+    dispatch(
+      updateReceipt([receipt.payload[0]._id, { payment_date: today.getTime() }])
+    );
+    setLoader(false);
   };
 
   useEffect(() => {
-    console.log("helllo:");
-    dispatch(getReceiptByRef(ref));
-    dispatch(fetchBookingsByID(userData.id));
-    dispatch(calculateSubtotalAndTotal());
     confirmPaid();
-    console.log("helllo:");
-    // eslint-disable-next-line
+    console.log("paymentSuccessfull line 40  UseEffect:");
+    return () => {};
   }, []);
 
   return (
     <>
       <div id="mainView">
-        {receiptByRef ? (
-          <div className=" w3-card-4 w3-round-large w3-white">
-            {console.log(
-              "paymentSuccessfull line 43 receiptByRef:",
-              receiptByRef
-            )}
+        {receiptByRef.hasOwnProperty("receiptItems") ? (
+          <div
+            className=" w3-card-4 w3-round-large w3-white"
+            style={{ width: "90%" }}
+          >
             <div
               style={{
                 border: "none",
@@ -61,7 +69,7 @@ export default function Successful() {
                   fontWeight: "500",
                 }}
               >
-                Receipt #{ref}
+                Receipt #<span style={{ fontFamily: "monospace" }}>{ref}</span>
               </h1>
               <p>
                 Payment sucessful
@@ -81,11 +89,29 @@ export default function Successful() {
               <br />
             </div>
             <div style={{ borderBottom: "1px black solid", padding: "20px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  borderBottom: "1px #006c67 solid",
+                  fontWeight: 700,
+                  color: "#006c67",
+                }}
+              >
+                <p style={{ width: "55%" }}>Item</p>
+                <p style={{ width: "15%" }}>
+                  <LuUser size={20} />
+                </p>
+                <p style={{ width: "30%" }}>Rate</p>
+              </div>
+              <br />
+
               {receiptByRef.receiptItems.map((item) => (
-                <div style={{ display: "flex" }}>
-                  <p style={{ width: "70%" }}>{item.title}</p>
-                  <p style={{ width: "10%" }}>{item.num_guest}</p>
-                  <p style={{ width: "10%" }}>{item.rateInCents}</p>
+                <div style={{ display: "flex" }} key={item._id}>
+                  <p style={{ width: "55%" }}>{item.title}</p>
+                  <p style={{ width: "15%" }}>{item.num_guest}</p>
+                  <p style={{ width: "30%" }}>
+                    {formatNumberWithSpaces(item.rateInCents / 100)}
+                  </p>
                 </div>
               ))}
               <br />
@@ -93,11 +119,11 @@ export default function Successful() {
             <div style={{ padding: "20px" }}>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span>Subtotal</span>
-                <span>{receiptByRef.subtotal}</span>
+                <span>{formatNumberWithSpaces(receiptByRef.subtotal)}</span>
               </div>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span>VAT @ 15.0%</span>
-                <span>{receiptByRef.vat}</span>
+                <span>{formatNumberWithSpaces(receiptByRef.vat)}</span>
               </div>
               <div
                 style={{
@@ -109,7 +135,8 @@ export default function Successful() {
               >
                 <span>Total</span>
                 <span>
-                  {receiptByRef.currencySymbol} {receiptByRef.total}
+                  {receiptByRef.currencySymbol}{" "}
+                  {formatNumberWithSpaces(receiptByRef.total)}
                 </span>
               </div>
 
@@ -132,7 +159,7 @@ export default function Successful() {
           </div>
         ) : null}
       </div>
-
+      <Preloader visible={loader} />
       <Footer />
     </>
   );
