@@ -52,7 +52,7 @@ const Footer = () => {
 
       {/* Child 2 */}
       <div
-        id="footerLinks"
+        id="info"
         style={{
           padding: "20px",
           backgroundColor: "#dddddd",
@@ -69,7 +69,7 @@ const Footer = () => {
           </p>
         </div>
         <div
-          id="num2"
+          id="footerLinks"
           style={{
             marginRight: 5,
             width: "17%",

@@ -26,7 +26,7 @@ footer{
 }
 
 @media (min-width: 770px) {
-    #footerLinks {
+    #info {
       justify-content: space-between;
     }
     

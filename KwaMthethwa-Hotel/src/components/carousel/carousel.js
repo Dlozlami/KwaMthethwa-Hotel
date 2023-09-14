@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BsCircleFill } from "react-icons/bs";
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 import "./carousel.css"; // You can define your CSS styles in this file
@@ -16,6 +16,15 @@ export default function Carousel({ listOfImgURL, title, subtitle }) {
     );
   };
 
+  useEffect(() => {
+    // Automatically advance the carousel every 5 seconds (adjust as needed)
+    const interval = setInterval(handleNext, 5000);
+
+    // Cleanup the interval on unmount to avoid memory leaks
+    return () => clearInterval(interval);
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div
       className="carousel-container"
@@ -24,7 +33,7 @@ export default function Carousel({ listOfImgURL, title, subtitle }) {
       }}
     >
       <div className="mainSign">
-        <h1>{title}</h1>
+        <h1 style={{ fontSize: "5em" }}>{title}</h1>
         <p>{subtitle}</p>
       </div>
       <div className="carousel">

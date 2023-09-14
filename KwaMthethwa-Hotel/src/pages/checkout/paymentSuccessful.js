@@ -7,7 +7,6 @@ import {
   updateBooking,
 } from "../../features/bookingsSlice";
 import { LuUser } from "react-icons/lu";
-// eslint-disable-next-line
 import { updateReceipt, getReceiptByRef } from "../../features/receiptSlice";
 import Preloader from "../../components/preloader/preloader";
 const { formatNumberWithSpaces } = require("../../components/utils");
@@ -46,7 +45,7 @@ export default function Successful() {
     confirmPaid();
     console.log("paymentSuccessfull line 40  UseEffect:");
     return () => {};
-  }, []);
+  });
 
   return (
     <>
