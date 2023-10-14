@@ -9,6 +9,7 @@ export default function RoomCard({ room }) {
   const { currency, currencySymbol, discount_rate } = useSelector(
     (store) => store.bookings
   );
+  const { isAdmin } = useSelector((store) => store.login);
   const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => {
