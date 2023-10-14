@@ -110,6 +110,23 @@ router.patch("/users/:id", function (req, res) {
     });
 });
 
+router.get("/levelup/:id", function (req, res) {
+  const accountId = req.params.id;
+  const newData = { admin: true };
+
+  User.findOneAndUpdate({ _id: accountId }, newData, { new: true })
+    .then((user) => {
+      if (user) {
+        res.send(user);
+      } else {
+        res.status(404).send("User not found");
+      }
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+});
+
 router.delete("/users/:id", function (req, res) {
   const accountId = req.params.id;
 
