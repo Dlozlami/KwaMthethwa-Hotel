@@ -1,19 +1,24 @@
-import React,{useEffect} from "react";
+import React,{useEffect,useState} from "react";
 import Footer from "../../components/footer/footer";
 import RoomCard from "./roomCard";
 import { roomsData } from "./roomsData";
 import { IoIosAddCircle } from "react-icons/io";
 import {fetchRooms} from "../../features/roomsSlice";
 import { useDispatch, useSelector } from "react-redux";
+import AddRoomModal from "./addRoomModal";
 
 export default function Rooms() {
   const dispatch = useDispatch();
   const { isAdmin } = useSelector((store) => store.login);
   const { rooms } = useSelector((store) => store.rooms);
-  
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const handleAddRoom = () => {
+  const openModal = () => {
+    setModalVisible(true);
+  };
 
+  const closeModal = () => {
+    setModalVisible(false);
   };
 
 useEffect(() => {
@@ -54,11 +59,18 @@ useEffect(() => {
             flexDirection: "row",
             padding: "10px",
             width: "100%",
-            backgroundColor: "#e3d7ff",
+            backgroundColor: "#d4af37",
             justifyContent: "space-between",
+            alignItems:"center"
           }}
         >
-          <span style={{color: "#006c67", fontSize: 30 }}>Choose your accommodation</span>
+          <h1
+              style={{
+                fontWeight: "500",
+              }}
+            >
+              Choose your accommodation
+            </h1>
           {isAdmin?<span style={{ fontSize: 20 }}>
             <button
               className="w3-ripple"
@@ -72,7 +84,7 @@ useEffect(() => {
                 cursor: "pointer",
                 textDecoration: "none",
               }}
-              onClick={handleAddRoom}
+              onClick={openModal}
             >
               <IoIosAddCircle size={20}/> Add a room
             </button>
@@ -83,6 +95,7 @@ useEffect(() => {
         ))}
       </div>
       <Footer />
+      <AddRoomModal visible={modalVisible} close={closeModal} />
     </>
   );
 }

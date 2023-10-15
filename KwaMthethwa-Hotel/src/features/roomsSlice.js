@@ -10,7 +10,7 @@ const initialState = {
 
 export const fetchRooms = createAsyncThunk('rooms/fetchRooms', async () => {
   try {
-    const response = await axios.get(`http://localhost:8080/bookings/rooms/`);
+    const response = await axios.get(`http://localhost:8080/rooms/`);
     return response.data;
   } catch (error) {
     throw error;
@@ -19,7 +19,8 @@ export const fetchRooms = createAsyncThunk('rooms/fetchRooms', async () => {
 
 export const createRoom = createAsyncThunk('rooms/createRoom', async (newRoomData) => {
   try {
-    const response = await axios.post(`http://localhost:8080/bookings/rooms/`, newRoomData);
+    const response = await axios.post(`http://localhost:8080/rooms/`, newRoomData);
+    alert("Room successfully added!");
     return response.data;
   } catch (error) {
     throw error;
@@ -28,7 +29,7 @@ export const createRoom = createAsyncThunk('rooms/createRoom', async (newRoomDat
 
 export const updateRoom = createAsyncThunk('rooms/updateRoom', async (updateData,roomId) => {
   try {
-    const response = await axios.patch(`http://localhost:8080/bookings/rooms/${updateData.id}`, updateData);
+    const response = await axios.patch(`http://localhost:8080/rooms/${updateData.id}`, updateData);
     return response.data;
   } catch (error) {
     throw error;
@@ -37,7 +38,7 @@ export const updateRoom = createAsyncThunk('rooms/updateRoom', async (updateData
 
 export const deleteRoom = createAsyncThunk('rooms/deleteRoom', async (roomId) => {
   try {
-    await axios.delete(`http://localhost:8080/bookings/rooms/${roomId}`);
+    await axios.delete(`http://localhost:8080/rooms/${roomId}`);
     return roomId;
   } catch (error) {
     throw error;
