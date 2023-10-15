@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Carousel from "../../components/carousel/carousel";
+import { RiEdit2Fill, RiDeleteBin2Fill } from "react-icons/ri";
 import { RxDimensions } from "react-icons/rx";
 import { FaKitchenSet, FaBed, FaCheck } from "react-icons/fa6";
 import { useSelector } from "react-redux";
@@ -108,6 +109,13 @@ export default function RoomCard({ room }) {
           >
             Book Now
           </button>
+          {isAdmin ? (
+            <div>
+              <br />
+              <RiEdit2Fill size={30} color="#006c67" />{" "}
+              <RiDeleteBin2Fill size={30} color="#006c67" />
+            </div>
+          ) : null}
         </div>
       </div>
       <RoomsModal visible={modalVisible} close={closeModal} room={room} />

@@ -12,12 +12,14 @@ app.use(morgan("tiny"));
 const userRoutes = require("./routes/userRoutes");
 const bookingsRoutes = require("./routes/bookingsRoutes");
 const receiptRoutes = require("./routes/receiptRoutes");
+const roomsRoutes = require("./routes/roomsRoutes");
 
 mongoose.connect("mongodb://127.0.0.1:27017/KwaMthethwaHotel");
 
 app.use(userRoutes);
 app.use(bookingsRoutes);
 app.use(receiptRoutes);
+app.use(roomsRoutes);
 
 // Listening to server at port 5000
 app.listen(8080, function () {
