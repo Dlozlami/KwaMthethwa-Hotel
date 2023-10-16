@@ -13,27 +13,20 @@ const RoomsSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  image01: {
-    type: String
+  num_guest: {
+    type: Number
   },
-  image02: {
-    type: String
+  num_bedroom: {
+    type: Number
   },
-  image03: {
+  image: {
     type: String
-  },
-  image04: {
-    type: String
-  },
-  accommodates: {
-    type: String,
-    required: true
   },
   floorSpace: {
     type: Number,
     required: true
   },
-  bed: {
+  bedType: {
     type: String,
     required: true
   }

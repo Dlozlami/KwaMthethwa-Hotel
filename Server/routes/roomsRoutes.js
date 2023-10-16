@@ -1,8 +1,11 @@
 require("dotenv").config();
 const https = require("https");
 const express = require("express");
+const multer = require("multer");
+const path = require("path");
 const router = express.Router();
 const Rooms = require("../models/rooms.model")
+
 
 router.get("/rooms/", function (req, res) {
   Rooms.find({})
@@ -17,6 +20,7 @@ router.get("/rooms/", function (req, res) {
       res.status(500).send(err);
     });
 });
+
 
 
 router.get("/rooms/:id", function (req, res) {

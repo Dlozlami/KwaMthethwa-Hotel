@@ -13,6 +13,9 @@ const userRoutes = require("./routes/userRoutes");
 const bookingsRoutes = require("./routes/bookingsRoutes");
 const receiptRoutes = require("./routes/receiptRoutes");
 const roomsRoutes = require("./routes/roomsRoutes");
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(express.json({ limit: '50mb' }));
 
 mongoose.connect("mongodb://127.0.0.1:27017/KwaMthethwaHotel");
 
