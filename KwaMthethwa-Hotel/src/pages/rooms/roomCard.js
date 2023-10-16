@@ -2,15 +2,19 @@ import React, { useState } from "react";
 import { RiEdit2Fill, RiDeleteBin2Fill } from "react-icons/ri";
 import { RxDimensions } from "react-icons/rx";
 import { FaKitchenSet, FaBed, FaCheck } from "react-icons/fa6";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import RoomsModal from "./roomsModal";
+import EditRoomModal from "./editRoomModal";
+import { deleteRoom } from "../../features/roomsSlice";
 
 export default function RoomCard({ room }) {
+  const dispatch = useDispatch();
   const { currency, currencySymbol, discount_rate } = useSelector(
     (store) => store.bookings
   );
   const { isAdmin } = useSelector((store) => store.login);
   const [modalVisible, setModalVisible] = useState(false);
+  const [editVisible, setEditVisible] = useState(false);
 
   const openModal = () => {
     setModalVisible(true);
@@ -18,6 +22,10 @@ export default function RoomCard({ room }) {
 
   const closeModal = () => {
     setModalVisible(false);
+  };
+
+  const handleDelete = () => {
+    dispatch(deleteRoom(room._id));
   };
 
   return (
@@ -35,7 +43,7 @@ export default function RoomCard({ room }) {
         <div
           id="roomCard00"
           style={{
-            backgroundImage: `url(${room.imageURLs[0]})`,
+            backgroundImage: `url(${room.image})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
@@ -58,7 +66,7 @@ export default function RoomCard({ room }) {
             <FaKitchenSet /> kitchenette
           </p>
           <p>
-            <FaBed /> {room.bed}
+            <FaBed /> {room.bedType}
           </p>
           <p>
             <FaCheck /> WiFi, air conditioning, TV
@@ -90,7 +98,7 @@ export default function RoomCard({ room }) {
         >
           <p>from</p>
           <p>
-            {currencySymbol} {((room.rate * currency) / 100).toFixed(2)}
+            {currencySymbol} {((room.rateInCents * currency) / 100).toFixed(2)}
           </p>
           {discount_rate > 0 ? (
             <p style={{ color: "#6874e8", fontSize: "10PX" }}>
@@ -117,12 +125,25 @@ export default function RoomCard({ room }) {
           {isAdmin ? (
             <div>
               <br />
-              <RiEdit2Fill size={30} color="#006c67" />{" "}
-              <RiDeleteBin2Fill size={30} color="#006c67" />
+              <RiEdit2Fill
+                size={30}
+                color="#006c67"
+                onClick={() => setEditVisible(true)}
+              />{" "}
+              <RiDeleteBin2Fill
+                size={30}
+                color="#006c67"
+                onClick={handleDelete}
+              />
             </div>
           ) : null}
         </div>
       </div>
+      <EditRoomModal
+        visible={editVisible}
+        close={() => setEditVisible(false)}
+        room={room}
+      />
       <RoomsModal visible={modalVisible} close={closeModal} room={room} />
     </>
   );

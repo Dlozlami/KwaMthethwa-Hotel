@@ -120,7 +120,7 @@ label {
 }
 
 input,
-select {
+select,textarea {
   background-color: #e3d7ff;
   padding: 10px;
 }

@@ -1,52 +1,46 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createRoom } from "../../features/roomsSlice";
+import { updateRoom } from "../../features/roomsSlice";
 import { IoCloseCircle } from "react-icons/io5";
 
-export default function AddRoom({ visible, close }) {
+export default function EditRoomModal({ visible, close, room }) {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [rateInCents, setRateInCents] = useState(0);
-  const [image, setImage] = useState("");
-  const [num_guest, setNum_guest] = useState(0);
-  const [num_bedroom, setNum_bedroom] = useState(0);
-  const [floorSpace, setFloorSpace] = useState(0);
-  const [bedType, setBedType] = useState("");
+  const [title, setTitle] = useState(room.title);
+  const [description, setDescription] = useState(room.description);
+  const [rateInCents, setRateInCents] = useState(room.rateInCents);
+  const [image, setImage] = useState(room.image);
+  const [num_guest, setNum_guest] = useState(room.num_guest);
+  const [num_bedroom, setNum_bedroom] = useState(room.num_bedroom);
+  const [floorSpace, setFloorSpace] = useState(room.floorSpace);
+  const [bedType, setBedType] = useState(room.bedType);
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
-      setImage(file); // Store the file object
+      const photoReader = new FileReader();
+      photoReader.onload = () => {
+        setImage(photoReader.result);
+      };
+      photoReader.readAsDataURL(file);
     }
   };
-
-  const handleAddRoom = () => {
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("rateInCents", rateInCents);
-    formData.append("image", image); // Append the file object
-    formData.append("num_guest", num_guest);
-    formData.append("num_bedroom", num_bedroom);
-    formData.append("floorSpace", floorSpace);
-    formData.append("bedType", bedType);
-
+  //console.log("Room to edit: ", room._id);
+  const handleSaveChanges = () => {
     dispatch(
-      createRoom({
-        title: title,
-        description: description,
-        rateInCents: rateInCents,
-        image: image,
-        num_guest: num_guest,
-        num_bedroom: num_bedroom,
-        floorSpace: floorSpace,
-        bedType: bedType,
-      })
-    ); // Send formData to the API
-
-    // Reset form fields and image
-    setImage(null);
+      updateRoom([
+        {
+          title: title,
+          description: description,
+          rateInCents: rateInCents,
+          num_guest: num_guest,
+          num_bedroom: num_bedroom,
+          floorSpace: floorSpace,
+          bedType: bedType,
+        },
+        room._id,
+      ])
+    );
+    setImage("");
     setNum_guest(0);
     setTitle("");
     setBedType("");
@@ -54,7 +48,6 @@ export default function AddRoom({ visible, close }) {
     setDescription("");
     setFloorSpace(0);
     setRateInCents(0);
-    //document.getElementById("pic").value = "";
     close();
   };
 
@@ -95,7 +88,7 @@ export default function AddRoom({ visible, close }) {
           }}
         >
           <div>
-            <h2>Add a new room</h2>
+            <h2>Edit room</h2>
           </div>
           <div>
             <button
@@ -160,10 +153,19 @@ export default function AddRoom({ visible, close }) {
               value={num_bedroom}
               onChange={(event) => setNum_bedroom(event.target.value)}
             />
-
             <br />
+            {/* <label htmlFor="pic">Upload photo</label>
+            <input
+              type="file"
+              accept="image/*"
+              id="pic"
+              onChange={handleImageUpload}
+            /> */}
             <br />
-            <label htmlFor="floorSpace"> Floor space</label>
+            <label htmlFor="floorSpace">
+              {" "}
+              Floor space m<sup>2</sup>
+            </label>
             <input
               type="number"
               id="floorSpace"
@@ -190,7 +192,7 @@ export default function AddRoom({ visible, close }) {
             <br />
             <br />
             <button
-              onClick={handleAddRoom}
+              onClick={handleSaveChanges}
               style={{
                 fontSize: "15px",
                 padding: "10px",

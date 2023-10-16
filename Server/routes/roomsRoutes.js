@@ -28,7 +28,7 @@ router.get("rooms/images", (req, res) => {
   });
 });
 
-router.post("/rooms/", upload.single("image"), (req, res, next) => {
+router.post("/rooms/images", upload.single("image"), (req, res, next) => {
   console.log("Post room req.body: ", req.body);
   // var obj = {
   //   name: req.body.name,
@@ -48,7 +48,7 @@ router.post("/rooms/", upload.single("image"), (req, res, next) => {
   //     res.redirect("/");
   //   }
   // });
-  res.send();
+  res.send(`/${req.file.path}`);
 });
 
 router.get("/rooms/", function (req, res) {
@@ -81,15 +81,16 @@ router.get("/rooms/:id", function (req, res) {
     });
 });
 
-router.post("/rooms/images", async function (req, res) {
-  // const newAccount = req.body;
-  // try {
-  //   const newRooms = await Rooms.create(newAccount);
-  //   res.json({ status: "Room added successfully" });
-  // } catch (err) {
-  //   console.log(err);
-  //   res.json({ status: "Error adding a room: " + err });
-  // }
+router.post("/rooms/", async function (req, res) {
+  console.log("Post room req.body: ", req.body);
+  const newAccount = req.body;
+  try {
+    const newRooms = await Rooms.create(newAccount);
+    res.json({ status: "Room added successfully" });
+  } catch (err) {
+    console.log(err);
+    res.json({ status: "Error adding a room: " + err });
+  }
 });
 
 router.patch("/rooms/:id", function (req, res) {

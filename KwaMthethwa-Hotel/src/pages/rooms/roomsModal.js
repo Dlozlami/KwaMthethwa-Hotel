@@ -113,7 +113,7 @@ export default function RoomsModal({ visible, close, room }) {
           <div
             style={{
               height: "40vh",
-              backgroundImage: `url(${room.imageURLs[0]})`,
+              backgroundImage: `url(${room.image})`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",

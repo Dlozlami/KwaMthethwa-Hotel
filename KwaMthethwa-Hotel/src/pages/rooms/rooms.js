@@ -1,9 +1,9 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../components/footer/footer";
 import RoomCard from "./roomCard";
 import { roomsData } from "./roomsData";
 import { IoIosAddCircle } from "react-icons/io";
-import {fetchRooms} from "../../features/roomsSlice";
+import { fetchRooms } from "../../features/roomsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import AddRoomModal from "./addRoomModal";
 
@@ -21,10 +21,10 @@ export default function Rooms() {
     setModalVisible(false);
   };
 
-useEffect(() => {
-    rooms&&console.log("Rendering number of rooms: ", rooms.length);
+  useEffect(() => {
+    rooms && console.log("Rendering number of rooms: ", rooms.length);
     dispatch(fetchRooms());
-  },[]);
+  }, []);
 
   return (
     <>
@@ -61,37 +61,42 @@ useEffect(() => {
             width: "100%",
             backgroundColor: "#d4af37",
             justifyContent: "space-between",
-            alignItems:"center"
+            alignItems: "center",
           }}
         >
           <h1
-              style={{
-                fontWeight: "500",
-              }}
-            >
-              Choose your accommodation
-            </h1>
-          {isAdmin?<span style={{ fontSize: 20 }}>
-            <button
-              className="w3-ripple"
-              style={{
-                fontSize: "15px",
-                padding: "10px",
-                backgroundColor: "none",
-                color: "#006c67",
-                border: "1px #006c67 solid",
-                borderRadius: "5px",
-                cursor: "pointer",
-                textDecoration: "none",
-              }}
-              onClick={openModal}
-            >
-              <IoIosAddCircle size={20}/> Add a room
-            </button>
-          </span>:null}
+            style={{
+              fontWeight: "500",
+            }}
+          >
+            Choose your accommodation
+          </h1>
+          {isAdmin ? (
+            <span style={{ fontSize: 20 }}>
+              <button
+                className="w3-ripple"
+                style={{
+                  fontSize: "15px",
+                  padding: "10px",
+                  backgroundColor: "none",
+                  color: "#006c67",
+                  border: "1px #006c67 solid",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  textDecoration: "none",
+                }}
+                onClick={openModal}
+              >
+                <IoIosAddCircle size={20} /> Add a room
+              </button>
+            </span>
+          ) : null}
         </div>
-        {roomsData.map((room) => (
+        {/*roomsData.map((room) => (
           <RoomCard key={room.id} room={room} />
+        ))*/}
+        {rooms.map((room) => (
+          <RoomCard key={room._id} room={room} />
         ))}
       </div>
       <Footer />

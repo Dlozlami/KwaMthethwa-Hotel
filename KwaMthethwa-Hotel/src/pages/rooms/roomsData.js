@@ -5,16 +5,10 @@ export const roomsData = [
     description:
       "Contemporary elegance in the city. Designed to embody both form and functionality with impeccable finishes from every angle. Offering unapologetic lavishness, every stay has a story in the 1 Bedroom Suite",
     rate: 177090,
-    imageURLs: [
-      require("./room04/00.jpg"),
-      require("./room04/01.jpg"),
-      require("./room04/02.jpg"),
-      require("./room04/03.jpg"),
-      require("./room04/04.jpg"),
-    ],
+    image: require("./room04/00.jpg"),
     accommodates: "2 People / 1 Bedroom",
     floorSpace: 70,
-    bed: "King size bed",
+    bedType: "King size bed",
   },
   {
     id: "KMH1023",
@@ -22,16 +16,10 @@ export const roomsData = [
     description:
       "A sense of modern elegance. Thanks to the distinct design of The Leonardo, each room is unique and features floor-to-ceiling windows with stunning city views. A seamless fusion of refined materials, such as marble and silk, are blended with contemporary light wood, completing the urban cityscape.",
     rate: 198090,
-    imageURLs: [
-      require("./room01/00.jpg"),
-      require("./room01/01.jpg"),
-      require("./room01/02.jpg"),
-      require("./room01/03.jpg"),
-      require("./room01/04.jpg"),
-    ],
+    image: require("./room01/00.jpg"),
     accommodates: "2 People / 1 Bedroom",
     floorSpace: 100,
-    bed: "1 king size / twin bed",
+    bedType: "1 king size / twin bed",
   },
   {
     id: "KMH2531",
@@ -39,16 +27,10 @@ export const roomsData = [
     description:
       "Impeccable interiors with breathtaking city views. High-end technology sits comfortably alongside subtle luxury. Opulent sophistication awaits in the 2 Bedroom Grand Suite.",
     rate: 267090,
-    imageURLs: [
-      require("./room02/00.jpg"),
-      require("./room02/01.jpg"),
-      require("./room02/02.jpg"),
-      require("./room02/03.jpg"),
-      require("./room02/04.jpg"),
-    ],
+    image: require("./room02/00.jpg"),
     accommodates: "4 People / 2 Bedrooms",
     floorSpace: 130,
-    bed: "King size bed",
+    bedType: "King size bed",
   },
   {
     id: "KMH3320",
@@ -56,15 +38,9 @@ export const roomsData = [
     description:
       "Designed to become a timeless classic and an oasis of privacy. Experience the exhilaration of city living. The 2 Bedroom Luxury Suite raises the bar on hard finishes and furniture design.",
     rate: 312090,
-    imageURLs: [
-      require("./room03/00.jpg"),
-      require("./room03/01.jpg"),
-      require("./room03/02.jpg"),
-      require("./room03/03.jpg"),
-      require("./room03/04.jpg"),
-    ],
+    image: require("./room03/00.jpg"),
     accommodates: "4 People / 2 Bedrooms",
     floorSpace: 175,
-    bed: "1 king size / twin bed",
+    bedType: "1 king size / twin bed",
   },
 ];
