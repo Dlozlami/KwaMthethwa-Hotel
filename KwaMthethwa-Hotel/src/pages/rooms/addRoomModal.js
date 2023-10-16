@@ -3,8 +3,7 @@ import { useDispatch } from "react-redux";
 import { createRoom } from "../../features/roomsSlice";
 import { IoCloseCircle } from "react-icons/io5";
 
-export default function AddRoom({ visible, close}) {
-
+export default function AddRoom({ visible, close }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -16,28 +15,28 @@ export default function AddRoom({ visible, close}) {
   const [bedType, setBedType] = useState("");
 
   const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-          const photoReader = new FileReader();
-          photoReader.onload = () => {
-            setImage(photoReader.result);
-          };
-          photoReader.readAsDataURL(file);
-        }
+    const file = event.target.files[0];
+    if (file) {
+      setImage(file); // Store the file object
+    }
+    event.target.value = null;
   };
 
   const handleAddRoom = () => {
-    dispatch(createRoom({
-      title:title,
-      description:description,
-      rateInCents:rateInCents,
-      image:image,
-      num_guest:num_guest,
-      num_bedroom:num_bedroom,
-      floorSpace:floorSpace,
-      bedType:bedType,
-    }));
-    setImage("");
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("rateInCents", rateInCents);
+    formData.append("image", image); // Append the file object
+    formData.append("num_guest", num_guest);
+    formData.append("num_bedroom", num_bedroom);
+    formData.append("floorSpace", floorSpace);
+    formData.append("bedType", bedType);
+
+    dispatch(createRoom(formData)); // Send formData to the API
+
+    // Reset form fields and image
+    setImage(null);
     setNum_guest(0);
     setTitle("");
     setBedType("");
@@ -107,36 +106,89 @@ export default function AddRoom({ visible, close}) {
             height: "80vh",
           }}
         >
-          <div style={{backgroundColor:'white',padding:'50px',justifyContent:'center',width:'50vw'}}>
-
-                    <label htmlFor="title"> Title</label>
-                    <input type="text" id="title"  value={title} onChange={(event)=>setTitle(event.target.value)} />
-                    <br />
-                    <label htmlFor="rateInCents">Rate in cents</label>
-                    <input type="number" id="rateInCents"  value={rateInCents} onChange={(event)=>setRateInCents(event.target.value)} />
-                    <br />
-                    <label htmlFor="num_guest">num_guest</label>
-                    <input type="number" id="num_guest"  value={num_guest} onChange={(event)=>setNum_guest(event.target.value)} />
-                    <br />
-                    <label htmlFor="num_bedroom">num_bedroom</label>
-                    <input type="number" id="num_bedroom"  value={num_bedroom} onChange={(event)=>setNum_bedroom(event.target.value)} />
-                    <br />
-                    <label htmlFor="pic">Upload photo</label>
-                    <input type="file" accept="image/*" id="pic" onChange={handleImageUpload} />
-                    <br />
-                    <label htmlFor="floorSpace"> floorSpace</label>
-                    <input type="number" id="floorSpace"  value={floorSpace} onChange={(event)=>setFloorSpace(event.target.value)} />
-                    <br />
-                    <label htmlFor="bedType">bedType</label>
-                    <input type="text" id="bedType"  value={bedType} onChange={(event)=>setBedType(event.target.value)} />
-                    <br />
-                    <label htmlFor="description">description</label>
-                    <textarea id="description"  value={description} onChange={(event)=>setDescription(event.target.value)} ></textarea>
-                    <br /><br />
-                    <button onClick={handleAddRoom} style={{ marginRight: '5vw' }} className="w3-btn w3-border w3-border-black w3-round-large">
-                        Add a room
-                    </button><br /><br /><br />
-                    </div>
+          <div
+            style={{
+              backgroundColor: "white",
+              padding: "50px",
+              justifyContent: "center",
+              width: "50vw",
+            }}
+          >
+            <label htmlFor="title"> Title</label>
+            <input
+              type="text"
+              id="title"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+            />
+            <br />
+            <label htmlFor="rateInCents">Rate in cents</label>
+            <input
+              type="number"
+              id="rateInCents"
+              value={rateInCents}
+              onChange={(event) => setRateInCents(event.target.value)}
+            />
+            <br />
+            <label htmlFor="num_guest">num_guest</label>
+            <input
+              type="number"
+              id="num_guest"
+              value={num_guest}
+              onChange={(event) => setNum_guest(event.target.value)}
+            />
+            <br />
+            <label htmlFor="num_bedroom">num_bedroom</label>
+            <input
+              type="number"
+              id="num_bedroom"
+              value={num_bedroom}
+              onChange={(event) => setNum_bedroom(event.target.value)}
+            />
+            <br />
+            <label htmlFor="pic">Upload photo</label>
+            <input
+              type="file"
+              accept="image/*"
+              id="pic"
+              onChange={handleImageUpload}
+            />
+            <br />
+            <label htmlFor="floorSpace"> floorSpace</label>
+            <input
+              type="number"
+              id="floorSpace"
+              value={floorSpace}
+              onChange={(event) => setFloorSpace(event.target.value)}
+            />
+            <br />
+            <label htmlFor="bedType">bedType</label>
+            <input
+              type="text"
+              id="bedType"
+              value={bedType}
+              onChange={(event) => setBedType(event.target.value)}
+            />
+            <br />
+            <label htmlFor="description">description</label>
+            <textarea
+              id="description"
+              value={description}
+              onChange={(event) => setDescription(event.target.value)}
+            ></textarea>
+            <br />
+            <br />
+            <button
+              onClick={handleAddRoom}
+              style={{ marginRight: "5vw" }}
+              className="w3-btn w3-border w3-border-black w3-round-large"
+            >
+              Add a room
+            </button>
+            <br />
+            <br />
+            <br />
+          </div>
         </div>
       </div>
     </div>

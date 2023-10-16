@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Carousel from "../../components/carousel/carousel";
 import { RiEdit2Fill, RiDeleteBin2Fill } from "react-icons/ri";
 import { RxDimensions } from "react-icons/rx";
 import { FaKitchenSet, FaBed, FaCheck } from "react-icons/fa6";
@@ -33,9 +32,15 @@ export default function RoomCard({ room }) {
           width: "100%",
         }}
       >
-        <div id="roomCard00" style={{ borderRadius: "20%" }}>
-          <Carousel listOfImgURL={room.imageURLs} />
-        </div>
+        <div
+          id="roomCard00"
+          style={{
+            backgroundImage: `url(${room.imageURLs[0]})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+          }}
+        ></div>
 
         <div
           id="roomCard01"

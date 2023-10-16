@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Carousel from "../../components/carousel/carousel";
 import { FaCheck } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 import { RxDimensions } from "react-icons/rx";
@@ -84,6 +83,7 @@ export default function RoomsModal({ visible, close, room }) {
             justifyContent: "space-between",
             alignItems: "center",
             padding: "10px",
+            backgroundColor: "#d4af37",
           }}
         >
           <div>
@@ -107,12 +107,18 @@ export default function RoomsModal({ visible, close, room }) {
         <div
           style={{
             overflow: "scroll",
-            height: "80vh",
+            height: "70vh",
           }}
         >
-          <div style={{ height: "30vh" }}>
-            <Carousel listOfImgURL={room.imageURLs} />
-          </div>
+          <div
+            style={{
+              height: "40vh",
+              backgroundImage: `url(${room.imageURLs[0]})`,
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+            }}
+          ></div>
 
           <div
             style={{

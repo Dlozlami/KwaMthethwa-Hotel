@@ -35,6 +35,7 @@ export default function Carousel({ listOfImgURL, title, subtitle }) {
       <div className="mainSign">
         <h1 style={{ fontSize: "5em" }}>{title}</h1>
         <p>{subtitle}</p>
+        <br />
       </div>
       <div className="carousel">
         <div className="carousel-overlay">
