@@ -31,6 +31,19 @@ Start the server
   npm run start
 ```
 
+## Start the server
+
+Go to the Server directory
+
+```bash
+  cd Server
+```
+Start Express Server
+```bash
+  npx nodemon .\KMH.ENTRY.web-server0.25.js 
+```
+
+
 ## Tech Stack
 
 **Client:** React JS, Redux/Toolkit, CSS3
